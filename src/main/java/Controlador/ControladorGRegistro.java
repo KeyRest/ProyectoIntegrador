@@ -13,29 +13,33 @@ import java.awt.event.ActionListener;
  *
  * @author Admin
  */
-public class ControladorGIngreso implements ActionListener {
+public class ControladorGRegistro implements ActionListener {
     private GLogin gLogin;
     private GRegistro gRegistro;
-    
-    
 
-    public ControladorGIngreso(GLogin gLogin) {
-        this.gRegistro =new GRegistro();
-        this.gLogin = gLogin;
+    public ControladorGRegistro(GRegistro gRegistro) {
+        this.gRegistro = gRegistro;
+        
+        
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
+                
         switch(e.getActionCommand()){
-            case "Ingresar":
-                System.out.println("BTNIngrsar Pressed");
-                break;
-            case "Registrarse":
-                System.out.println("BTNRegistrarse Pressed");
-                gRegistro.setVisible(true);
-                gLogin.dispose();
+            case "Atras":
+                System.out.println("pressed Atras");
+                gLogin =new GLogin();
+                gRegistro.dispose();
+                gLogin.setVisible(true);
+                
                 
                 break;
+            case "Registrarse":
+                System.out.println("pressed Registrarse(SE REVISA DISPONIBILIDAD DE USUARIO Y SE ASIGNA ID)");
+                
+                break;
+            
         
         
         }
