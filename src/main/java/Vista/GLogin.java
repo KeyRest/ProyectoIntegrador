@@ -16,6 +16,7 @@ public class GLogin extends javax.swing.JFrame {
      * Creates new form GLogin
      */
     public GLogin() {
+        this.setAlwaysOnTop(true);
         initComponents();
         ControladorGIngreso controladorGIngreso = new ControladorGIngreso(this);
         escuchar(controladorGIngreso);
