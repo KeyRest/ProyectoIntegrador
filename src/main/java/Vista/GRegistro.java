@@ -6,23 +6,24 @@ package Vista;
 
 import Controlador.ControladorGRegistro;
 
-
-
 /**
  *
  * @author Admin
  */
 public class GRegistro extends javax.swing.JFrame {
 //  Al registrar usuario se debe registrar un ID ...Por Definir...
+
     /**
      * Creates new form GRegistro
      */
     public GRegistro() {
         initComponents();
+        this.setVisible(true);
         ControladorGRegistro controladorGRegistro = new ControladorGRegistro(this);
         escuchar(controladorGRegistro);
-        
+
     }
+
     private void escuchar(ControladorGRegistro controladorGRegistro) {
         BTN_Back.addActionListener(controladorGRegistro);
         BTN_Registrarse.addActionListener(controladorGRegistro);

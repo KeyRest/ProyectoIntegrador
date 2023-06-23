@@ -21,10 +21,10 @@ public class GLogin extends javax.swing.JFrame {
         ControladorGIngreso controladorGIngreso = new ControladorGIngreso(this);
         escuchar(controladorGIngreso);
     }
+
     private void escuchar(ControladorGIngreso controladorGIngreso) {
         BTN_Ingresar.addActionListener(controladorGIngreso);
         BTN_Registrarse.addActionListener(controladorGIngreso);
-
     }
 
     /**
@@ -158,5 +158,4 @@ public class GLogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 
-    
 }
