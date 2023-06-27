@@ -3,7 +3,6 @@ package Controlador;
 
 import Vista.FRMGlogin;
 import Vista.FRMRecetas;
-import Vista.FrameRecetas;
 import Vista.GRegistro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
