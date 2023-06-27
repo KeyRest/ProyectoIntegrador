@@ -6,16 +6,16 @@
 
 package Controlador;
 
-import Vista.FrameRecetas;
+import Vista.FRMRecetas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class ControladorFrameRecetas implements ActionListener {
 
-    private FrameRecetas frameRecetas;
+    private FRMRecetas fRMRecetas;
 
-    public ControladorFrameRecetas(FrameRecetas frameRecetas) {
-        this.frameRecetas = frameRecetas;
+    public ControladorFrameRecetas(FRMRecetas fRMRecetas) {
+        this.fRMRecetas = fRMRecetas;
     }
 
     @Override

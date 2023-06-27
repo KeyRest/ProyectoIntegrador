@@ -65,7 +65,6 @@ public class PanelIngresoDatos extends javax.swing.JPanel {
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel1.setText("Nombre:");
 
-        nombreReceta.setEditable(false);
         nombreReceta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         nombreReceta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -76,7 +75,6 @@ public class PanelIngresoDatos extends javax.swing.JPanel {
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel2.setText("Tiempo de coccion:");
 
-        tiempoCoccion.setEditable(false);
         tiempoCoccion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tiempoCoccion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -87,7 +85,6 @@ public class PanelIngresoDatos extends javax.swing.JPanel {
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel3.setText("Tiempo total:");
 
-        tiempoTotal.setEditable(false);
         tiempoTotal.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         tiempoTotal.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -95,7 +92,6 @@ public class PanelIngresoDatos extends javax.swing.JPanel {
             }
         });
 
-        descripcion.setEditable(false);
         descripcion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         descripcion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -109,7 +105,6 @@ public class PanelIngresoDatos extends javax.swing.JPanel {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel6.setText("Instrucciones");
 
-        instrucciones.setEditable(false);
         instrucciones.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         instrucciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -149,7 +144,6 @@ public class PanelIngresoDatos extends javax.swing.JPanel {
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setText("Cantidad:");
 
-        cantidad.setEditable(false);
         cantidad.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
         cantidad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
