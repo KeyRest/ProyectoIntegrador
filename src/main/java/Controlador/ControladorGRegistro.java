@@ -4,7 +4,7 @@
  */
 package Controlador;
 
-import Vista.GLogin;
+import Vista.FRMGlogin;
 import Vista.GRegistro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,7 +15,7 @@ import java.awt.event.ActionListener;
  */
 public class ControladorGRegistro implements ActionListener {
 
-    private GLogin gLogin;
+    private FRMGlogin fRMGlogin;
     private GRegistro gRegistro;
 
     public ControladorGRegistro(GRegistro gRegistro) {
@@ -29,9 +29,9 @@ public class ControladorGRegistro implements ActionListener {
         switch (e.getActionCommand()) {
             case "Atras":
                 System.out.println("pressed Atras");
-                gLogin = new GLogin();
+                fRMGlogin = new FRMGlogin();
                 gRegistro.dispose();
-                gLogin.setVisible(true);
+                fRMGlogin.setVisible(true);
                 break;
             case "Registrarse":
                 System.out.println("pressed Registrarse(SE REVISA DISPONIBILIDAD DE USUARIO Y SE ASIGNA ID)");

@@ -1,8 +1,8 @@
 
 package Controlador;
 
+import Vista.FRMGlogin;
 import Vista.FrameRecetas;
-import Vista.GLogin;
 import Vista.GRegistro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -13,12 +13,12 @@ import java.awt.event.ActionListener;
  */
 public class ControladorGIngreso implements ActionListener {
 
-    private GLogin gLogin;
+    private FRMGlogin fRMGlogin;
     private GRegistro gRegistro;
     private FrameRecetas frameRecetas;
 
-    public ControladorGIngreso(GLogin gLogin) {
-        this.gLogin = gLogin;
+    public ControladorGIngreso(FRMGlogin fRMGlogin) {
+        this.fRMGlogin = fRMGlogin;
     }
 
     @Override
@@ -26,13 +26,13 @@ public class ControladorGIngreso implements ActionListener {
         switch (e.getActionCommand()) {
             case "Ingresar":
                 this.frameRecetas = new FrameRecetas();
-                this.gLogin.dispose();
+                this.fRMGlogin.dispose();
 
                 break;
             case "Registrarse":
                 System.out.println("BTNRegistrarse Pressed");
                 this.gRegistro = new GRegistro();
-                this.gLogin.dispose();
+                this.fRMGlogin.dispose();
 
                 break;
 
