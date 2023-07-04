@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Usuario.findByPais", query = "SELECT u FROM Usuario u WHERE u.pais = :pais"),
     @NamedQuery(name = "Usuario.findByContrase\u00f1a", query = "SELECT u FROM Usuario u WHERE u.contrase\u00f1a = :contrase\u00f1a")})
 public class Usuario implements Serializable {
-    public static final String[] ETIQUETAS_USUARIO = {"ID", "Nombre", "Nombre_usuario", "Pais", "Correo", "Contras\u00f1a","perfilCollection","usuarioHasRecetaCollection","consultasCollection"};
+    public static final String[] ETIQUETAS_USUARIO = {"ID", "Nombre", "Nombre_usuario", "Pais", "Correo", "Contras\u00f1a"};
     private static final long serialVersionUID = 1L;
     @Id
     @Basic(optional = false)
@@ -65,6 +65,14 @@ public class Usuario implements Serializable {
     private Collection<Perfil> perfilCollection;
 
     public Usuario() {
+    }
+    public Usuario(String id, String nombre, String nombreUsuario, String pais, String correo, String contraseña) {
+        setId(id);
+        setNombre(nombre);
+        setNombreUsuario(nombreUsuario);
+        setPais(pais);
+        setCorreo(correo);
+        setContraseña(contraseña);
     }
     public String setDatosUsuario(int indice) {
         switch (indice) {

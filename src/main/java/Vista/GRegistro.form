@@ -26,29 +26,27 @@
           <Group type="102" attributes="0">
               <EmptySpace max="32767" attributes="0"/>
               <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
+                      <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
+                  </Group>
                   <Component id="jLabel1" min="-2" max="-2" attributes="0"/>
-                  <Group type="102" alignment="0" attributes="0">
-                      <Group type="103" groupAlignment="1" attributes="0">
-                          <Component id="jLabel2" alignment="1" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel6" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel5" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel7" alignment="0" min="-2" max="-2" attributes="0"/>
-                          <Component id="jLabel4" alignment="0" min="-2" max="-2" attributes="0"/>
-                      </Group>
-                      <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="JText_Password" max="32767" attributes="0"/>
-                          <Component id="JText_Username" max="32767" attributes="0"/>
-                          <Component id="JText_Email" max="32767" attributes="0"/>
-                          <Component id="JText_LastName" max="32767" attributes="0"/>
-                          <Component id="JText_Country" alignment="0" max="32767" attributes="0"/>
-                          <Component id="JText_Name" alignment="1" max="32767" attributes="0"/>
-                          <Group type="102" attributes="0">
-                              <Component id="BTN_Registrarse" min="-2" pref="138" max="-2" attributes="0"/>
-                              <EmptySpace pref="117" max="32767" attributes="0"/>
-                              <Component id="BTN_Back" min="-2" pref="138" max="-2" attributes="0"/>
-                          </Group>
-                      </Group>
+              </Group>
+              <EmptySpace type="unrelated" max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                  <Component id="JText_Password" max="32767" attributes="0"/>
+                  <Component id="JText_Email" max="32767" attributes="0"/>
+                  <Component id="JText_Username" max="32767" attributes="0"/>
+                  <Component id="JText_Name" max="32767" attributes="0"/>
+                  <Component id="JText_Country" alignment="0" max="32767" attributes="0"/>
+                  <Component id="JText_Id" alignment="1" max="32767" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="BTN_Registrarse" min="-2" pref="138" max="-2" attributes="0"/>
+                      <EmptySpace pref="117" max="32767" attributes="0"/>
+                      <Component id="BTN_Back" min="-2" pref="138" max="-2" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="32767" attributes="0"/>
@@ -67,18 +65,18 @@
               <Component id="jLabel3" min="-2" max="-2" attributes="0"/>
               <EmptySpace min="-2" pref="37" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="JText_Name" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="JText_Id" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="jLabel7" alignment="3" min="-2" max="-2" attributes="0"/>
-                  <Component id="JText_LastName" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="JText_Name" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="JText_Email" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="JText_Username" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -87,8 +85,8 @@
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
-                  <Component id="JText_Username" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
-                  <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="JText_Email" alignment="3" min="-2" pref="39" max="-2" attributes="0"/>
+                  <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
               </Group>
               <EmptySpace type="separate" max="-2" attributes="0"/>
               <Group type="103" groupAlignment="3" attributes="0">
@@ -159,20 +157,20 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="SansSerif" size="18" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="Apellidos :"/>
+        <Property name="text" type="java.lang.String" value="ID :"/>
       </Properties>
+    </Component>
+    <Component class="javax.swing.JTextField" name="JText_Id">
     </Component>
     <Component class="javax.swing.JTextField" name="JText_Name">
     </Component>
-    <Component class="javax.swing.JTextField" name="JText_LastName">
-    </Component>
-    <Component class="javax.swing.JTextField" name="JText_Email">
+    <Component class="javax.swing.JTextField" name="JText_Username">
     </Component>
     <Component class="javax.swing.JTextField" name="JText_Country">
     </Component>
     <Component class="javax.swing.JTextField" name="JText_Password">
     </Component>
-    <Component class="javax.swing.JTextField" name="JText_Username">
+    <Component class="javax.swing.JTextField" name="JText_Email">
     </Component>
     <Component class="javax.swing.JButton" name="BTN_Registrarse">
       <Properties>

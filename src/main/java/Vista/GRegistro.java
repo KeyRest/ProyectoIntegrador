@@ -5,6 +5,8 @@
 package Vista;
 
 import Controlador.ControladorGRegistro;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
 
 /**
  *
@@ -23,12 +25,72 @@ public class GRegistro extends javax.swing.JFrame {
         escuchar(controladorGRegistro);
 
     }
+    public static void mensaje(String msj)
+    {
+        JOptionPane.showMessageDialog(null,msj);
+    }
 
     private void escuchar(ControladorGRegistro controladorGRegistro) {
         BTN_Back.addActionListener(controladorGRegistro);
         BTN_Registrarse.addActionListener(controladorGRegistro);
     }
 
+    public String getJText_Country() {
+        return this.JText_Country.getText().trim();
+    }
+
+    public void setJText_Country (String pais) {
+        this.JText_Country.setText(pais);
+    }
+
+    public String getJText_Email() {
+        return this.JText_Email.getText().trim();
+    }
+
+    public void setJText_Email(String correo) {
+        this.JText_Email.setText(correo);
+    }
+
+    public String getJText_Id() {
+        return this.JText_Id.getText().trim();    
+    }
+
+    public void setJText_Id(String id) {
+        this.JText_Id.setText(id);
+    }
+
+    public String getJText_Name() {
+        return this.JText_Name.getText().trim();
+    }
+
+    public void setJText_Name(String nombre) {
+        this.JText_Name.setText(nombre);
+    }
+
+    public String getJText_Password() {
+        return this.JText_Password.getText().trim();
+    }
+
+    public void setJText_Password(String contraseña) {
+        this.JText_Password.setText(contraseña);
+    }
+
+    public String getJText_Username() {
+        return this.JText_Username.getText().trim();
+    }
+
+    public void setJText_Username(String nombreUsuario) {
+        this.JText_Username.setText(nombreUsuario);
+    }
+    public void limpiar()
+    {
+        this.JText_Country.setText("");
+        this.JText_Email.setText("");
+        this.JText_Id.setText("");
+        this.JText_Name.setText("");
+        this.JText_Password.setText("");
+        this.JText_Username.setText("");
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -45,12 +107,12 @@ public class GRegistro extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        JText_Id = new javax.swing.JTextField();
         JText_Name = new javax.swing.JTextField();
-        JText_LastName = new javax.swing.JTextField();
-        JText_Email = new javax.swing.JTextField();
+        JText_Username = new javax.swing.JTextField();
         JText_Country = new javax.swing.JTextField();
         JText_Password = new javax.swing.JTextField();
-        JText_Username = new javax.swing.JTextField();
+        JText_Email = new javax.swing.JTextField();
         BTN_Registrarse = new javax.swing.JButton();
         BTN_Back = new javax.swing.JButton();
 
@@ -75,7 +137,7 @@ public class GRegistro extends javax.swing.JFrame {
         jLabel6.setText("País :");
 
         jLabel7.setFont(new java.awt.Font("SansSerif", 1, 18)); // NOI18N
-        jLabel7.setText("Apellidos :");
+        jLabel7.setText("ID :");
 
         BTN_Registrarse.setFont(new java.awt.Font("SansSerif", 1, 14)); // NOI18N
         BTN_Registrarse.setText("Registrarse");
@@ -90,26 +152,25 @@ public class GRegistro extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel1)
+                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jLabel2)
+                        .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING))
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(JText_Password)
+                    .addComponent(JText_Email)
+                    .addComponent(JText_Username)
+                    .addComponent(JText_Name)
+                    .addComponent(JText_Country)
+                    .addComponent(JText_Id, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel7, javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.LEADING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(JText_Password)
-                            .addComponent(JText_Username)
-                            .addComponent(JText_Email)
-                            .addComponent(JText_LastName)
-                            .addComponent(JText_Country)
-                            .addComponent(JText_Name, javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(BTN_Registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
-                                .addComponent(BTN_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))))
+                        .addComponent(BTN_Registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 117, Short.MAX_VALUE)
+                        .addComponent(BTN_Back, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 273, Short.MAX_VALUE)
@@ -123,24 +184,24 @@ public class GRegistro extends javax.swing.JFrame {
                 .addComponent(jLabel3)
                 .addGap(37, 37, 37)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel4)
-                    .addComponent(JText_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JText_Id, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel7)
-                    .addComponent(JText_LastName, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(JText_Name, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JText_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel5))
+                    .addComponent(JText_Username, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JText_Country, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel6))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(JText_Username, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel1))
+                    .addComponent(JText_Email, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(JText_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -160,7 +221,7 @@ public class GRegistro extends javax.swing.JFrame {
     private javax.swing.JButton BTN_Registrarse;
     private javax.swing.JTextField JText_Country;
     private javax.swing.JTextField JText_Email;
-    private javax.swing.JTextField JText_LastName;
+    private javax.swing.JTextField JText_Id;
     private javax.swing.JTextField JText_Name;
     private javax.swing.JTextField JText_Password;
     private javax.swing.JTextField JText_Username;
