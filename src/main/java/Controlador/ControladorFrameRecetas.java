@@ -41,11 +41,12 @@ public class ControladorFrameRecetas implements ActionListener {
                 System.out.println("Buscando");
                 this.receta = (Receta) this.registroRecetas.buscar(this.fRMRecetas.getTxtId());
                 if (this.receta != null) {
-                    this.fRMRecetas.setTxtNombre(this.receta.getNombre());
-                    this.fRMRecetas.setTxtDescripcion(this.receta.getDescripcion());
-                    this.fRMRecetas.setTxtTiempoCoccion(this.receta.getTiempoCoccion());
-                    this.fRMRecetas.setTxtTiempoTotal(this.receta.getTiempoTotal());
-                    this.fRMRecetas.setTxtInstrucciones(this.receta.getInstrucciones());
+                    this.fRMRecetas.setTxtnombreReceta(this.receta.getNombre());
+                    this.fRMRecetas.setTxtdescripcion(this.receta.getDescripcion());
+                    this.fRMRecetas.setTxtinstrucciones(this.receta.getInstrucciones());
+                    this.fRMRecetas.setTxttiempoCoccion(this.receta.getTiempoCoccion());
+                    this.fRMRecetas.setTxttiempoTotal(this.receta.getTiempoTotal());
+                    this.fRMRecetas.setTxtId(this.receta.getId());
                 } else {
                     FRMRecetas.mensaje("La receta con el ID: " + this.fRMRecetas.getTxtId() + " no se encuentra registrado");
                     this.fRMRecetas.limpiar();
@@ -54,14 +55,15 @@ public class ControladorFrameRecetas implements ActionListener {
             case "Modificar" -> {
                 System.out.println("Modificando");
                 if (this.receta != null) {
-                    this.receta.setNombreReceta(this.frameReceta.getNombre());
-                    this.receta.setDescripcion(this.frameReceta.getDescripcion());
-                    this.receta.setTiempoCoccion(this.frameReceta.getTiempoCoccion());
-                    this.receta.setTiempoTotal(this.frameReceta.getTiempoTotal());
-                    this.receta.setInstrucciones(this.frameReceta.getInstrucciones());
+                    this.receta.setNombre(this.fRMRecetas.getTxtnombreReceta());
+                    this.receta.setDescripcion(this.fRMRecetas.getTxtdescripcion());
+                    this.receta.setTiempoCoccion(this.fRMRecetas.getTxttiempoCoccion());
+                    this.receta.setTiempoTotal(this.fRMRecetas.getTxttiempoTotal());
+                    this.receta.setInstrucciones(this.fRMRecetas.getTxtinstrucciones());
+                    this.receta.setId(this.fRMRecetas.getTxtId());
                     this.registroRecetas.escribirJSON();
                     this.fRMRecetas.limpiar();
-                    this.frameReceta.setDatosTabla(this.registroRecetas.getDatosTabla(), Receta.ETIQUETAS_Receta, "Reporte de Recetas");
+                    this.fRMRecetas.setDatosTabla(this.registroRecetas.getDatosTabla(), Receta.ETIQUETAS_RECETA, "Reporte de Recetas");
                 }
             } 
 case "Actualizar" -> {
