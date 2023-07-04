@@ -19,7 +19,7 @@ public class FRMRecetas extends javax.swing.JFrame {
         initComponents();
         this.setVisible(true);
         ControladorFrameRecetas controladorFrameRecetas = new ControladorFrameRecetas(this);
-                escuchar(controladorFrameRecetas);
+        escuchar(controladorFrameRecetas);
     }
     public void escuchar(ControladorFrameRecetas controladorFrameRecetas) {
         panelBotonesCRUD1.ActualizarBTN.addActionListener(controladorFrameRecetas);
@@ -29,6 +29,9 @@ public class FRMRecetas extends javax.swing.JFrame {
         panelIngresoDatos2.agregarBTN.addActionListener(controladorFrameRecetas);
         panelIngresoDatos2.verIngredientesBTN.addActionListener(controladorFrameRecetas);
         panelIngresoDatos2.agregarBTN.addActionListener(controladorFrameRecetas);
+        jmiSalir.addActionListener(controladorFrameRecetas);
+        jmiRegresar.addActionListener(controladorFrameRecetas);
+        jmiAdministrarUsuario.addActionListener(controladorFrameRecetas);
 
     }
     public PanelBotonesCRUD getPanelBotonesCRUD1() {
@@ -55,8 +58,33 @@ public class FRMRecetas extends javax.swing.JFrame {
         panelIngresoDatos2 = new Vista.PanelIngresoDatos();
         panelBotonesCRUD1 = new Vista.PanelBotonesCRUD();
         panelTabla1 = new Vista.PanelTabla();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jmiRegresar = new javax.swing.JMenuItem();
+        jmiSalir = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jmiAdministrarUsuario = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jMenu1.setText("Archivo");
+
+        jmiRegresar.setText("Regresar");
+        jMenu1.add(jmiRegresar);
+
+        jmiSalir.setText("Salir");
+        jMenu1.add(jmiSalir);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Módulos");
+
+        jmiAdministrarUsuario.setText("Administrar Usuario");
+        jMenu2.add(jmiAdministrarUsuario);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -64,10 +92,11 @@ public class FRMRecetas extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                 .addGap(0, 50, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(187, 187, 187)
                         .addComponent(panelIngresoDatos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(116, 116, 116)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(panelBotonesCRUD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(panelTabla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(64, 64, 64))
@@ -75,21 +104,24 @@ public class FRMRecetas extends javax.swing.JFrame {
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
+                .addContainerGap(13, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(12, 12, 12)
-                        .addComponent(panelIngresoDatos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(panelBotonesCRUD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(panelIngresoDatos2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(panelBotonesCRUD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(panelTabla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(36, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jmiAdministrarUsuario;
+    private javax.swing.JMenuItem jmiRegresar;
+    private javax.swing.JMenuItem jmiSalir;
     private Vista.PanelBotonesCRUD panelBotonesCRUD1;
     private Vista.PanelIngresoDatos panelIngresoDatos2;
     private Vista.PanelTabla panelTabla1;
