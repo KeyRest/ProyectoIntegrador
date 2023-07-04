@@ -99,6 +99,23 @@ public class Receta implements Serializable {
 
     public Receta() {
     }
+    
+    public Receta(String id, String nombre) {
+        setId(id);
+        setNombre(nombre);
+        
+    }
+    public String setDatosReceta(int indice) {
+        switch (indice) {
+            case 0:
+                return String.valueOf(this.getId());
+            case 1:
+                return this.getNombre();
+            case 2:
+                return this.getTiempoTotal();
+        }
+        return null;
+    }
 
     public Receta(String id) {
         this.id = id;
