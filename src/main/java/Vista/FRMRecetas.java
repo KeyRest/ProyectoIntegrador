@@ -5,6 +5,9 @@
 package Vista;
 
 import Controlador.ControladorFrameRecetas;
+import java.awt.event.MouseListener;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -45,6 +48,73 @@ public class FRMRecetas extends javax.swing.JFrame {
 
     public PanelTabla getPanelTabla1() {
         return panelTabla1;
+    }
+    public static void mensaje(String msj)
+    {
+        JOptionPane.showMessageDialog(null,msj);
+    }
+
+    public String getTxtnombreReceta() {
+        return this.panelIngresoDatos2.nombreReceta.getText().trim();
+    }
+
+    public void setTxtnombreReceta(String nombreReceta) {
+        this.panelIngresoDatos2.nombreReceta.setText(nombreReceta);
+    }
+
+    public String getTxttiempoCoccion() {
+        return this.panelIngresoDatos2.tiempoCoccion.getText().trim();
+    }
+
+    public void setTxttiempoCoccion(String tiempoCoccion ) {
+        this.panelIngresoDatos2.tiempoCoccion.setText(tiempoCoccion);
+    }
+
+    public String getTxttiempoTotal() {
+        return this.panelIngresoDatos2.tiempoTotal.getText().trim();
+    }
+
+    public void setTxttiempoTotal(String tiempoTotal) {
+        this.panelIngresoDatos2.tiempoTotal.setText(tiempoTotal);
+    }
+
+    public String getTxtinstrucciones() {
+        return this.panelIngresoDatos2.instrucciones.getText().trim();
+    }
+
+    public void setTxtinstrucciones(String instrucciones) {
+        this.panelIngresoDatos2.instrucciones.setText(instrucciones);
+    }
+    public String getTxtdescripcion() {
+        return this.panelIngresoDatos2.descripcion.getText().trim();
+    }
+
+    public void setTxtdescripcion(String descripcion) {
+        this.panelIngresoDatos2.descripcion.setText(descripcion);
+    }
+    
+    public void limpiar()
+    {
+        this.panelIngresoDatos2.nombreReceta.setText("");
+        this.panelIngresoDatos2.tiempoCoccion.setText("");
+        this.panelIngresoDatos2.tiempoTotal.setText("");
+        this.panelIngresoDatos2.instrucciones.setText("");
+        this.panelIngresoDatos2.descripcion.setText("");
+ 
+    }
+    public void setDatosTabla(String[][]datos,String[] etiquetas,String Titulo)
+    {
+        this.panelTabla1.jTable1.setModel(new DefaultTableModel(datos, etiquetas));
+        this.panelTabla1.jScrollPane1.setViewportView(this.panelTabla1);
+    }
+    public void escucharTabla(MouseListener control)
+    {
+        this.panelTabla1.addMouseListener(control);
+    }   
+    public String getFilaTabla()
+    {
+        int fila=this.panelTabla1.jTable1.getSelectedRow();
+        return this.panelTabla1.jTable1.getModel().getValueAt(fila, 0).toString();
     }
 
     /**
