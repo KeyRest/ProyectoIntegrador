@@ -66,8 +66,23 @@ public class ControladorFrameRecetas implements ActionListener {
                     this.fRMRecetas.setDatosTabla(this.registroRecetas.getDatosTabla(), Receta.ETIQUETAS_RECETA, "Reporte de Recetas");
                 }
             } 
-case "Actualizar" -> {
-                System.out.println("ACTUALIZAR");
+            case "Agregar" -> {
+                System.out.println("Agregar");
+                if (this.fRMRecetas.getTxtId().equalsIgnoreCase("")) {
+                    GRegistro.mensaje("Debe ingresar el ID");
+                } else if (this.fRMRecetas.getTxtnombreReceta().equalsIgnoreCase("")) {
+                    GRegistro.mensaje("Debe ingresar el Nombre");
+                } else if (this.fRMRecetas.getTxtdescripcion().equalsIgnoreCase("")) {
+                    GRegistro.mensaje("Debe ingresar la descripción");
+                } else if (this.fRMRecetas.getTxttiempoCoccion().equalsIgnoreCase("")) {
+                    GRegistro.mensaje("Debe ingresar el tiempo de cocción");
+                } else if (this.fRMRecetas.getTxttiempoTotal().equalsIgnoreCase("")) {
+                    GRegistro.mensaje("Debe ingresar el tiempo total");
+                } else if (this.fRMRecetas.getTxtinstrucciones().equalsIgnoreCase("")) {
+                    GRegistro.mensaje("Debe ingresar las instrucciones");
+                } else {
+                    GRegistro.mensaje(this.registroRecetas.agregar(new Receta()));
+                }
             }
 
             case "Elminar" -> {

@@ -41,7 +41,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="ModificarBTN" max="32767" attributes="0"/>
                       <Component id="BuscarBTN" alignment="0" max="32767" attributes="0"/>
-                      <Component id="ActualizarBTN" pref="157" max="32767" attributes="0"/>
+                      <Component id="AgregarBTN" pref="157" max="32767" attributes="0"/>
                       <Component id="EliminarBTN" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
@@ -56,7 +56,7 @@
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="ModificarBTN" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="ActualizarBTN" min="-2" pref="37" max="-2" attributes="0"/>
+                  <Component id="AgregarBTN" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Component id="EliminarBTN" min="-2" pref="37" max="-2" attributes="0"/>
                   <EmptySpace max="32767" attributes="0"/>
@@ -99,7 +99,7 @@
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
           </AuxValues>
         </Component>
-        <Component class="javax.swing.JButton" name="ActualizarBTN">
+        <Component class="javax.swing.JButton" name="AgregarBTN">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="0" green="0" red="0" type="rgb"/>
@@ -110,7 +110,7 @@
             <Property name="foreground" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="ff" green="ff" red="ff" type="rgb"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Actualizar"/>
+            <Property name="text" type="java.lang.String" value="Agregar"/>
           </Properties>
           <AuxValues>
             <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>

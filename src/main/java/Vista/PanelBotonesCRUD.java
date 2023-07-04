@@ -20,7 +20,7 @@ public class PanelBotonesCRUD extends javax.swing.JPanel {
     }
     public void escuchar(ActionListener manejador)
     {
-        this.ActualizarBTN.addActionListener(manejador);
+        this.AgregarBTN.addActionListener(manejador);
         this.EliminarBTN.addActionListener(manejador);
         this.ModificarBTN.addActionListener(manejador);
         this.BuscarBTN.addActionListener(manejador);
@@ -38,7 +38,7 @@ public class PanelBotonesCRUD extends javax.swing.JPanel {
         jPanel1 = new javax.swing.JPanel();
         ModificarBTN = new javax.swing.JButton();
         BuscarBTN = new javax.swing.JButton();
-        ActualizarBTN = new javax.swing.JButton();
+        AgregarBTN = new javax.swing.JButton();
         EliminarBTN = new javax.swing.JButton();
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -53,10 +53,10 @@ public class PanelBotonesCRUD extends javax.swing.JPanel {
         BuscarBTN.setForeground(new java.awt.Color(255, 255, 255));
         BuscarBTN.setText("Buscar");
 
-        ActualizarBTN.setBackground(new java.awt.Color(0, 0, 0));
-        ActualizarBTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        ActualizarBTN.setForeground(new java.awt.Color(255, 255, 255));
-        ActualizarBTN.setText("Actualizar");
+        AgregarBTN.setBackground(new java.awt.Color(0, 0, 0));
+        AgregarBTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        AgregarBTN.setForeground(new java.awt.Color(255, 255, 255));
+        AgregarBTN.setText("Agregar");
 
         EliminarBTN.setBackground(new java.awt.Color(0, 0, 0));
         EliminarBTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
@@ -72,7 +72,7 @@ public class PanelBotonesCRUD extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(ModificarBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(BuscarBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(ActualizarBTN, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
+                    .addComponent(AgregarBTN, javax.swing.GroupLayout.DEFAULT_SIZE, 157, Short.MAX_VALUE)
                     .addComponent(EliminarBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -84,7 +84,7 @@ public class PanelBotonesCRUD extends javax.swing.JPanel {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(ModificarBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(ActualizarBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(AgregarBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(EliminarBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -104,7 +104,7 @@ public class PanelBotonesCRUD extends javax.swing.JPanel {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton ActualizarBTN;
+    public javax.swing.JButton AgregarBTN;
     public javax.swing.JButton BuscarBTN;
     public javax.swing.JButton EliminarBTN;
     public javax.swing.JButton ModificarBTN;
