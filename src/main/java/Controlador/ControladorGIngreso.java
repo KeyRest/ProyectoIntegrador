@@ -2,6 +2,7 @@
 package Controlador;
 
 import Vista.FRMGlogin;
+import Vista.FRMMenu;
 import Vista.FRMRecetas;
 import Vista.GRegistro;
 import java.awt.event.ActionEvent;
@@ -16,6 +17,7 @@ public class ControladorGIngreso implements ActionListener {
     private FRMGlogin fRMGlogin;
     private GRegistro gRegistro;
     private FRMRecetas fRMRecetas;
+      private FRMMenu fRMMenu;
     public ControladorGIngreso(FRMGlogin fRMGlogin) {
         this.fRMGlogin = fRMGlogin;
     }
@@ -24,7 +26,7 @@ public class ControladorGIngreso implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Ingresar":
-                this.fRMRecetas = new FRMRecetas();
+                this.fRMMenu = new FRMMenu();
                 this.fRMGlogin.dispose();
 
                 break;
