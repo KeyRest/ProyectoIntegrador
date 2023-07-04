@@ -60,7 +60,7 @@ public class ControladorFrameRecetas implements ActionListener {
                     this.receta.setTiempoTotal(this.frameReceta.getTiempoTotal());
                     this.receta.setInstrucciones(this.frameReceta.getInstrucciones());
                     this.registroRecetas.escribirJSON();
-                    this.frameReceta.limpiar();
+                    this.fRMRecetas.limpiar();
                     this.frameReceta.setDatosTabla(this.registroRecetas.getDatosTabla(), Receta.ETIQUETAS_Receta, "Reporte de Recetas");
                 }
             } 

@@ -30,7 +30,7 @@ public class RegistroRecetas {
 
     public RegistroRecetas() {
         this.listaReceta = new ArrayList();
-        this.archivo = new File("Usuarios.json");
+        this.archivo = new File("Recetas.json");
         this.leerJSON();
     }
 
