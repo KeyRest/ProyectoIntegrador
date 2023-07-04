@@ -28,35 +28,61 @@ public class ControladorFrameUsuario implements ActionListener, MouseListener {
 
     public ControladorFrameUsuario(FRMUsuario frameUsuario) {
         this.frameUsuario = frameUsuario;
+        this.registroUsuarios = new RegistroUsuarios();
+        this.frameUsuario.setDatosTabla(this.registroUsuarios.getDatosTabla(), Usuario.ETIQUETAS_USUARIO, "Reporte de Usuarios");
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
-            case "CREAR" ->
-                System.out.println("CREAR");
-            case "CONSULTAR" ->
-                System.out.println("CONSULTAR");
-            case "ACTUALIZAR" ->
-                System.out.println("ACTUALIZAR");
-            case "ELIMINAR" ->
-                System.out.println("ELIMINAR");
-            case "AGREGAR" ->
-                System.out.println("AGREGAR");
-            case "VER INGREDIENTES" ->
-                System.out.println("LISTA USUARIOS");
-                case "Administrar Recetas"->{
+            case "Buscar" -> {
+                System.out.println("Buscando");
+                this.usuario = (Usuario) this.registroUsuarios.buscar(this.frameUsuario.getTxtId());
+                if (this.usuario != null) {
+                    this.frameUsuario.setTxtUsuario(this.usuario.getNombreUsuario());
+                    this.frameUsuario.setTxtNombre(this.usuario.getNombre());
+                    this.frameUsuario.setTxtPais(this.usuario.getPais());
+                    this.frameUsuario.setTxtCorreo(this.usuario.getCorreo());
+                    this.frameUsuario.setTxtContraseña(this.usuario.getContraseña());
+                } else {
+                    FRMUsuario.mensaje("El usuario con el ID: " + this.frameUsuario.getTxtId() + " no se encuntra registrado");
+                    this.frameUsuario.limpiar();
+                }
+            }
+            case "Modificar" -> {
+                System.out.println("Modificando");
+                if (this.usuario != null) {
+                    this.usuario.setNombreUsuario(this.frameUsuario.getTxtUsuario());
+                    this.usuario.setNombre(this.frameUsuario.getTxtNombre());
+                    this.usuario.setPais(this.frameUsuario.getTxtPais());
+                    this.usuario.setCorreo(this.frameUsuario.getTxtCorreo());
+                    this.usuario.setContraseña(this.frameUsuario.getTxtContraseña());
+                    this.registroUsuarios.escribirJSON();
+                    this.frameUsuario.limpiar();
+                    this.frameUsuario.setDatosTabla(this.registroUsuarios.getDatosTabla(), Usuario.ETIQUETAS_USUARIO, "Reporte de Usuarios");
+                }
+            }
+            case "Actualizar" ->
+                System.out.println("Actualizando");
+            case "Eliminar" -> {
+                System.out.println("Eliminando");
+                FRMUsuario.mensaje(this.registroUsuarios.eliminar(this.usuario));
+                this.frameUsuario.limpiar();
+                this.frameUsuario.setDatosTabla(this.registroUsuarios.getDatosTabla(), Usuario.ETIQUETAS_USUARIO, "Reporte de Usuarios");
+            }
+            case "Administrar Recetas" -> {
                 System.out.println("AdmiRecetas");
                 fRMRecetas = new FRMRecetas();
                 frameUsuario.dispose();
             }
-            case "Regresar" ->  {
+            case "Regresar" -> {
                 System.out.println("pressed Atras");
                 fRMGlogin = new FRMGlogin();
                 frameUsuario.dispose();
                 fRMGlogin.setVisible(true);
-            }              
-            case "Salir" -> System.exit(0);
+            }
+            case "Salir" ->
+                System.exit(0);
         }
     }
 
@@ -80,5 +106,4 @@ public class ControladorFrameUsuario implements ActionListener, MouseListener {
     public void mouseExited(MouseEvent e) {
     }
 
-    
 }

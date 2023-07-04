@@ -4,6 +4,8 @@
  */
 package Vista;
 
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Administrator
@@ -15,6 +17,13 @@ public class PanelBotonesCRUD extends javax.swing.JPanel {
      */
     public PanelBotonesCRUD() {
         initComponents();
+    }
+    public void escuchar(ActionListener manejador)
+    {
+        this.ActualizarBTN.addActionListener(manejador);
+        this.EliminarBTN.addActionListener(manejador);
+        this.ModificarBTN.addActionListener(manejador);
+        this.BuscarBTN.addActionListener(manejador);
     }
 
     /**

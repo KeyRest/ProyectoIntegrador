@@ -52,7 +52,6 @@ public class ControladorGRegistro implements ActionListener {
                     GRegistro.mensaje("Debe ingresar la Contrase\u00f1a");
                 } else {
                     GRegistro.mensaje(this.registroUsuarios.agregar(new Usuario(this.gRegistro.getJText_Id(), this.gRegistro.getJText_Name(), this.gRegistro.getJText_Username(), this.gRegistro.getJText_Country(), this.gRegistro.getJText_Email(), this.gRegistro.getJText_Password())));
-
                     this.gRegistro.limpiar();
                 }
                 System.out.println("pressed Registrarse(SE REVISA DISPONIBILIDAD DE USUARIO Y SE ASIGNA ID)");

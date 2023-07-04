@@ -5,6 +5,10 @@
 package Vista;
 
 import Controlador.ControladorFrameUsuario;
+import java.awt.event.MouseListener;
+import javax.swing.JOptionPane;
+import javax.swing.JTextField;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -18,26 +22,90 @@ public class FRMUsuario extends javax.swing.JFrame {
     public FRMUsuario() {
         initComponents();
         setVisible(true);
-
         ControladorFrameUsuario controladorFrameUsuario = new ControladorFrameUsuario(this);
         escuchar(controladorFrameUsuario);
+        this.panelBotonesCRUD1.escuchar(controladorFrameUsuario);
     }
     
     public void escuchar(ControladorFrameUsuario controladorFrameUsuario){
-        panelBotonesCRUD.ActualizarBTN.addActionListener(controladorFrameUsuario);
-        panelBotonesCRUD.ModificarBTN.addActionListener(controladorFrameUsuario);
-        panelBotonesCRUD.BuscarBTN.addActionListener(controladorFrameUsuario);
-        panelBotonesCRUD.EliminarBTN.addActionListener(controladorFrameUsuario);
         jmiSalir.addActionListener(controladorFrameUsuario);
         jmiRegresar.addActionListener(controladorFrameUsuario);
-        jmiRecetas.addActionListener(controladorFrameUsuario);
-        
+        jmiRecetas.addActionListener(controladorFrameUsuario);       
     } 
-    public PanelBotonesCRUD getPanelBotonesCRUD1() {
-        return panelBotonesCRUD;
+    public static void mensaje(String msj)
+    {
+        JOptionPane.showMessageDialog(null,msj);
     }
 
+    public String getTxtCorreo() {
+        return this.txtCorreo.getText().trim();
+    }
 
+    public void setTxtCorreo(String txtCorreo) {
+        this.txtCorreo.setText(txtCorreo);
+    }
+
+    public String getTxtNombre() {
+        return this.txtNombre.getText().trim();
+    }
+
+    public void setTxtNombre(String txtNombre) {
+        this.txtNombre.setText(txtNombre);
+    }
+
+    public String getTxtPais() {
+        return this.txtPais.getText().trim();
+    }
+
+    public void setTxtPais(String txtPais) {
+        this.txtPais.setText(txtPais);
+    }
+
+    public String getTxtUsuario() {
+        return this.txtUsuario.getText().trim();
+    }
+
+    public void setTxtUsuario(String txtUsuario) {
+        this.txtUsuario.setText(txtUsuario);
+    }
+    public String getTxtId() {
+        return this.txtId.getText().trim();
+    }
+
+    public void setTxtId(String txtId) {
+        this.txtId.setText(txtId);
+    }
+    public String getTxtContraseña() {
+        return this.txtContraseña.getText().trim();
+    }
+
+    public void setTxtContraseña(String txtContraseña) {
+        this.txtContraseña.setText(txtContraseña);
+    }
+    public void limpiar()
+    {
+        this.txtId.setText("");
+        this.txtNombre.setText("");
+        this.txtUsuario.setText("");
+        this.txtCorreo.setText("");
+        this.txtPais.setText("");
+        this.txtContraseña.setText("");
+    }
+    public void setDatosTabla(String[][]datos,String[] etiquetas,String Titulo)
+    {
+        this.tblReporte.setModel(new DefaultTableModel(datos, etiquetas));
+        this.jScrollPane1.setViewportView(this.tblReporte);
+    }
+    public void escucharTabla(MouseListener control)
+    {
+        this.tblReporte.addMouseListener(control);
+    }   
+    public String getFilaTabla()
+    {
+        int fila=this.tblReporte.getSelectedRow();
+        return this.tblReporte.getModel().getValueAt(fila, 0).toString();
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -53,13 +121,17 @@ public class FRMUsuario extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        txtId = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
+        txtPais = new javax.swing.JTextField();
+        txtUsuario = new javax.swing.JTextField();
+        jLabel5 = new javax.swing.JLabel();
+        txtCorreo = new javax.swing.JTextField();
+        txtContraseña = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
         panelBotonesCRUD1 = new Vista.PanelBotonesCRUD();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        tblReporte = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
@@ -82,6 +154,12 @@ public class FRMUsuario extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel6.setText("País:");
 
+        jLabel5.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel5.setText("ID:");
+
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel7.setText("Contraseña:");
+
         javax.swing.GroupLayout PanelUsuarioLayout = new javax.swing.GroupLayout(PanelUsuario);
         PanelUsuario.setLayout(PanelUsuarioLayout);
         PanelUsuarioLayout.setHorizontalGroup(
@@ -89,18 +167,20 @@ public class FRMUsuario extends javax.swing.JFrame {
             .addGroup(PanelUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel2)
+                    .addComponent(jLabel6)
+                    .addComponent(jLabel5)
                     .addComponent(jLabel3)
-                    .addGroup(PanelUsuarioLayout.createSequentialGroup()
-                        .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel6))
-                        .addGap(34, 34, 34)
-                        .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                    .addComponent(jLabel7))
+                .addGap(67, 67, 67)
+                .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtPais, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         PanelUsuarioLayout.setVerticalGroup(
@@ -108,27 +188,32 @@ public class FRMUsuario extends javax.swing.JFrame {
             .addGroup(PanelUsuarioLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
                 .addGap(9, 9, 9)
                 .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(PanelUsuarioLayout.createSequentialGroup()
-                        .addGap(15, 15, 15)
-                        .addComponent(jLabel3))
-                    .addGroup(PanelUsuarioLayout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel2))
                 .addGap(10, 10, 10)
                 .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel6)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPais, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel6))
+                .addGap(10, 10, 10)
+                .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(18, 18, 18)
+                .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel7))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tblReporte.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -136,10 +221,10 @@ public class FRMUsuario extends javax.swing.JFrame {
                 {null, null, null, null}
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Usuario", "Nombre", "Pais", "Correo"
             }
         ));
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(tblReporte);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setText("Administración de Usuarios");
@@ -167,19 +252,23 @@ public class FRMUsuario extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(40, 40, 40)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jScrollPane1)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(PanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 92, Short.MAX_VALUE)
-                        .addComponent(panelBotonesCRUD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(40, 40, 40))
             .addGroup(layout.createSequentialGroup()
-                .addGap(224, 224, 224)
-                .addComponent(jLabel4)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jScrollPane1))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(layout.createSequentialGroup()
+                                .addGap(224, 224, 224)
+                                .addComponent(jLabel4))
+                            .addGroup(layout.createSequentialGroup()
+                                .addContainerGap()
+                                .addComponent(PanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(panelBotonesCRUD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 115, Short.MAX_VALUE)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -190,9 +279,9 @@ public class FRMUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(panelBotonesCRUD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(PanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(45, 45, 45)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -204,20 +293,24 @@ public class FRMUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
-    private javax.swing.JTextField jTextField4;
     private javax.swing.JMenuItem jmiRecetas;
     private javax.swing.JMenuItem jmiRegresar;
     private javax.swing.JMenuItem jmiSalir;
     private Vista.PanelBotonesCRUD panelBotonesCRUD;
     private Vista.PanelBotonesCRUD panelBotonesCRUD1;
+    private javax.swing.JTable tblReporte;
+    private javax.swing.JTextField txtContraseña;
+    private javax.swing.JTextField txtCorreo;
+    private javax.swing.JTextField txtId;
+    private javax.swing.JTextField txtNombre;
+    private javax.swing.JTextField txtPais;
+    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
