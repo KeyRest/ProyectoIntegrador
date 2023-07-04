@@ -2,13 +2,12 @@
 *Keiron Garro M
 *C23212
 *UCR
-*/
+ */
 
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package Modelo;
 
 import java.io.Serializable;
@@ -28,9 +27,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
-
-
-
 
 @Entity
 @Table(name = "receta")
@@ -99,12 +95,13 @@ public class Receta implements Serializable {
 
     public Receta() {
     }
-    
+
     public Receta(String id, String nombre) {
         setId(id);
         setNombre(nombre);
-        
+
     }
+
     public String setDatosReceta(int indice) {
         switch (indice) {
             case 0:
@@ -112,6 +109,18 @@ public class Receta implements Serializable {
             case 1:
                 return this.getNombre();
             case 2:
+                return this.getDescripcion();
+            case 3:
+                return String.valueOf(this.getTiempoCoccion());
+            case 4:
+                return String.valueOf(this.getTiempoPreparacion());
+            case 5:
+                return String.valueOf(this.getTiempoTotal());
+            case 6:
+                return String.valueOf(this.getInstrucciones());
+            case 7:
+                return String.valueOf(this.getPorciones());
+            case 8:
                 return this.getTiempoTotal();
         }
         return null;

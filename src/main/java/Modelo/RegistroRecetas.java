@@ -23,8 +23,7 @@ import org.json.simple.parser.ParseException;
  * @author Admin
  */
 public class RegistroRecetas {
-    
-    
+
     private ArrayList<Receta> listaReceta;
     private JSONObject baseJSONReceta;
     private File archivo;
@@ -40,13 +39,16 @@ public class RegistroRecetas {
         this.baseJSONReceta = new JSONObject();
         for (Receta receta : listaReceta) {
             JSONObject objJSONReceta = new JSONObject();
-            objJSONReceta.put("id", usuario.getId());
-            objJSONReceta.put("nombre", usuario.getNombre());
-            objJSONReceta.put("nombreUsuario", usuario.getNombreUsuario());
-            objJSONReceta.put("pais", usuario.getPais());
-            objJSONReceta.put("correo", usuario.getCorreo());
-            objJSONReceta.put("contrase\u00f1a", usuario.getContraseña());
+            objJSONReceta.put("id", receta.getId());
+            objJSONReceta.put("nombre", receta.getNombre());
+            objJSONReceta.put("descripcion", receta.getDescripcion());
+            objJSONReceta.put("tiempoCoccion", receta.getTiempoCoccion());
+            objJSONReceta.put("tiempoPreparacion", receta.getTiempoPreparacion());
+            objJSONReceta.put("tiempoTotal", receta.getTiempoTotal());
+            objJSONReceta.put("instrucciones", receta.getInstrucciones());
+            objJSONReceta.put("porciones", receta.getPorciones());
             arregloRecetas.add(objJSONReceta);
+
         }
         this.baseJSONReceta.put("listaRecetas", arregloRecetas);
         try {
@@ -71,7 +73,14 @@ public class RegistroRecetas {
                 Receta receta = new Receta();
                 receta.setId(objUsuario.get("id").toString());
                 receta.setNombre(objUsuario.get("nombre").toString());
-                
+                receta.setDescripcion(objUsuario.get("descripcion").toString());
+
+                receta.setTiempoCoccion(objUsuario.get("tiempoCoccion").toString());
+                receta.setTiempoPreparacion(objUsuario.get("tiempoPreparacion").toString());
+                receta.setTiempoTotal(objUsuario.get("tiempoTotal").toString());
+                receta.setInstrucciones(objUsuario.get("instrucciones").toString());
+                receta.setPorciones(objUsuario.get("porciones").toString());
+
                 this.listaReceta.add(receta);
 
             }
@@ -116,27 +125,24 @@ public class RegistroRecetas {
         }
         return null;
     }
-    public String toString()
-    {
-        String salida="Lista de Usuarios: \n";
-        Iterator it=this.listaReceta.iterator();
-        while(it.hasNext())
-        {
-            salida+=it.next()+"\n";
+
+    public String toString() {
+        String salida = "Lista de Usuarios: \n";
+        Iterator it = this.listaReceta.iterator();
+        while (it.hasNext()) {
+            salida += it.next() + "\n";
         }
         return salida;
     }
-    public String[][] getDatosTabla()
-    {
-        String[][] matrizTabla=new String[this.listaReceta.size()][Usuario.ETIQUETAS_USUARIO.length];
-        for(int f = 0; f <this.listaReceta.size(); f++)
-        {
-            for(int c = 0; c <matrizTabla[0].length; c++)
-            {
-                matrizTabla[f][c]=this.listaReceta.get(f).setDatosReceta(c);
+
+    public String[][] getDatosTabla() {
+        String[][] matrizTabla = new String[this.listaReceta.size()][Usuario.ETIQUETAS_USUARIO.length];
+        for (int f = 0; f < this.listaReceta.size(); f++) {
+            for (int c = 0; c < matrizTabla[0].length; c++) {
+                matrizTabla[f][c] = this.listaReceta.get(f).setDatosReceta(c);
             }
         }
         return matrizTabla;
     }
-    
+
 }
