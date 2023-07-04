@@ -8,6 +8,7 @@ package Controlador;
 
 
 import Vista.FRMGlogin;
+import Vista.FRMMenu;
 import Vista.FRMRecetas;
 import Vista.FRMUsuario;
 import Vista.GRegistro;
@@ -21,6 +22,7 @@ public class ControladorFrameRecetas implements ActionListener {
     private FRMUsuario frameUsuario;
     private FRMGlogin fRMGlogin;
     private GRegistro gRegistro;
+    private FRMMenu fRMMenu;
 
 
     public ControladorFrameRecetas(FRMRecetas fRMRecetas) {
@@ -43,11 +45,12 @@ public class ControladorFrameRecetas implements ActionListener {
             }
             case "Regresar" ->  {
                 System.out.println("pressed Atras");
-                fRMGlogin = new FRMGlogin();
+                fRMMenu = new FRMMenu();
                 fRMRecetas.dispose();
-                fRMGlogin.setVisible(true);
+
             }              
             case "Salir" -> System.exit(0);
+            
         }
     }
 

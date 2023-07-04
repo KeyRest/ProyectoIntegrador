@@ -29,7 +29,7 @@ public class FRMUsuario extends javax.swing.JFrame {
     
     public void escuchar(ControladorFrameUsuario controladorFrameUsuario){
         jmiSalir.addActionListener(controladorFrameUsuario);
-        jmiRegresar.addActionListener(controladorFrameUsuario);
+        BTN_Regresar.addActionListener(controladorFrameUsuario);
         jmiRecetas.addActionListener(controladorFrameUsuario);       
     } 
     public static void mensaje(String msj)
@@ -133,6 +133,7 @@ public class FRMUsuario extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tblReporte = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
+        BTN_Regresar = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmiRegresar = new javax.swing.JMenuItem();
@@ -229,6 +230,11 @@ public class FRMUsuario extends javax.swing.JFrame {
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setText("Administración de Usuarios");
 
+        BTN_Regresar.setBackground(new java.awt.Color(0, 0, 0));
+        BTN_Regresar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        BTN_Regresar.setForeground(new java.awt.Color(255, 255, 255));
+        BTN_Regresar.setText("Regresar");
+
         jMenu1.setText("Archivo");
 
         jmiRegresar.setText("Regresar");
@@ -266,7 +272,9 @@ public class FRMUsuario extends javax.swing.JFrame {
                                 .addContainerGap()
                                 .addComponent(PanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addComponent(panelBotonesCRUD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(panelBotonesCRUD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(BTN_Regresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                         .addGap(0, 115, Short.MAX_VALUE)))
                 .addContainerGap())
         );
@@ -277,7 +285,10 @@ public class FRMUsuario extends javax.swing.JFrame {
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(panelBotonesCRUD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelBotonesCRUD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(BTN_Regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(PanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(45, 45, 45)
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
@@ -288,6 +299,7 @@ public class FRMUsuario extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton BTN_Regresar;
     private javax.swing.JPanel PanelUsuario;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

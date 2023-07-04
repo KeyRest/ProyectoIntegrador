@@ -7,6 +7,7 @@ package Controlador;
 import Modelo.RegistroUsuarios;
 import Modelo.Usuario;
 import Vista.FRMGlogin;
+import Vista.FRMMenu;
 import Vista.FRMRecetas;
 import Vista.FRMUsuario;
 import java.awt.event.ActionEvent;
@@ -25,6 +26,7 @@ public class ControladorFrameUsuario implements ActionListener, MouseListener {
     private FRMGlogin fRMGlogin;
     private Usuario usuario;
     private RegistroUsuarios registroUsuarios;
+    private FRMMenu fRMMenu;
 
     public ControladorFrameUsuario(FRMUsuario frameUsuario) {
         this.frameUsuario = frameUsuario;
@@ -77,9 +79,8 @@ public class ControladorFrameUsuario implements ActionListener, MouseListener {
             }
             case "Regresar" -> {
                 System.out.println("pressed Atras");
-                fRMGlogin = new FRMGlogin();
+                fRMMenu = new FRMMenu();
                 frameUsuario.dispose();
-                fRMGlogin.setVisible(true);
             }
             case "Salir" ->
                 System.exit(0);
