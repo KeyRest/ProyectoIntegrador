@@ -49,11 +49,11 @@ public class PanelIngresoDatos extends javax.swing.JPanel {
         jLabel12 = new javax.swing.JLabel();
         cantidad = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
-        nombreReceta1 = new javax.swing.JTextField();
+        nombreReceta = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
-        descripcion1 = new javax.swing.JTextField();
+        porciones = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        tiempoCoccion1 = new javax.swing.JTextField();
+        tiempoPreparacion = new javax.swing.JTextField();
 
         jLabel7.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel7.setText("Descripción:");
@@ -160,30 +160,30 @@ public class PanelIngresoDatos extends javax.swing.JPanel {
         jLabel8.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel8.setText("ID:");
 
-        nombreReceta1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        nombreReceta1.addActionListener(new java.awt.event.ActionListener() {
+        nombreReceta.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        nombreReceta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                nombreReceta1ActionPerformed(evt);
+                nombreRecetaActionPerformed(evt);
             }
         });
 
         jLabel13.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel13.setText("Porciones:");
 
-        descripcion1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        descripcion1.addActionListener(new java.awt.event.ActionListener() {
+        porciones.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        porciones.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                descripcion1ActionPerformed(evt);
+                porcionesActionPerformed(evt);
             }
         });
 
         jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel14.setText("Tiempo de preparación:");
 
-        tiempoCoccion1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        tiempoCoccion1.addActionListener(new java.awt.event.ActionListener() {
+        tiempoPreparacion.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tiempoPreparacion.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                tiempoCoccion1ActionPerformed(evt);
+                tiempoPreparacionActionPerformed(evt);
             }
         });
 
@@ -203,20 +203,15 @@ public class PanelIngresoDatos extends javax.swing.JPanel {
                             .addComponent(jLabel5)
                             .addComponent(jLabel6)
                             .addComponent(jLabel3))
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(tiempoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(instrucciones, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(18, 18, 18)
-                                .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                            .addComponent(tiempoTotal, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(instrucciones, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(descripcion, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addGap(18, 18, 18)
-                        .addComponent(tiempoCoccion1, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(tiempoPreparacion, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addGap(18, 18, 18)
@@ -224,17 +219,15 @@ public class PanelIngresoDatos extends javax.swing.JPanel {
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel1)
                         .addGap(18, 18, 18)
-                        .addComponent(nombreReceta1, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(nombreReceta, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel13)
                         .addGap(18, 18, 18)
-                        .addComponent(descripcion1, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(porciones, javax.swing.GroupLayout.PREFERRED_SIZE, 319, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                         .addComponent(jComboBoxIngredientes, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(286, 286, 286))
+                            .addComponent(jLabel9)
                             .addGroup(layout.createSequentialGroup()
                                 .addGap(34, 34, 34)
                                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -264,7 +257,7 @@ public class PanelIngresoDatos extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(nombreReceta1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(nombreReceta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
@@ -272,7 +265,7 @@ public class PanelIngresoDatos extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel14)
-                    .addComponent(tiempoCoccion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tiempoPreparacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
@@ -288,7 +281,7 @@ public class PanelIngresoDatos extends javax.swing.JPanel {
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
-                    .addComponent(descripcion1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(porciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(37, 37, 37)
                 .addComponent(jLabel9)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -344,17 +337,17 @@ public class PanelIngresoDatos extends javax.swing.JPanel {
         // TODO add your handling code here:
     }//GEN-LAST:event_cantidadActionPerformed
 
-    private void nombreReceta1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreReceta1ActionPerformed
+    private void nombreRecetaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nombreRecetaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_nombreReceta1ActionPerformed
+    }//GEN-LAST:event_nombreRecetaActionPerformed
 
-    private void descripcion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_descripcion1ActionPerformed
+    private void porcionesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_porcionesActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_descripcion1ActionPerformed
+    }//GEN-LAST:event_porcionesActionPerformed
 
-    private void tiempoCoccion1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempoCoccion1ActionPerformed
+    private void tiempoPreparacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tiempoPreparacionActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_tiempoCoccion1ActionPerformed
+    }//GEN-LAST:event_tiempoPreparacionActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -362,7 +355,6 @@ public class PanelIngresoDatos extends javax.swing.JPanel {
     public javax.swing.JButton agregarBTN;
     public javax.swing.JTextField cantidad;
     public javax.swing.JTextField descripcion;
-    public javax.swing.JTextField descripcion1;
     public javax.swing.JTextField instrucciones;
     public javax.swing.JComboBox<String> jComboBoxIngredientes;
     public javax.swing.JComboBox<String> jComboBoxMedidas;
@@ -381,9 +373,10 @@ public class PanelIngresoDatos extends javax.swing.JPanel {
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField jTextField7;
-    public javax.swing.JTextField nombreReceta1;
+    public javax.swing.JTextField nombreReceta;
+    public javax.swing.JTextField porciones;
     public javax.swing.JTextField tiempoCoccion;
-    public javax.swing.JTextField tiempoCoccion1;
+    public javax.swing.JTextField tiempoPreparacion;
     public javax.swing.JTextField tiempoTotal;
     public javax.swing.JButton verIngredientesBTN;
     // End of variables declaration//GEN-END:variables

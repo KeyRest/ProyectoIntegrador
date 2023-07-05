@@ -62,11 +62,11 @@ public class FRMRecetas extends javax.swing.JFrame {
     }
 
     public String getTxtnombreReceta() {
-        return this.panelIngresoDatos2.IDReceta.getText().trim();
+        return this.panelIngresoDatos2.nombreReceta.getText().trim();
     }
 
     public void setTxtnombreReceta(String nombreReceta) {
-        this.panelIngresoDatos2.IDReceta.setText(nombreReceta);
+        this.panelIngresoDatos2.nombreReceta.setText(nombreReceta);
     }
 
     public String getTxttiempoCoccion() {
@@ -100,14 +100,33 @@ public class FRMRecetas extends javax.swing.JFrame {
         this.panelIngresoDatos2.descripcion.setText(descripcion);
     }
     
+    public String getTxttiempoPreparacion() {
+        return this.panelIngresoDatos2.tiempoPreparacion.getText().trim();
+    }
+
+    public void setTxttiempoPreparacion(String tiempoPreparacion) {
+        this.panelIngresoDatos2.tiempoPreparacion.setText(tiempoPreparacion);
+    }
+    
+    public String getTxtporciones() {
+        return this.panelIngresoDatos2.tiempoPreparacion.getText().trim();
+    }
+
+    public void setTxtporciones(String porciones) {
+        this.panelIngresoDatos2.porciones.setText(porciones);
+    }
+    
     public void limpiar()
     {
-        this.panelIngresoDatos2.IDReceta.setText("");
+        this.panelIngresoDatos2.nombreReceta.setText("");
         this.panelIngresoDatos2.tiempoCoccion.setText("");
         this.panelIngresoDatos2.tiempoTotal.setText("");
         this.panelIngresoDatos2.instrucciones.setText("");
         this.panelIngresoDatos2.descripcion.setText("");
         this.panelIngresoDatos2.IDReceta.setText("");
+        this.panelIngresoDatos2.tiempoPreparacion.setText("");
+        this.panelIngresoDatos2.porciones.setText("");
+        
  
     }
     public void setDatosTabla(String[][]datos,String[] etiquetas,String Titulo)
