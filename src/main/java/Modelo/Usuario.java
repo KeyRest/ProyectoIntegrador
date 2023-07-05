@@ -66,6 +66,7 @@ public class Usuario implements Serializable {
 
     public Usuario() {
     }
+    
     public Usuario(String id, String nombre, String nombreUsuario, String pais, String correo, String contraseña) {
         setId(id);
         setNombre(nombre);
@@ -74,6 +75,7 @@ public class Usuario implements Serializable {
         setCorreo(correo);
         setContraseña(contraseña);
     }
+    
     public String setDatosUsuario(int indice) {
         switch (indice) {
             case 0:
