@@ -98,21 +98,21 @@ public class RegistroRecetas {
         if (this.buscar(receta.getId()) == null) {
             if (this.listaReceta.add(receta)) {
                 this.escribirJSON();
-                return "El usuario se ha agregado con exito";
+                return "La receta se ha agregado con exito";
             } else {
-                return "Error al registrar el usuario";
+                return "Error al registrar la receta";
             }
 
         }
-        return "El usuario ya se encuentra registrado";
+        return "La receta ya se encuentra registrada";
     }
 
     public String eliminar(Object receta) {
         if (this.listaReceta.remove((Receta) receta)) {
             this.escribirJSON();
-            return "El usuario ha sido eliminada";
+            return "La receta ha sido eliminada";
         } else {
-            return "Error al eliminar el usuario";
+            return "Error al eliminar la receta";
         }
     }
 
@@ -127,7 +127,7 @@ public class RegistroRecetas {
     }
 
     public String toString() {
-        String salida = "Lista de Usuarios: \n";
+        String salida = "Lista de Recetas: \n";
         Iterator it = this.listaReceta.iterator();
         while (it.hasNext()) {
             salida += it.next() + "\n";

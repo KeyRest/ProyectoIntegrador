@@ -42,7 +42,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Receta.findByInstrucciones", query = "SELECT r FROM Receta r WHERE r.instrucciones = :instrucciones"),
     @NamedQuery(name = "Receta.findByPorciones", query = "SELECT r FROM Receta r WHERE r.porciones = :porciones")})
 public class Receta implements Serializable {
-        public static final String[] ETIQUETAS_RECETA = {"id", "nombre", "descripcion", "tiempo_coccion", "tiempo_total", "instrucciones"};
+        public static final String[] ETIQUETAS_RECETA = {"id", "nombre", "descripcion", "tiempo_coccion", "tiempo_total","tiempo_preparacion", "instrucciones", "porciones"};
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -97,10 +97,15 @@ public class Receta implements Serializable {
     public Receta() {
     }
 
-    public Receta(String id, String nombre) {
+    public Receta(String id, String nombre, String descripcion, String tiempoCoccion, String tiempoTotal, String tiempoPreparacion, String instrucciones, String porciones) {
         setId(id);
         setNombre(nombre);
-
+        setDescripcion(descripcion);
+        setTiempoCoccion(tiempoCoccion);
+        setTiempoTotal(tiempoTotal);
+        setTiempoPreparacion(tiempoPreparacion);
+        setInstrucciones(instrucciones);
+        setPorciones(porciones);
     }
 
     public String setDatosReceta(int indice) {

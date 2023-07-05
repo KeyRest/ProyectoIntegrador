@@ -61,6 +61,8 @@ public class ControladorFrameRecetas implements ActionListener {
                     this.receta.setTiempoTotal(this.fRMRecetas.getTxttiempoTotal());
                     this.receta.setInstrucciones(this.fRMRecetas.getTxtinstrucciones());
                     this.receta.setId(this.fRMRecetas.getTxtId());
+                    this.receta.setTiempoPreparacion(this.fRMRecetas.getTxttiempoPreparacion());
+                    this.receta.setPorciones(this.fRMRecetas.getTxtporciones());
                     this.registroRecetas.escribirJSON();
                     this.fRMRecetas.limpiar();
                     this.fRMRecetas.setDatosTabla(this.registroRecetas.getDatosTabla(), Receta.ETIQUETAS_RECETA, "Reporte de Recetas");
@@ -80,8 +82,12 @@ public class ControladorFrameRecetas implements ActionListener {
                     GRegistro.mensaje("Debe ingresar el tiempo total");
                 } else if (this.fRMRecetas.getTxtinstrucciones().equalsIgnoreCase("")) {
                     GRegistro.mensaje("Debe ingresar las instrucciones");
+                    } else if (this.fRMRecetas.getTxttiempoPreparacion().equalsIgnoreCase("")) {
+                    GRegistro.mensaje("Debe ingresar el tiempo de preparación");
+                    } else if (this.fRMRecetas.getTxtporciones().equalsIgnoreCase("")) {
+                    GRegistro.mensaje("Debe ingresar las porciones");
                 } else {
-                    GRegistro.mensaje(this.registroRecetas.agregar(new Receta()));
+                    GRegistro.mensaje(this.registroRecetas.agregar(new Receta(this.fRMRecetas.getTxtId(),this.fRMRecetas.getTxtnombreReceta(),this.fRMRecetas.getTxtdescripcion(),this.fRMRecetas.getTxttiempoCoccion(),this.fRMRecetas.getTxttiempoTotal(),this.fRMRecetas.getTxttiempoPreparacion(),this.fRMRecetas.getTxtinstrucciones(),this.fRMRecetas.getTxtporciones() )));
                 }
             }
 
