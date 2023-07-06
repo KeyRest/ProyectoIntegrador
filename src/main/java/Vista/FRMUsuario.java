@@ -7,6 +7,8 @@ package Vista;
 import Controlador.ControladorFrameUsuario;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
+import javax.swing.JScrollPane;
+import javax.swing.JTable;
 import javax.swing.JTextField;
 import javax.swing.table.DefaultTableModel;
 
@@ -94,7 +96,7 @@ public class FRMUsuario extends javax.swing.JFrame {
     public void setDatosTabla(String[][]datos,String[] etiquetas,String Titulo)
     {
         this.tblReporte.setModel(new DefaultTableModel(datos, etiquetas));
-        this.jScrollPane1.setViewportView(this.tblReporte);
+        this.jScrollPane.setViewportView(this.tblReporte);
     }
     public void escucharTabla(MouseListener control)
     {
@@ -105,6 +107,13 @@ public class FRMUsuario extends javax.swing.JFrame {
         int fila=this.tblReporte.getSelectedRow();
         return this.tblReporte.getModel().getValueAt(fila, 0).toString();
     }
+
+    public JTable getTblReporte() {
+        return tblReporte;
+    }
+
+   
+    
     
     /**
      * This method is called from within the constructor to initialize the form.
@@ -130,7 +139,7 @@ public class FRMUsuario extends javax.swing.JFrame {
         txtContraseña = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
         panelBotonesCRUD1 = new Vista.PanelBotonesCRUD();
-        jScrollPane1 = new javax.swing.JScrollPane();
+        jScrollPane = new javax.swing.JScrollPane();
         tblReporte = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         BTN_Regresar = new javax.swing.JButton();
@@ -216,13 +225,14 @@ public class FRMUsuario extends javax.swing.JFrame {
 
         tblReporte.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-
+                {null, null, null, null},
+                {null, null, null, null}
             },
             new String [] {
                 "Usuario", "Nombre", "Pais", "Correo"
             }
         ));
-        jScrollPane1.setViewportView(tblReporte);
+        jScrollPane.setViewportView(tblReporte);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N
         jLabel4.setText("Administración de Usuarios");
@@ -259,7 +269,7 @@ public class FRMUsuario extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(jScrollPane1))
+                        .addComponent(jScrollPane))
                     .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createSequentialGroup()
@@ -288,7 +298,7 @@ public class FRMUsuario extends javax.swing.JFrame {
                         .addComponent(BTN_Regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addComponent(PanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
+                .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
                 .addGap(33, 33, 33))
         );
 
@@ -308,13 +318,13 @@ public class FRMUsuario extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JMenuItem jmiRecetas;
     private javax.swing.JMenuItem jmiRegresar;
     private javax.swing.JMenuItem jmiSalir;
     private Vista.PanelBotonesCRUD panelBotonesCRUD;
     private Vista.PanelBotonesCRUD panelBotonesCRUD1;
-    private javax.swing.JTable tblReporte;
+    public javax.swing.JTable tblReporte;
     private javax.swing.JTextField txtContraseña;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtId;

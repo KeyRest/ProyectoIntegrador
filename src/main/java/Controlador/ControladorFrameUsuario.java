@@ -14,6 +14,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import javax.swing.JTable;
 
 /**
  *
@@ -89,6 +90,16 @@ public class ControladorFrameUsuario implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
+        
+        if (e.getButton() == MouseEvent.BUTTON1 && frameUsuario.tblReporte.getSelectedRow() != -1) {
+        // Cargar los datos en los campos de texto correspondientes
+	this.frameUsuario.setTxtUsuario((String) this.frameUsuario.tblReporte.getValueAt(frameUsuario.tblReporte.getSelectedRow(), 0));
+	this.frameUsuario.setTxtNombre((String) this.frameUsuario.tblReporte.getValueAt(frameUsuario.tblReporte.getSelectedRow(), 1));
+	this.frameUsuario.setTxtPais((String) this.frameUsuario.tblReporte.getValueAt(frameUsuario.tblReporte.getSelectedRow(), 2));
+	this.frameUsuario.setTxtCorreo((String) this.frameUsuario.tblReporte.getValueAt(frameUsuario.tblReporte.getSelectedRow(), 3));
+        
+      }
+          
     }
 
     @Override
