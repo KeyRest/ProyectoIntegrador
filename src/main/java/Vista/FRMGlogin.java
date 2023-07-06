@@ -5,6 +5,8 @@
 package Vista;
 
 import Controlador.ControladorGIngreso;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -25,6 +27,28 @@ public class FRMGlogin extends javax.swing.JFrame {
         BTN_Registrarse.addActionListener(controladorGIngreso);
     }
 
+    public JPasswordField getjPasswordField1() {
+        return jPasswordField;
+    }
+
+    public void setjPasswordField1(JPasswordField jPasswordField1) {
+        this.jPasswordField = jPasswordField1;
+    }
+
+    public JTextField getjTextField_USER() {
+        return jTextField_USER;
+    }
+
+    public void setjTextField_USER(JTextField jTextField_USER) {
+        this.jTextField_USER = jTextField_USER;
+    }
+    
+    public void limpiar()
+    {
+        this.jTextField_USER.setText("");
+        this.jPasswordField.setText("");    
+    }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -36,12 +60,12 @@ public class FRMGlogin extends javax.swing.JFrame {
 
         jPanel1 = new javax.swing.JPanel();
         jTextField_USER = new javax.swing.JTextField();
-        jTextField_Password = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         BTN_Registrarse = new javax.swing.JButton();
         BTN_Ingresar = new javax.swing.JButton();
         jLabel3 = new javax.swing.JLabel();
+        jPasswordField = new javax.swing.JPasswordField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
@@ -79,8 +103,8 @@ public class FRMGlogin extends javax.swing.JFrame {
                                 .addGap(102, 102, 102)
                                 .addComponent(BTN_Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 138, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                .addComponent(jTextField_USER, javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jTextField_Password, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE))))
+                                .addComponent(jPasswordField, javax.swing.GroupLayout.Alignment.LEADING)
+                                .addComponent(jTextField_USER, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE))))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(225, 225, 225)
                         .addComponent(jLabel3)))
@@ -95,11 +119,14 @@ public class FRMGlogin extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(jTextField_USER, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(26, 26, 26)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(jTextField_Password, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(47, 47, 47)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(jPasswordField, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(55, 55, 55)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(BTN_Registrarse, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BTN_Ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -153,7 +180,7 @@ public class FRMGlogin extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JTextField jTextField_Password;
+    private javax.swing.JPasswordField jPasswordField;
     private javax.swing.JTextField jTextField_USER;
     // End of variables declaration//GEN-END:variables
 }

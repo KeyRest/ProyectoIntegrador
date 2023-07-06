@@ -26,9 +26,12 @@ public class ControladorGIngreso implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Ingresar":
+                
+                
                 this.fRMMenu = new FRMMenu();
+                fRMGlogin.limpiar();
                 this.fRMGlogin.dispose();
-
+                
                 break;
             case "Registrarse":
                 System.out.println("BTNRegistrarse Pressed");
