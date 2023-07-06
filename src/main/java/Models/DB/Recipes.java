@@ -48,7 +48,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Recipes.findByPortions", query = "SELECT r FROM Recipes r WHERE r.portions = :portions"),
     @NamedQuery(name = "Recipes.findByTotalTime", query = "SELECT r FROM Recipes r WHERE r.totalTime = :totalTime")})
 public class Recipes implements Serializable {
-
+    
+    public static final String[] ETIQUETAS_RECETA = {"id", "nombre", "descripcion", "tiempo_coccion", "tiempo_total","tiempo_preparacion", "instrucciones", "porciones"};
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
