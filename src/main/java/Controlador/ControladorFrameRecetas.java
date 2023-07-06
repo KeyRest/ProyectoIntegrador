@@ -8,7 +8,7 @@ package Controlador;
 
 
 import Modelo.Receta;
-import Modelo.RegistroRecetas;
+import Models.DB.RegistroRecetas;
 import Vista.FRMGlogin;
 import Vista.FRMMenu;
 import Vista.FRMRecetas;

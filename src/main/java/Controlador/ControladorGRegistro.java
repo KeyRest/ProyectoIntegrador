@@ -4,7 +4,7 @@
  */
 package Controlador;
 
-import Modelo.RegistroUsuarios;
+import Models.DB.RegistroUsuarios;
 import Modelo.Usuario;
 import Vista.FRMGlogin;
 import Vista.GRegistro;

@@ -99,6 +99,7 @@ public class Recipes implements Serializable {
 
     public Recipes() {
     }
+    
 
     public Recipes(Integer id) {
         this.id = id;
