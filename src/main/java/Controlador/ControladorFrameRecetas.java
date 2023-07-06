@@ -16,8 +16,10 @@ import Vista.FRMUsuario;
 import Vista.GRegistro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
-public class ControladorFrameRecetas implements ActionListener {
+public class ControladorFrameRecetas implements ActionListener,MouseListener {
 
     private FRMRecetas fRMRecetas;
     private ControladorFrameUsuario controladorFrameUsuario;
@@ -114,5 +116,34 @@ public class ControladorFrameRecetas implements ActionListener {
                 System.exit(0);
     
     }
+    }
+
+    @Override
+    public void mouseClicked(MouseEvent e) {
+        if (e.getButton() == MouseEvent.BUTTON1 && fRMRecetas.panelTabla1.jTable1.getSelectedRow() != -1) {
+        // Cargar los datos en los campos de texto correspondientes
+	this.fRMRecetas.setTxtId((String) this.fRMRecetas.panelTabla1.jTable1.getValueAt(fRMRecetas.panelTabla1.jTable1.getSelectedRow(), 0));
+    }
+        
+    }
+
+    @Override
+    public void mousePressed(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseReleased(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseEntered(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
+    }
+
+    @Override
+    public void mouseExited(MouseEvent e) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

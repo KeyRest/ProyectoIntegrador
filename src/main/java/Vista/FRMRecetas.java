@@ -260,6 +260,6 @@ public class FRMRecetas extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiSalir;
     private Vista.PanelBotonesCRUD panelBotonesCRUD1;
     public Vista.PanelIngresoDatos panelIngresoDatos2;
-    private Vista.PanelTabla panelTabla1;
+    public Vista.PanelTabla panelTabla1;
     // End of variables declaration//GEN-END:variables
 }

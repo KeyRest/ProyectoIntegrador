@@ -225,8 +225,7 @@ public class FRMUsuario extends javax.swing.JFrame {
 
         tblReporte.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null},
-                {null, null, null, null}
+
             },
             new String [] {
                 "Usuario", "Nombre", "Pais", "Correo"
