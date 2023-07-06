@@ -123,6 +123,7 @@ public class ControladorFrameRecetas implements ActionListener,MouseListener {
         if (e.getButton() == MouseEvent.BUTTON1 && fRMRecetas.panelTabla1.jTable1.getSelectedRow() != -1) {
         // Cargar los datos en los campos de texto correspondientes
 	this.fRMRecetas.setTxtId((String) this.fRMRecetas.panelTabla1.jTable1.getValueAt(fRMRecetas.panelTabla1.jTable1.getSelectedRow(), 0));
+        this.fRMRecetas.setTxtnombreReceta((String) this.fRMRecetas.panelTabla1.jTable1.getValueAt(fRMRecetas.panelTabla1.jTable1.getSelectedRow(), 1));
     }
         
     }
