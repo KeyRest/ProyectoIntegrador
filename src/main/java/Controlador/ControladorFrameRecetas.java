@@ -124,8 +124,8 @@ public class ControladorFrameRecetas implements ActionListener,MouseListener {
         // Cargar los datos en los campos de texto correspondientes
 	this.fRMRecetas.setTxtId((String) this.fRMRecetas.panelTabla1.jTable1.getValueAt(fRMRecetas.panelTabla1.jTable1.getSelectedRow(), 0));
         this.fRMRecetas.setTxtnombreReceta((String) this.fRMRecetas.panelTabla1.jTable1.getValueAt(fRMRecetas.panelTabla1.jTable1.getSelectedRow(), 1));
-    }
-        
+        this.fRMRecetas.setTxtdescripcion((String) this.fRMRecetas.panelTabla1.jTable1.getValueAt(fRMRecetas.panelTabla1.jTable1.getSelectedRow(), 2));
+    }   
     }
 
     @Override
