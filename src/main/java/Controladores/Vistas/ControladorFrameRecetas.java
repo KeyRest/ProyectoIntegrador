@@ -89,7 +89,7 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
                 }
             }
 
-            case "Elminar" -> {
+            case "Eliminar" -> {
                 System.out.println("ELIMINAR");
 
                 FRMRecetas.mensaje(this.registroRecetas.eliminar(this.receta));

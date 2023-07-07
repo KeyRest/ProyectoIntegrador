@@ -11,6 +11,7 @@ import Vista.FRMUsuario;
 import Vista.FRMRegistro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import javax.swing.WindowConstants;
 
 /**
  *
@@ -42,6 +43,9 @@ public class ControladorMenu implements ActionListener{
                 this.fRMUsuario = new FRMUsuario();
                 this.fRMMenu.dispose();
 
+                break;
+            case "SALIR":
+                System.exit(0);
                 break;
 
         }

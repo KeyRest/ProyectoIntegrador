@@ -24,6 +24,7 @@ public class FRMMenu extends javax.swing.JFrame {
     private void escuchar(ControladorMenu controladorMenu) {
         BTNUsuarios.addActionListener(controladorMenu);
         BTNRecetas.addActionListener(controladorMenu);
+        BTNEXIT.addActionListener(controladorMenu);
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -37,6 +38,7 @@ public class FRMMenu extends javax.swing.JFrame {
         jPanel1 = new javax.swing.JPanel();
         BTNRecetas = new javax.swing.JButton();
         BTNUsuarios = new javax.swing.JButton();
+        BTNEXIT = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -46,24 +48,32 @@ public class FRMMenu extends javax.swing.JFrame {
         BTNUsuarios.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
         BTNUsuarios.setText("USUARIOS");
 
+        BTNEXIT.setFont(new java.awt.Font("Segoe UI", 0, 36)); // NOI18N
+        BTNEXIT.setText("SALIR");
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(BTNUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
-                .addComponent(BTNRecetas, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(BTNEXIT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(BTNUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 31, Short.MAX_VALUE)
+                        .addComponent(BTNRecetas, javax.swing.GroupLayout.PREFERRED_SIZE, 395, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(BTNRecetas, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(BTNUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, 516, Short.MAX_VALUE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(BTNRecetas, javax.swing.GroupLayout.DEFAULT_SIZE, 302, Short.MAX_VALUE)
+                    .addComponent(BTNUsuarios, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(BTNEXIT, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -82,6 +92,7 @@ public class FRMMenu extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton BTNEXIT;
     private javax.swing.JButton BTNRecetas;
     private javax.swing.JButton BTNUsuarios;
     private javax.swing.JPanel jPanel1;

@@ -79,7 +79,7 @@ public class ControladorFrameUsuario implements ActionListener, MouseListener {
                 frameUsuario.dispose();
             }
             case "Regresar" -> {
-                System.out.println("pressed Atras");
+                System.out.println("pressed Regresar");
                 fRMMenu = new FRMMenu();
                 frameUsuario.dispose();
             }

@@ -26,25 +26,22 @@ public class FRMRecetas extends javax.swing.JFrame {
     }
 
     public void escuchar(ControladorFrameRecetas controladorFrameRecetas) {
-        panelBotonesCRUD1.AgregarBTN.addActionListener(controladorFrameRecetas);
-        panelBotonesCRUD1.ModificarBTN.addActionListener(controladorFrameRecetas);
-        panelBotonesCRUD1.BuscarBTN.addActionListener(controladorFrameRecetas);
-        panelBotonesCRUD1.EliminarBTN.addActionListener(controladorFrameRecetas);
-        panelIngresoDatos2.agregarBTN.addActionListener(controladorFrameRecetas);
-        panelIngresoDatos2.agregarBTN.addActionListener(controladorFrameRecetas);
+        panelBotones1.AgregarBTN.addActionListener(controladorFrameRecetas);
+        panelBotones1.ModificarBTN.addActionListener(controladorFrameRecetas);
+        panelBotones1.BuscarBTN.addActionListener(controladorFrameRecetas);
+        panelBotones1.EliminarBTN.addActionListener(controladorFrameRecetas);
+        panelBotones1.BTN_Regresar.addActionListener(controladorFrameRecetas);
         jmiSalir.addActionListener(controladorFrameRecetas);
         jmiRegresar.addActionListener(controladorFrameRecetas);
         jmiAdministrarUsuario.addActionListener(controladorFrameRecetas);
-        BTN_Regresar.addActionListener(controladorFrameRecetas);
-
     }
 
-    public PanelBotones getPanelBotonesCRUD1() {
-        return panelBotonesCRUD1;
+    public PanelBotones panelBotones1() {
+        return panelBotones1;
     }
 
-    public PanelIngresoDatos getPanelIngresoDatos2() {
-        return panelIngresoDatos2;
+    public PanelIngresoDatos getpanelIngresoDatos1() {
+        return panelIngresoDatos1;
     }
 
     public PanelTabla getPanelTabla1() {
@@ -56,78 +53,78 @@ public class FRMRecetas extends javax.swing.JFrame {
     }
 
     public String getTxtId() {
-        return this.panelIngresoDatos2.IDReceta.getText().trim();
+        return this.panelIngresoDatos1.IDReceta.getText().trim();
     }
 
     public void setTxtId(String ID) {
-        this.panelIngresoDatos2.IDReceta.setText(ID);
+        this.panelIngresoDatos1.IDReceta.setText(ID);
     }
 
     public String getTxtnombreReceta() {
-        return this.panelIngresoDatos2.nombreReceta.getText().trim();
+        return this.panelIngresoDatos1.nombreReceta.getText().trim();
     }
 
     public void setTxtnombreReceta(String nombreReceta) {
-        this.panelIngresoDatos2.nombreReceta.setText(nombreReceta);
+        this.panelIngresoDatos1.nombreReceta.setText(nombreReceta);
     }
 
     public String getTxttiempoCoccion() {
-        return this.panelIngresoDatos2.tiempoCoccion.getText().trim();
+        return this.panelIngresoDatos1.tiempoCoccion.getText().trim();
     }
 
     public void setTxttiempoCoccion(String tiempoCoccion) {
-        this.panelIngresoDatos2.tiempoCoccion.setText(tiempoCoccion);
+        this.panelIngresoDatos1.tiempoCoccion.setText(tiempoCoccion);
     }
 
     public String getTxttiempoTotal() {
-        return this.panelIngresoDatos2.tiempoTotal.getText().trim();
+        return this.panelIngresoDatos1.tiempoTotal.getText().trim();
     }
 
     public void setTxttiempoTotal(String tiempoTotal) {
-        this.panelIngresoDatos2.tiempoTotal.setText(tiempoTotal);
+        this.panelIngresoDatos1.tiempoTotal.setText(tiempoTotal);
     }
 
     public String getTxtinstrucciones() {
-        return this.panelIngresoDatos2.instrucciones.getText().trim();
+        return this.panelIngresoDatos1.instrucciones.getText().trim();
     }
 
     public void setTxtinstrucciones(String instrucciones) {
-        this.panelIngresoDatos2.instrucciones.setText(instrucciones);
+        this.panelIngresoDatos1.instrucciones.setText(instrucciones);
     }
 
     public String getTxtdescripcion() {
-        return this.panelIngresoDatos2.descripcion.getText().trim();
+        return this.panelIngresoDatos1.descripcion.getText().trim();
     }
 
     public void setTxtdescripcion(String descripcion) {
-        this.panelIngresoDatos2.descripcion.setText(descripcion);
+        this.panelIngresoDatos1.descripcion.setText(descripcion);
     }
 
     public String getTxttiempoPreparacion() {
-        return this.panelIngresoDatos2.tiempoPreparacion.getText().trim();
+        return this.panelIngresoDatos1.tiempoPreparacion.getText().trim();
     }
 
     public void setTxttiempoPreparacion(String tiempoPreparacion) {
-        this.panelIngresoDatos2.tiempoPreparacion.setText(tiempoPreparacion);
+        this.panelIngresoDatos1.tiempoPreparacion.setText(tiempoPreparacion);
     }
 
     public String getTxtporciones() {
-        return this.panelIngresoDatos2.tiempoPreparacion.getText().trim();
+        return this.panelIngresoDatos1.tiempoPreparacion.getText().trim();
     }
 
     public void setTxtporciones(String porciones) {
-        this.panelIngresoDatos2.porciones.setText(porciones);
+        this.panelIngresoDatos1.porciones.setText(porciones);
     }
 
     public void limpiar() {
-        this.panelIngresoDatos2.nombreReceta.setText("");
-        this.panelIngresoDatos2.tiempoCoccion.setText("");
-        this.panelIngresoDatos2.tiempoTotal.setText("");
-        this.panelIngresoDatos2.instrucciones.setText("");
-        this.panelIngresoDatos2.descripcion.setText("");
-        this.panelIngresoDatos2.IDReceta.setText("");
-        this.panelIngresoDatos2.tiempoPreparacion.setText("");
-        this.panelIngresoDatos2.porciones.setText("");
+        this.panelIngresoDatos1.nombreReceta.setText("");
+        this.panelIngresoDatos1.tiempoCoccion.setText("");
+        this.panelIngresoDatos1.tiempoTotal.setText("");
+        this.panelIngresoDatos1.instrucciones.setText("");
+        this.panelIngresoDatos1.descripcion.setText("");
+        this.panelIngresoDatos1.IDReceta.setText("");
+        this.panelIngresoDatos1.tiempoPreparacion.setText("");
+        this.panelIngresoDatos1.porciones.setText("");
 
     }
 
@@ -153,13 +150,12 @@ public class FRMRecetas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel1 = new javax.swing.JPanel();
-        BTN_Regresar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
-        panelBotonesCRUD1 = new Vista.PanelBotones();
+        panelIngresoDatos1 = new Vista.PanelIngresoDatos();
+        panelIngredientes1 = new Vista.PanelIngredientes();
+        panelBotones1 = new Vista.PanelBotones();
         panelTabla1 = new Vista.PanelTabla();
-        panelIngresoDatos2 = new Vista.PanelIngresoDatos();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmiRegresar = new javax.swing.JMenuItem();
@@ -169,15 +165,6 @@ public class FRMRecetas extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
-
-        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
-        jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
-
-        BTN_Regresar.setBackground(new java.awt.Color(0, 0, 0));
-        BTN_Regresar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        BTN_Regresar.setForeground(new java.awt.Color(255, 255, 255));
-        BTN_Regresar.setText("Regresar");
-        jPanel1.add(BTN_Regresar, new org.netbeans.lib.awtextra.AbsoluteConstraints(980, 250, 155, 37));
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -196,11 +183,6 @@ public class FRMRecetas extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(jTable1);
-
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 250, -1, 160));
-        jPanel1.add(panelBotonesCRUD1, new org.netbeans.lib.awtextra.AbsoluteConstraints(970, 50, -1, -1));
-        jPanel1.add(panelTabla1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 420, -1, 480));
-        jPanel1.add(panelIngresoDatos2, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 40, -1, -1));
 
         jMenu1.setText("Archivo");
 
@@ -225,30 +207,52 @@ public class FRMRecetas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelIngresoDatos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 390, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(panelIngredientes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(panelBotones1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(19, 19, 19)
+                        .addComponent(panelTabla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, 900, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(panelIngresoDatos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelIngredientes1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(77, 77, 77)
+                        .addComponent(panelBotones1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addGap(18, 18, 18)
+                .addComponent(panelTabla1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(0, 0, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    public javax.swing.JButton BTN_Regresar;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JMenuItem jmiAdministrarUsuario;
     private javax.swing.JMenuItem jmiRegresar;
     private javax.swing.JMenuItem jmiSalir;
-    private Vista.PanelBotones panelBotonesCRUD1;
-    public Vista.PanelIngresoDatos panelIngresoDatos2;
+    private Vista.PanelBotones panelBotones1;
+    private Vista.PanelIngredientes panelIngredientes1;
+    private Vista.PanelIngresoDatos panelIngresoDatos1;
     public Vista.PanelTabla panelTabla1;
     // End of variables declaration//GEN-END:variables
 }
