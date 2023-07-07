@@ -27,12 +27,14 @@ public class FRMUsuario extends javax.swing.JFrame {
         ControladorFrameUsuario controladorFrameUsuario = new ControladorFrameUsuario(this);
         escuchar(controladorFrameUsuario);
         this.panelBotones1.escuchar(controladorFrameUsuario);
+        this.escucharTabla(controladorFrameUsuario);
     }
 
     public void escuchar(ControladorFrameUsuario controladorFrameUsuario) {
         jmiSalir.addActionListener(controladorFrameUsuario);
         jmiRecetas.addActionListener(controladorFrameUsuario);
         jmiRegresar.addActionListener(controladorFrameUsuario);
+        this.addMouseListener(controladorFrameUsuario);
     }
 
     public static void mensaje(String msj) {
@@ -97,6 +99,7 @@ public class FRMUsuario extends javax.swing.JFrame {
     }
 
     public void setDatosTabla(String[][] datos, String[] etiquetas, String Titulo) {
+
         this.tblReporte.setModel(new DefaultTableModel(datos, etiquetas));
         this.jScrollPane.setViewportView(this.tblReporte);
     }
@@ -105,9 +108,13 @@ public class FRMUsuario extends javax.swing.JFrame {
         this.tblReporte.addMouseListener(control);
     }
 
-    public String getFilaTabla() {
-        int fila = this.tblReporte.getSelectedRow();
-        return this.tblReporte.getModel().getValueAt(fila, 0).toString();
+    public String[] getFilaTabla() {
+        String[] datosFila = new String[this.tblReporte.getColumnCount()];
+        int numFila = this.tblReporte.getSelectedRow();
+        for (int i = 0; i < datosFila.length; i++) {
+            datosFila[i] = this.tblReporte.getModel().getValueAt(numFila, i).toString();
+        }
+        return datosFila;
     }
 
     public JTable getTblReporte() {
@@ -220,14 +227,6 @@ public class FRMUsuario extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
-        tblReporte.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Usuario", "Nombre", "Pais", "Correo"
-            }
-        ));
         jScrollPane.setViewportView(tblReporte);
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 24)); // NOI18N

@@ -41,7 +41,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")})
 public class User implements Serializable {
 
-    public static final String[] ETIQUETAS_USUARIO = {"ID", "Nombre", "Nombre_usuario", "Pais", "Correo", "Contras\u00f1a"};
+    public static final String[] ETIQUETAS_USUARIO = {"ID", "Nombre", "Pais", "Correo", "Contras\u00f1a"};
 
     private static final long serialVersionUID = 1L;
     @Id

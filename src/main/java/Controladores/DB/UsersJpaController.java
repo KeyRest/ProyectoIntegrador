@@ -2,13 +2,12 @@
 *Keiron Garro M
 *C23212
 *UCR
-*/
+ */
 
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package Controladores.DB;
 
 import Controladores.DB.exceptions.IllegalOrphanException;
@@ -27,16 +26,15 @@ import Entidades.UsersSaveRecipes;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-
-
-
+import javax.persistence.Persistence;
 
 public class UsersJpaController implements Serializable {
 
-    public UsersJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
-    }
     private EntityManagerFactory emf = null;
+
+    public UsersJpaController() {
+        this.emf = Persistence.createEntityManagerFactory("ProyectoIntegrador_jar_1.0");
+    }
 
     public EntityManager getEntityManager() {
         return emf.createEntityManager();
@@ -275,6 +273,8 @@ public class UsersJpaController implements Serializable {
             em.close();
         }
     }
+
+   
 
     public int getUsersCount() {
         EntityManager em = getEntityManager();

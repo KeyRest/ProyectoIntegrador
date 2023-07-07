@@ -27,11 +27,11 @@ public class FRMLogin extends javax.swing.JFrame {
         BTN_Registrarse.addActionListener(controladorGIngreso);
     }
 
-    public JPasswordField getjPasswordField1() {
+    public JPasswordField getjPasswordField() {
         return jPasswordField;
     }
 
-    public void setjPasswordField1(JPasswordField jPasswordField1) {
+    public void setjPasswordField(JPasswordField jPasswordField1) {
         this.jPasswordField = jPasswordField1;
     }
 

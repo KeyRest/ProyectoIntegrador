@@ -65,7 +65,7 @@ public class ControladorFrameUsuario implements ActionListener, MouseListener {
                     this.frameUsuario.setDatosTabla(this.registroUsuarios.getDatosTabla(), User.ETIQUETAS_USUARIO, "Reporte de Usuarios");
                 }
             }
-            case "Actualizar" ->
+            case "Agregar" ->
                 System.out.println("Actualizando");
             case "Eliminar" -> {
                 System.out.println("Eliminando");
@@ -90,13 +90,14 @@ public class ControladorFrameUsuario implements ActionListener, MouseListener {
 
     @Override
     public void mouseClicked(MouseEvent e) {
-
-        if (e.getButton() == MouseEvent.BUTTON1 && frameUsuario.tblReporte.getSelectedRow() != -1) {
+        if (e.getButton() == MouseEvent.BUTTON1 &&  frameUsuario.tblReporte.getSelectedRow() != -1) {
             // Cargar los datos en los campos de texto correspondientes
-            this.frameUsuario.setTxtNombre((String) this.frameUsuario.tblReporte.getValueAt(frameUsuario.tblReporte.getSelectedRow(), 0));
-            this.frameUsuario.setTxtApellido((String) this.frameUsuario.tblReporte.getValueAt(frameUsuario.tblReporte.getSelectedRow(), 1));
-            this.frameUsuario.setTxtPais((String) this.frameUsuario.tblReporte.getValueAt(frameUsuario.tblReporte.getSelectedRow(), 2));
-            this.frameUsuario.setTxtCorreo((String) this.frameUsuario.tblReporte.getValueAt(frameUsuario.tblReporte.getSelectedRow(), 3));
+            System.out.println("Controladores.Vistas.ControladorFrameUsuario.mouseClicked()");
+            String[] vFila = this.frameUsuario.getFilaTabla();
+            this.frameUsuario.setTxtNombre(vFila[0]);
+            this.frameUsuario.setTxtApellido(vFila[1]);
+            this.frameUsuario.setTxtPais(vFila[2]);
+            this.frameUsuario.setTxtCorreo(vFila[3]);
 
         }
 
@@ -104,6 +105,7 @@ public class ControladorFrameUsuario implements ActionListener, MouseListener {
 
     @Override
     public void mousePressed(MouseEvent e) {
+
     }
 
     @Override
