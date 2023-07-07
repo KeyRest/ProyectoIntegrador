@@ -10,6 +10,7 @@ import Vista.FRMLogin;
 import Vista.FRMRegistro;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.Random;
 
 /**
  *
@@ -60,8 +61,10 @@ public class ControladorGRegistro implements ActionListener {
 
     private Integer generateID() {
         //Generador de num random que revise en la base de datos si ya existe
-        return null;
-        //Generador de num random que revise en la base de datos si ya existe
+        Random random = new Random();
+        int randomNumber = random.nextInt(90000) + 10000;
+        
+        return randomNumber;
     }
 
 }
