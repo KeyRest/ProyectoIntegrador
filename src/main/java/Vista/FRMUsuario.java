@@ -53,8 +53,8 @@ public class FRMUsuario extends javax.swing.JFrame {
         return this.txtApellido.getText().trim();
     }
 
-    public void setTxtApellido(String txtNombre) {
-        this.txtApellido.setText(txtNombre);
+    public void setTxtApellido(String txtApellido) {
+        this.txtApellido.setText(txtApellido);
     }
 
     public String getTxtPais() {
@@ -69,8 +69,8 @@ public class FRMUsuario extends javax.swing.JFrame {
         return this.txtNombre.getText().trim();
     }
 
-    public void setTxtNombre(String txtUsuario) {
-        this.txtNombre.setText(txtUsuario);
+    public void setTxtNombre(String txtNombre) {
+        this.txtNombre.setText(txtNombre);
     }
 
     public String getTxtId() {

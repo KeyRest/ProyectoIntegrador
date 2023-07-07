@@ -5,6 +5,8 @@
 package Entidades;
 
 import Controladores.DB.UsersJpaController;
+import Controladores.DB.exceptions.IllegalOrphanException;
+import Controladores.DB.exceptions.NonexistentEntityException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -44,6 +46,7 @@ public class RegistroUsuarios {
             JSONObject objJSONUsuario = new JSONObject();
             objJSONUsuario.put("id", usuario.getId());
             objJSONUsuario.put("nombre", usuario.getName());
+            objJSONUsuario.put("apellido", usuario.getLastName());
             objJSONUsuario.put("pais", usuario.getCountry());
             objJSONUsuario.put("correo", usuario.getEmail());
             objJSONUsuario.put("contrase\u00f1a", usuario.getPassword());
@@ -72,6 +75,7 @@ public class RegistroUsuarios {
                 Users usuario = new Users();
                 usuario.setId(Integer.parseInt(objUsuario.get("id").toString()));
                 usuario.setName(objUsuario.get("nombre").toString());
+                usuario.setLastName(objUsuario.get("apellido").toString());
                 usuario.setCountry(objUsuario.get("pais").toString());
                 usuario.setEmail(objUsuario.get("correo").toString());
                 usuario.setPassword(objUsuario.get("contrase\u00f1a").toString());
@@ -103,8 +107,10 @@ public class RegistroUsuarios {
         return "El usuario ya se encuentra registrado";
     }
 
-    public String eliminar(Object usuario) {
+    public String eliminar(Object usuario) throws IllegalOrphanException, NonexistentEntityException {
         if (this.listaUsuario.remove((Users) usuario)) {
+            this.usersJpaController = new UsersJpaController();
+            this.usersJpaController.destroy(((Users) usuario).getId());
             this.escribirJSON();
             return "El usuario ha sido eliminada";
         } else {

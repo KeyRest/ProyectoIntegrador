@@ -63,7 +63,7 @@ public class Users implements Serializable {
     @ManyToOne(optional = false)
     private Profile profileId;
 
-    public static final String[] ETIQUETAS_USUARIO = {"ID", "Nombre", "Pais", "Correo", "Contras\u00f1a"};
+    public static final String[] ETIQUETAS_USUARIO = {"ID", "Nombre", "Apellido", "Pais", "Correo", "Contras\u00f1a"};
 
     public Users() {
     }
@@ -89,10 +89,12 @@ public class Users implements Serializable {
             case 1:
                 return this.getName();
             case 2:
-                return this.getCountry();
+                return this.getLastName();
             case 3:
-                return this.getEmail();
+                return this.getCountry();
             case 4:
+                return this.getEmail();
+            case 5:
                 return this.getPassword();
         }
         return null;

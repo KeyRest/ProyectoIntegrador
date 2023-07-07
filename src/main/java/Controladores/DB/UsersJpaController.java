@@ -91,12 +91,7 @@ public class UsersJpaController implements Serializable {
                 users.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The users with id " + id + " no longer exists.", enfe);
-            }
-            List<String> illegalOrphanMessages = null;
-            
-            if (illegalOrphanMessages != null) {
-                throw new IllegalOrphanException(illegalOrphanMessages);
-            }
+            }         
 
             em.remove(users);
             em.getTransaction().commit();
