@@ -13,6 +13,7 @@ import javax.swing.JTextField;
  * @author Admin
  */
 public class FRMRegistro extends javax.swing.JFrame {
+
 //  Al registrar usuario se debe registrar un ID ...Por Definir...
 
     /**
@@ -81,6 +82,7 @@ public class FRMRegistro extends javax.swing.JFrame {
         this.JText_Name.setText("");
         this.JText_Password.setText("");
         this.JText_LastName.setText("");
+        this.JText_ConfirmPassword.setText("");
     }
 
     /**
@@ -107,7 +109,7 @@ public class FRMRegistro extends javax.swing.JFrame {
         BTN_Registrarse = new javax.swing.JButton();
         BTN_Back = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
-        JText_Password1 = new javax.swing.JTextField();
+        JText_ConfirmPassword = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -173,7 +175,7 @@ public class FRMRegistro extends javax.swing.JFrame {
                         .addGap(40, 40, 40)
                         .addComponent(jLabel2)
                         .addGap(32, 32, 32)
-                        .addComponent(JText_Password1, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(JText_ConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 393, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(211, 211, 211)
                         .addComponent(jLabel3)))
@@ -226,7 +228,7 @@ public class FRMRegistro extends javax.swing.JFrame {
                             .addGroup(jPanel1Layout.createSequentialGroup()
                                 .addGap(10, 10, 10)
                                 .addComponent(jLabel2))
-                            .addComponent(JText_Password1, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(JText_ConfirmPassword, javax.swing.GroupLayout.PREFERRED_SIZE, 39, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addContainerGap(100, Short.MAX_VALUE))))
         );
 
@@ -247,12 +249,12 @@ public class FRMRegistro extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BTN_Back;
     private javax.swing.JButton BTN_Registrarse;
+    private javax.swing.JTextField JText_ConfirmPassword;
     private javax.swing.JTextField JText_Country;
     private javax.swing.JTextField JText_Email;
     private javax.swing.JTextField JText_LastName;
     private javax.swing.JTextField JText_Name;
     private javax.swing.JTextField JText_Password;
-    private javax.swing.JTextField JText_Password1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

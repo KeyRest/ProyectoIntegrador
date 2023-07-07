@@ -49,13 +49,19 @@ public class ControladorGRegistro implements ActionListener {
                 } else if (this.gRegistro.getJText_Password().equalsIgnoreCase("")) {
                     FRMRegistro.mensaje("Debe ingresar la Contrase\u00f1a");
                 } else {
-                    FRMRegistro.mensaje(this.registroUsuarios.agregar(new User(0, this.gRegistro.getJText_Name(), this.gRegistro.getJText_LastName(), this.gRegistro.getJText_Country(), this.gRegistro.getJText_Email(), this.gRegistro.getJText_Password())));
+                    FRMRegistro.mensaje(this.registroUsuarios.agregar(new User(generateID(), this.gRegistro.getJText_Name(), this.gRegistro.getJText_LastName(), this.gRegistro.getJText_Country(), this.gRegistro.getJText_Email(), this.gRegistro.getJText_Password())));
                     this.gRegistro.limpiar();
                 }
 
                 break;
 
         }
+    }
+
+    private Integer generateID() {
+        //Generador de num random que revise en la base de datos si ya existe
+        return null;
+        //Generador de num random que revise en la base de datos si ya existe
     }
 
 }
