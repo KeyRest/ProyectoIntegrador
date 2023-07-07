@@ -7,6 +7,7 @@ package Vista;
 import Controladores.Vistas.ControladorFrameRecetas;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -23,6 +24,8 @@ public class FRMRecetas extends javax.swing.JFrame {
         this.setVisible(true);
         ControladorFrameRecetas controladorFrameRecetas = new ControladorFrameRecetas(this);
         escuchar(controladorFrameRecetas);
+        this.panelBotones1.escuchar(controladorFrameRecetas);
+        this.escucharTabla(controladorFrameRecetas);
     }
 
     public void escuchar(ControladorFrameRecetas controladorFrameRecetas) {
@@ -34,6 +37,7 @@ public class FRMRecetas extends javax.swing.JFrame {
         jmiSalir.addActionListener(controladorFrameRecetas);
         jmiRegresar.addActionListener(controladorFrameRecetas);
         jmiAdministrarUsuario.addActionListener(controladorFrameRecetas);
+        this.addMouseListener(controladorFrameRecetas);
     }
 
     public PanelBotones panelBotones1() {
@@ -137,10 +141,19 @@ public class FRMRecetas extends javax.swing.JFrame {
         this.panelTabla1.addMouseListener(control);
     }
 
-    public String getFilaTabla() {
-        int fila = this.panelTabla1.jTable1.getSelectedRow();
-        return this.panelTabla1.jTable1.getModel().getValueAt(fila, 0).toString();
+    public String[] getFilaTabla() {
+        String[] datosFila = new String[this.panelTabla1.jTable1.getColumnCount()];
+        int numFila = this.panelTabla1.jTable1.getSelectedRow();
+        for (int i = 0; i < datosFila.length; i++) {
+            datosFila[i] = this.panelTabla1.jTable1.getModel().getValueAt(numFila, i).toString();
+        }
+        return datosFila;
     }
+    public JTable getTblReporte() {
+        return panelTabla1.jTable1;
+    }
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

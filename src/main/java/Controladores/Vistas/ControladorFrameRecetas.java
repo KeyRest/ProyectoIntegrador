@@ -118,9 +118,15 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
     public void mouseClicked(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1 && fRMRecetas.panelTabla1.jTable1.getSelectedRow() != -1) {
             // Cargar los datos en los campos de texto correspondientes
+            String[] vFila = this.fRMRecetas.getFilaTabla();
             this.fRMRecetas.setTxtId((String) this.fRMRecetas.panelTabla1.jTable1.getValueAt(fRMRecetas.panelTabla1.jTable1.getSelectedRow(), 0));
             this.fRMRecetas.setTxtnombreReceta((String) this.fRMRecetas.panelTabla1.jTable1.getValueAt(fRMRecetas.panelTabla1.jTable1.getSelectedRow(), 1));
-            this.fRMRecetas.setTxtdescripcion((String) this.fRMRecetas.panelTabla1.jTable1.getValueAt(fRMRecetas.panelTabla1.jTable1.getSelectedRow(), 2));
+            this.fRMRecetas.setTxttiempoCoccion((String) this.fRMRecetas.panelTabla1.jTable1.getValueAt(fRMRecetas.panelTabla1.jTable1.getSelectedRow(), 2));
+            this.fRMRecetas.setTxttiempoPreparacion((String) this.fRMRecetas.panelTabla1.jTable1.getValueAt(fRMRecetas.panelTabla1.jTable1.getSelectedRow(), 3));
+            this.fRMRecetas.setTxttiempoTotal((String) this.fRMRecetas.panelTabla1.jTable1.getValueAt(fRMRecetas.panelTabla1.jTable1.getSelectedRow(), 4));
+            this.fRMRecetas.setTxtinstrucciones((String) this.fRMRecetas.panelTabla1.jTable1.getValueAt(fRMRecetas.panelTabla1.jTable1.getSelectedRow(), 5));
+            this.fRMRecetas.setTxtdescripcion((String) this.fRMRecetas.panelTabla1.jTable1.getValueAt(fRMRecetas.panelTabla1.jTable1.getSelectedRow(), 6));
+            this.fRMRecetas.setTxtporciones((String) this.fRMRecetas.panelTabla1.jTable1.getValueAt(fRMRecetas.panelTabla1.jTable1.getSelectedRow(), 7));
         }
     }
 
