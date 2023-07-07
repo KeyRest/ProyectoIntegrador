@@ -15,19 +15,19 @@
     <class>Modelo.Perfil</class>
     <class>Modelo.Complejidad</class>
     <class>Modelo.Privilegio</class>
-    <class>Models.DB.UsersVoteRecipes</class>
-    <class>Models.DB.RecipesHasIngredients</class>
-    <class>Models.DB.Ingredients</class>
-    <class>Models.DB.FeaturedRecipe</class>
-    <class>Models.DB.Users</class>
-    <class>Models.DB.Profile</class>
-    <class>Models.DB.Occasions</class>
-    <class>Models.DB.UsersSaveRecipes</class>
-    <class>Models.DB.Categories</class>
-    <class>Models.DB.Vistis</class>
-    <class>Models.DB.MeasurementUnits</class>
-    <class>Models.DB.Levels</class>
-    <class>Models.DB.Recipes</class>
+    <class>Entidades.Ingredients</class>
+    <class>Entidades.Categories</class>
+    <class>Entidades.Profile</class>
+    <class>Entidades.UsersSaveRecipes</class>
+    <class>Entidades.Occasions</class>
+    <class>Entidades.FeaturedRecipe</class>
+    <class>Entidades.User</class>
+    <class>Entidades.Levels</class>
+    <class>Entidades.MeasurementUnits</class>
+    <class>Entidades.RecipesHasIngredients</class>
+    <class>Entidades.Vistis</class>
+    <class>Entidades.Recipe</class>
+    <class>Entidades.UsersVoteRecipes</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/mydb?zeroDateTimeBehavior=CONVERT_TO_NULL"/>
       <property name="javax.persistence.jdbc.user" value="root"/>

@@ -2,8 +2,6 @@
 
 <Form version="1.5" maxVersion="1.9" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
   <NonVisualComponents>
-    <Component class="Vista.PanelBotonesCRUD" name="panelBotonesCRUD">
-    </Component>
     <Menu class="javax.swing.JMenuBar" name="jMenuBar1">
       <SubComponents>
         <Menu class="javax.swing.JMenu" name="jMenu1">
@@ -68,22 +66,17 @@
                       <Component id="jScrollPane" max="32767" attributes="0"/>
                   </Group>
                   <Group type="102" attributes="0">
+                      <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
+                      <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="PanelUsuario" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="0" attributes="0">
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace min="-2" pref="224" max="-2" attributes="0"/>
-                              <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
-                          </Group>
-                          <Group type="102" alignment="0" attributes="0">
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Component id="PanelUsuario" min="-2" max="-2" attributes="0"/>
-                              <EmptySpace max="-2" attributes="0"/>
-                              <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="panelBotonesCRUD1" min="-2" max="-2" attributes="0"/>
-                                  <Component id="BTN_Regresar" max="32767" attributes="0"/>
-                              </Group>
-                          </Group>
+                          <Component id="BTN_Regresar" min="-2" max="-2" attributes="0"/>
+                          <Component id="panelBotones1" min="-2" max="-2" attributes="0"/>
                       </Group>
-                      <EmptySpace min="0" pref="115" max="32767" attributes="0"/>
                   </Group>
               </Group>
               <EmptySpace max="-2" attributes="0"/>
@@ -96,15 +89,18 @@
               <EmptySpace min="-2" pref="8" max="-2" attributes="0"/>
               <Component id="jLabel4" min="-2" max="-2" attributes="0"/>
               <EmptySpace type="unrelated" max="-2" attributes="0"/>
-              <Group type="103" groupAlignment="0" attributes="0">
+              <Group type="103" groupAlignment="0" max="-2" attributes="0">
                   <Group type="102" attributes="0">
-                      <Component id="panelBotonesCRUD1" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="-2" attributes="0"/>
-                      <Component id="BTN_Regresar" min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="PanelUsuario" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                   </Group>
-                  <Component id="PanelUsuario" min="-2" max="-2" attributes="0"/>
+                  <Group type="102" attributes="0">
+                      <Component id="panelBotones1" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="BTN_Regresar" min="-2" pref="37" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
+                  </Group>
               </Group>
-              <EmptySpace type="separate" max="-2" attributes="0"/>
               <Component id="jScrollPane" pref="335" max="32767" attributes="0"/>
               <EmptySpace min="-2" pref="33" max="-2" attributes="0"/>
           </Group>
@@ -130,9 +126,9 @@
                   <EmptySpace min="-2" pref="67" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Component id="txtPais" min="-2" pref="303" max="-2" attributes="0"/>
-                      <Component id="txtNombre" min="-2" pref="303" max="-2" attributes="0"/>
+                      <Component id="txtApellido" min="-2" pref="303" max="-2" attributes="0"/>
                       <Component id="txtId" min="-2" pref="303" max="-2" attributes="0"/>
-                      <Component id="txtUsuario" min="-2" pref="303" max="-2" attributes="0"/>
+                      <Component id="txtNombre" min="-2" pref="303" max="-2" attributes="0"/>
                       <Component id="txtCorreo" min="-2" pref="303" max="-2" attributes="0"/>
                       <Component id="txtContraseña" min="-2" pref="303" max="-2" attributes="0"/>
                   </Group>
@@ -150,12 +146,12 @@
                   </Group>
                   <EmptySpace min="-2" pref="9" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtUsuario" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
+                      <Component id="txtNombre" alignment="3" min="-2" pref="38" max="-2" attributes="0"/>
                       <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="unrelated" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtNombre" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="txtApellido" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="10" max="-2" attributes="0"/>
@@ -184,7 +180,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Usuario:"/>
+            <Property name="text" type="java.lang.String" value="Nombre:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel2">
@@ -192,7 +188,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
             </Property>
-            <Property name="text" type="java.lang.String" value="Nombre:"/>
+            <Property name="text" type="java.lang.String" value="Apellido:"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel3">
@@ -213,11 +209,11 @@
         </Component>
         <Component class="javax.swing.JTextField" name="txtId">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtNombre">
+        <Component class="javax.swing.JTextField" name="txtApellido">
         </Component>
         <Component class="javax.swing.JTextField" name="txtPais">
         </Component>
-        <Component class="javax.swing.JTextField" name="txtUsuario">
+        <Component class="javax.swing.JTextField" name="txtNombre">
         </Component>
         <Component class="javax.swing.JLabel" name="jLabel5">
           <Properties>
@@ -241,8 +237,6 @@
         </Component>
       </SubComponents>
     </Container>
-    <Component class="Vista.PanelBotonesCRUD" name="panelBotonesCRUD1">
-    </Component>
     <Container class="javax.swing.JScrollPane" name="jScrollPane">
       <AuxValues>
         <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
@@ -318,6 +312,8 @@
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
+    </Component>
+    <Component class="Vista.PanelBotones" name="panelBotones1">
     </Component>
   </SubComponents>
 </Form>

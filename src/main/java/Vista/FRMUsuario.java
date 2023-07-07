@@ -4,7 +4,7 @@
  */
 package Vista;
 
-import Controlador.ControladorFrameUsuario;
+import Controladores.Vistas.ControladorFrameUsuario;
 import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
@@ -26,17 +26,17 @@ public class FRMUsuario extends javax.swing.JFrame {
         setVisible(true);
         ControladorFrameUsuario controladorFrameUsuario = new ControladorFrameUsuario(this);
         escuchar(controladorFrameUsuario);
-        this.panelBotonesCRUD1.escuchar(controladorFrameUsuario);
+        this.panelBotones1.escuchar(controladorFrameUsuario);
     }
-    
-    public void escuchar(ControladorFrameUsuario controladorFrameUsuario){
+
+    public void escuchar(ControladorFrameUsuario controladorFrameUsuario) {
         jmiSalir.addActionListener(controladorFrameUsuario);
         BTN_Regresar.addActionListener(controladorFrameUsuario);
-        jmiRecetas.addActionListener(controladorFrameUsuario);       
-    } 
-    public static void mensaje(String msj)
-    {
-        JOptionPane.showMessageDialog(null,msj);
+        jmiRecetas.addActionListener(controladorFrameUsuario);
+    }
+
+    public static void mensaje(String msj) {
+        JOptionPane.showMessageDialog(null, msj);
     }
 
     public String getTxtCorreo() {
@@ -47,12 +47,12 @@ public class FRMUsuario extends javax.swing.JFrame {
         this.txtCorreo.setText(txtCorreo);
     }
 
-    public String getTxtNombre() {
-        return this.txtNombre.getText().trim();
+    public String getTxtApellido() {
+        return this.txtApellido.getText().trim();
     }
 
-    public void setTxtNombre(String txtNombre) {
-        this.txtNombre.setText(txtNombre);
+    public void setTxtApellido(String txtNombre) {
+        this.txtApellido.setText(txtNombre);
     }
 
     public String getTxtPais() {
@@ -63,13 +63,14 @@ public class FRMUsuario extends javax.swing.JFrame {
         this.txtPais.setText(txtPais);
     }
 
-    public String getTxtUsuario() {
-        return this.txtUsuario.getText().trim();
+    public String getTxtNombre() {
+        return this.txtNombre.getText().trim();
     }
 
-    public void setTxtUsuario(String txtUsuario) {
-        this.txtUsuario.setText(txtUsuario);
+    public void setTxtNombre(String txtUsuario) {
+        this.txtNombre.setText(txtUsuario);
     }
+
     public String getTxtId() {
         return this.txtId.getText().trim();
     }
@@ -77,6 +78,7 @@ public class FRMUsuario extends javax.swing.JFrame {
     public void setTxtId(String txtId) {
         this.txtId.setText(txtId);
     }
+
     public String getTxtContraseña() {
         return this.txtContraseña.getText().trim();
     }
@@ -84,27 +86,27 @@ public class FRMUsuario extends javax.swing.JFrame {
     public void setTxtContraseña(String txtContraseña) {
         this.txtContraseña.setText(txtContraseña);
     }
-    public void limpiar()
-    {
+
+    public void limpiar() {
         this.txtId.setText("");
+        this.txtApellido.setText("");
         this.txtNombre.setText("");
-        this.txtUsuario.setText("");
         this.txtCorreo.setText("");
         this.txtPais.setText("");
         this.txtContraseña.setText("");
     }
-    public void setDatosTabla(String[][]datos,String[] etiquetas,String Titulo)
-    {
+
+    public void setDatosTabla(String[][] datos, String[] etiquetas, String Titulo) {
         this.tblReporte.setModel(new DefaultTableModel(datos, etiquetas));
         this.jScrollPane.setViewportView(this.tblReporte);
     }
-    public void escucharTabla(MouseListener control)
-    {
+
+    public void escucharTabla(MouseListener control) {
         this.tblReporte.addMouseListener(control);
-    }   
-    public String getFilaTabla()
-    {
-        int fila=this.tblReporte.getSelectedRow();
+    }
+
+    public String getFilaTabla() {
+        int fila = this.tblReporte.getSelectedRow();
         return this.tblReporte.getModel().getValueAt(fila, 0).toString();
     }
 
@@ -112,9 +114,6 @@ public class FRMUsuario extends javax.swing.JFrame {
         return tblReporte;
     }
 
-   
-    
-    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -124,25 +123,24 @@ public class FRMUsuario extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        panelBotonesCRUD = new Vista.PanelBotonesCRUD();
         PanelUsuario = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtId = new javax.swing.JTextField();
-        txtNombre = new javax.swing.JTextField();
+        txtApellido = new javax.swing.JTextField();
         txtPais = new javax.swing.JTextField();
-        txtUsuario = new javax.swing.JTextField();
+        txtNombre = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
         txtCorreo = new javax.swing.JTextField();
         txtContraseña = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        panelBotonesCRUD1 = new Vista.PanelBotonesCRUD();
         jScrollPane = new javax.swing.JScrollPane();
         tblReporte = new javax.swing.JTable();
         jLabel4 = new javax.swing.JLabel();
         BTN_Regresar = new javax.swing.JButton();
+        panelBotones1 = new Vista.PanelBotones();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jmiRegresar = new javax.swing.JMenuItem();
@@ -153,10 +151,10 @@ public class FRMUsuario extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jLabel1.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel1.setText("Usuario:");
+        jLabel1.setText("Nombre:");
 
         jLabel2.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
-        jLabel2.setText("Nombre:");
+        jLabel2.setText("Apellido:");
 
         jLabel3.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel3.setText("Correo:");
@@ -186,9 +184,9 @@ public class FRMUsuario extends javax.swing.JFrame {
                 .addGap(67, 67, 67)
                 .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(txtPais, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtId, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtCorreo, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtContraseña, javax.swing.GroupLayout.PREFERRED_SIZE, 303, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -202,11 +200,11 @@ public class FRMUsuario extends javax.swing.JFrame {
                     .addComponent(jLabel5))
                 .addGap(9, 9, 9)
                 .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 38, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtApellido, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel2))
                 .addGap(10, 10, 10)
                 .addGroup(PanelUsuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -270,18 +268,15 @@ public class FRMUsuario extends javax.swing.JFrame {
                         .addContainerGap()
                         .addComponent(jScrollPane))
                     .addGroup(layout.createSequentialGroup()
+                        .addGap(224, 224, 224)
+                        .addComponent(jLabel4))
+                    .addGroup(layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(PanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createSequentialGroup()
-                                .addGap(224, 224, 224)
-                                .addComponent(jLabel4))
-                            .addGroup(layout.createSequentialGroup()
-                                .addContainerGap()
-                                .addComponent(PanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(panelBotonesCRUD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                    .addComponent(BTN_Regresar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
-                        .addGap(0, 115, Short.MAX_VALUE)))
+                            .addComponent(BTN_Regresar)
+                            .addComponent(panelBotones1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))))
                 .addContainerGap())
         );
         layout.setVerticalGroup(
@@ -290,13 +285,15 @@ public class FRMUsuario extends javax.swing.JFrame {
                 .addGap(8, 8, 8)
                 .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(panelBotonesCRUD1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(BTN_Regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(PanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                        .addComponent(PanelUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(panelBotones1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(BTN_Regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(33, 33, 33)))
                 .addComponent(jScrollPane, javax.swing.GroupLayout.DEFAULT_SIZE, 335, Short.MAX_VALUE)
                 .addGap(33, 33, 33))
         );
@@ -321,14 +318,13 @@ public class FRMUsuario extends javax.swing.JFrame {
     private javax.swing.JMenuItem jmiRecetas;
     private javax.swing.JMenuItem jmiRegresar;
     private javax.swing.JMenuItem jmiSalir;
-    private Vista.PanelBotonesCRUD panelBotonesCRUD;
-    private Vista.PanelBotonesCRUD panelBotonesCRUD1;
+    private Vista.PanelBotones panelBotones1;
     public javax.swing.JTable tblReporte;
+    private javax.swing.JTextField txtApellido;
     private javax.swing.JTextField txtContraseña;
     private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtId;
     private javax.swing.JTextField txtNombre;
     private javax.swing.JTextField txtPais;
-    private javax.swing.JTextField txtUsuario;
     // End of variables declaration//GEN-END:variables
 }
