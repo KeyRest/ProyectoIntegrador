@@ -26,7 +26,6 @@ public class FRMUsuario extends javax.swing.JFrame {
         setVisible(true);
         ControladorFrameUsuario controladorFrameUsuario = new ControladorFrameUsuario(this);
         escuchar(controladorFrameUsuario);
-        this.panelBotones1.escuchar(controladorFrameUsuario);
         this.escucharTabla(controladorFrameUsuario);
     }
 
@@ -34,6 +33,7 @@ public class FRMUsuario extends javax.swing.JFrame {
         jmiSalir.addActionListener(controladorFrameUsuario);
         jmiRecetas.addActionListener(controladorFrameUsuario);
         jmiRegresar.addActionListener(controladorFrameUsuario);
+        this.panelBotones1.escuchar(controladorFrameUsuario);
         this.addMouseListener(controladorFrameUsuario);
     }
 
@@ -99,9 +99,17 @@ public class FRMUsuario extends javax.swing.JFrame {
     }
 
     public void setDatosTabla(String[][] datos, String[] etiquetas, String Titulo) {
+        DefaultTableModel model = (DefaultTableModel) tblReporte.getModel();
 
-        this.tblReporte.setModel(new DefaultTableModel(datos, etiquetas));
-        this.jScrollPane.setViewportView(this.tblReporte);
+        // Limpiar la tabla
+        model.setRowCount(0);
+        model.setColumnCount(0);
+
+        // Establecer los nuevos datos y etiquetas
+        model.setDataVector(datos, etiquetas);
+
+        // Actualizar la vista de la tabla
+        jScrollPane.setViewportView(tblReporte);
     }
 
     public void escucharTabla(MouseListener control) {

@@ -30,6 +30,9 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
 
     public ControladorFrameRecetas(FRMRecetas fRMRecetas) {
         this.fRMRecetas = fRMRecetas;
+        this.registroRecetas = new RegistroRecetas();
+        this.fRMRecetas.setDatosTabla(this.registroRecetas.getDatosTabla(), Recipes.ETIQUETAS_RECETA, "Reporte de Recetas");
+        this.receta = new Recipes();
     }
 
     @Override

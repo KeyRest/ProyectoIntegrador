@@ -31,6 +31,7 @@ public class RegistroUsuarios {
     private JSONObject baseJSONUsuario;
     private File archivo;
     private UsersJpaController usersJpaController;
+    private int lastId;
 
     public RegistroUsuarios() {
         this.listaUsuario = new ArrayList();
@@ -51,8 +52,11 @@ public class RegistroUsuarios {
             objJSONUsuario.put("correo", usuario.getEmail());
             objJSONUsuario.put("contrase\u00f1a", usuario.getPassword());
             arregloUsuarios.add(objJSONUsuario);
+            this.lastId = usuario.getId();
+
         }
         this.baseJSONUsuario.put("listaUsuarios", arregloUsuarios);
+        this.baseJSONUsuario.put("ultimoId", lastId);
         try {
             FileWriter escribir = new FileWriter(this.archivo);
             escribir.write(this.baseJSONUsuario.toJSONString());
@@ -80,8 +84,9 @@ public class RegistroUsuarios {
                 usuario.setEmail(objUsuario.get("correo").toString());
                 usuario.setPassword(objUsuario.get("contrase\u00f1a").toString());
                 this.listaUsuario.add(usuario);
-
             }
+            this.lastId = Integer.parseInt(this.baseJSONUsuario.get("ultimoId").toString()) + 1;
+
         } catch (FileNotFoundException ex) {
             System.err.println("Error al leer");
         } catch (IOException ex) {
@@ -98,7 +103,9 @@ public class RegistroUsuarios {
                 this.escribirJSON();
                 this.usersJpaController = new UsersJpaController();
                 this.usersJpaController.create(usuario);
+                this.leerJSON();
                 return "El usuario se ha agregado con exito";
+
             } else {
                 return "Error al registrar el usuario";
             }
@@ -112,10 +119,21 @@ public class RegistroUsuarios {
             this.usersJpaController = new UsersJpaController();
             this.usersJpaController.destroy(((Users) usuario).getId());
             this.escribirJSON();
+            this.leerJSON();
             return "El usuario ha sido eliminada";
         } else {
             return "Error al eliminar el usuario";
         }
+    }
+
+    public void modificar(Object user) throws NonexistentEntityException, Exception {
+        this.usersJpaController = new UsersJpaController();
+        this.usersJpaController.edit((Users) user);
+    }
+
+    public int size() {
+        this.usersJpaController = new UsersJpaController();
+        return this.usersJpaController.getUsersCount();
     }
 
     public Object buscar(String id) {
@@ -155,6 +173,10 @@ public class RegistroUsuarios {
             }
         }
         return matrizTabla;
+    }
+
+    public int getLastId() {
+        return lastId;
     }
 
 }

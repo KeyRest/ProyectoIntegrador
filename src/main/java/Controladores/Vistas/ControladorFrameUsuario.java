@@ -16,8 +16,10 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.JTable;
 
 /**
@@ -25,21 +27,21 @@ import javax.swing.JTable;
  * @author eddyi
  */
 public class ControladorFrameUsuario implements ActionListener, MouseListener {
-    
+
     private FRMUsuario frameUsuario;
     private FRMRecetas fRMRecetas;
     private FRMLogin fRMGlogin;
     private Users usuario;
     private RegistroUsuarios registroUsuarios;
     private FRMMenu fRMMenu;
-    
+
     public ControladorFrameUsuario(FRMUsuario frameUsuario) {
         this.frameUsuario = frameUsuario;
         this.registroUsuarios = new RegistroUsuarios();
         this.frameUsuario.setDatosTabla(this.registroUsuarios.getDatosTabla(), Users.ETIQUETAS_USUARIO, "Reporte de Usuarios");
         this.usuario = new Users();
     }
-    
+
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
@@ -68,10 +70,40 @@ public class ControladorFrameUsuario implements ActionListener, MouseListener {
                     this.registroUsuarios.escribirJSON();
                     this.frameUsuario.limpiar();
                     this.frameUsuario.setDatosTabla(this.registroUsuarios.getDatosTabla(), Users.ETIQUETAS_USUARIO, "Reporte de Usuarios");
+                    try {
+                        this.registroUsuarios.modificar(this.usuario);
+                    } catch (Exception ex) {
+                        Logger.getLogger(ControladorFrameUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
             }
-            case "Agregar" ->
-                System.out.println("Actualizando");
+            case "Agregar" -> {
+                this.usuario = (Users) this.registroUsuarios.buscar(this.frameUsuario.getTxtId());
+                if (usuario == null) {
+
+                    try {
+                        this.usuario = new Users();
+                        this.usuario.setId(this.registroUsuarios.getLastId());
+                        this.usuario.setName(this.frameUsuario.getTxtNombre());
+                        this.usuario.setLastName(this.frameUsuario.getTxtApellido());
+                        this.usuario.setCountry(this.frameUsuario.getTxtPais());
+                        this.usuario.setEmail(this.frameUsuario.getTxtCorreo());
+                        this.usuario.setPassword(this.frameUsuario.getTxtContraseña());
+                        this.registroUsuarios.escribirJSON();
+                        this.frameUsuario.limpiar();
+                        this.frameUsuario.setDatosTabla(this.registroUsuarios.getDatosTabla(), Users.ETIQUETAS_USUARIO, "Reporte de Usuarios");
+                        this.registroUsuarios.agregar(this.usuario);
+                        FRMUsuario.mensaje("Usuario creado con exito");
+                        this.frameUsuario.setDatosTabla(this.registroUsuarios.getDatosTabla(), Users.ETIQUETAS_USUARIO, "Reporte de Usuarios");
+
+                    } catch (Exception ex) {
+                        Logger.getLogger(ControladorFrameUsuario.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+                } else {
+                    JOptionPane.showMessageDialog(fRMMenu, "El usuario ya se encuentra creado");
+                }
+            }
+
             case "Eliminar" -> {
                 System.out.println("Eliminando");
                 try {
@@ -98,7 +130,7 @@ public class ControladorFrameUsuario implements ActionListener, MouseListener {
                 System.exit(0);
         }
     }
-    
+
     @Override
     public void mouseClicked(MouseEvent e) {
         if (e.getButton() == MouseEvent.BUTTON1 && frameUsuario.tblReporte.getSelectedRow() != -1) {
@@ -112,26 +144,34 @@ public class ControladorFrameUsuario implements ActionListener, MouseListener {
             this.frameUsuario.setTxtPais(vFila[3]);
             this.frameUsuario.setTxtCorreo(vFila[4]);
             this.frameUsuario.setTxtContraseña(vFila[5]);
-            
+
         }
-        
+
     }
-    
+
+    private Integer generateID() {
+        //Generador de num random que revise en la base de datos si ya existe
+        Random random = new Random();
+        int randomNumber = random.nextInt(90000) + 10000;
+
+        return randomNumber;
+    }
+
     @Override
     public void mousePressed(MouseEvent e) {
-        
+
     }
-    
+
     @Override
     public void mouseReleased(MouseEvent e) {
     }
-    
+
     @Override
     public void mouseEntered(MouseEvent e) {
     }
-    
+
     @Override
     public void mouseExited(MouseEvent e) {
     }
-    
+
 }

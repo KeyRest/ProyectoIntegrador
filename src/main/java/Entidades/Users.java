@@ -66,6 +66,7 @@ public class Users implements Serializable {
     public static final String[] ETIQUETAS_USUARIO = {"ID", "Nombre", "Apellido", "Pais", "Correo", "Contras\u00f1a"};
 
     public Users() {
+        this.profileId = new Profile(1, "aaa", "aaa");
     }
 
     public Users(Integer id) {
@@ -79,7 +80,7 @@ public class Users implements Serializable {
         this.country = country;
         this.email = email;
         this.password = password;
-        this.profileId = new Profile(1, "aaa", "aaa");
+        this.profileId = new Profile(1, "admin", "admin");
     }
 
     public String setDatosUsuario(int indice) {

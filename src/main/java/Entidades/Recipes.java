@@ -84,12 +84,7 @@ public class Recipes implements Serializable {
     @JoinColumn(name = "levels_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Levels levelsId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipes")
-    private Collection<UsersVoteRecipes> usersVoteRecipesCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipesId")
-    private Collection<Vistis> vistisCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipes")
-    private Collection<FeaturedRecipe> featuredRecipeCollection;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipes")
     private Collection<RecipesHasIngredients> recipesHasIngredientsCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipes")
@@ -232,33 +227,6 @@ public class Recipes implements Serializable {
 
     public void setLevelsId(Levels levelsId) {
         this.levelsId = levelsId;
-    }
-
-    @XmlTransient
-    public Collection<UsersVoteRecipes> getUsersVoteRecipesCollection() {
-        return usersVoteRecipesCollection;
-    }
-
-    public void setUsersVoteRecipesCollection(Collection<UsersVoteRecipes> usersVoteRecipesCollection) {
-        this.usersVoteRecipesCollection = usersVoteRecipesCollection;
-    }
-
-    @XmlTransient
-    public Collection<Vistis> getVistisCollection() {
-        return vistisCollection;
-    }
-
-    public void setVistisCollection(Collection<Vistis> vistisCollection) {
-        this.vistisCollection = vistisCollection;
-    }
-
-    @XmlTransient
-    public Collection<FeaturedRecipe> getFeaturedRecipeCollection() {
-        return featuredRecipeCollection;
-    }
-
-    public void setFeaturedRecipeCollection(Collection<FeaturedRecipe> featuredRecipeCollection) {
-        this.featuredRecipeCollection = featuredRecipeCollection;
     }
 
     @XmlTransient
