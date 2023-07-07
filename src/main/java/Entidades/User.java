@@ -94,11 +94,11 @@ public class User implements Serializable {
                 return String.valueOf(this.getId());
             case 1:
                 return this.getName();
-            case 3:
+            case 2:
                 return this.getCountry();
-            case 4:
+            case 3:
                 return this.getEmail();
-            case 5:
+            case 4:
                 return this.getPassword();
         }
         return null;
