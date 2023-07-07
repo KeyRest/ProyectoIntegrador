@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Recipes.findByPreparationInstructions", query = "SELECT r FROM Recipes r WHERE r.preparationInstructions = :preparationInstructions"),
     @NamedQuery(name = "Recipes.findByPortions", query = "SELECT r FROM Recipes r WHERE r.portions = :portions"),
     @NamedQuery(name = "Recipes.findByTotalTime", query = "SELECT r FROM Recipes r WHERE r.totalTime = :totalTime")})
-public class Recipe implements Serializable {
+public class Recipes implements Serializable {
 
     public static final String[] ETIQUETAS_RECETA = {"id", "nombre", "descripcion", "tiempo_coccion", "tiempo_total", "tiempo_preparacion", "instrucciones", "porciones"};
 
@@ -95,14 +95,14 @@ public class Recipe implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "recipes")
     private Collection<UsersSaveRecipes> usersSaveRecipesCollection;
 
-    public Recipe() {
+    public Recipes() {
     }
 
-    public Recipe(Integer id) {
+    public Recipes(Integer id) {
         this.id = id;
     }
 
-    public Recipe(Integer id, String name, String image, String description, float cookingTime, float totalTime, float preparationTime, String preparationInstructions, int portions) {
+    public Recipes(Integer id, String name, String image, String description, float cookingTime, float totalTime, float preparationTime, String preparationInstructions, int portions) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -289,10 +289,10 @@ public class Recipe implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Recipe)) {
+        if (!(object instanceof Recipes)) {
             return false;
         }
-        Recipe other = (Recipe) object;
+        Recipes other = (Recipes) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }

@@ -26,7 +26,7 @@ import Entidades.Occasions;
 import Entidades.UsersVoteRecipes;
 import Entidades.Vistis;
 import Entidades.FeaturedRecipe;
-import Entidades.Recipe;
+import Entidades.Recipes;
 import Entidades.RecipesHasIngredients;
 import Entidades.UsersSaveRecipes;
 import java.util.List;
@@ -47,7 +47,7 @@ public class RecipesJpaController implements Serializable {
         return emf.createEntityManager();
     }
 
-    public void create(Recipe recipes) {
+    public void create(Recipes recipes) {
         if (recipes.getCategoriesCollection() == null) {
             recipes.setCategoriesCollection(new ArrayList<Categories>());
         }
@@ -134,7 +134,7 @@ public class RecipesJpaController implements Serializable {
                 occasionsCollectionOccasions = em.merge(occasionsCollectionOccasions);
             }
             for (UsersVoteRecipes usersVoteRecipesCollectionUsersVoteRecipes : recipes.getUsersVoteRecipesCollection()) {
-                Recipe oldRecipesOfUsersVoteRecipesCollectionUsersVoteRecipes = usersVoteRecipesCollectionUsersVoteRecipes.getRecipes();
+                Recipes oldRecipesOfUsersVoteRecipesCollectionUsersVoteRecipes = usersVoteRecipesCollectionUsersVoteRecipes.getRecipes();
                 usersVoteRecipesCollectionUsersVoteRecipes.setRecipes(recipes);
                 usersVoteRecipesCollectionUsersVoteRecipes = em.merge(usersVoteRecipesCollectionUsersVoteRecipes);
                 if (oldRecipesOfUsersVoteRecipesCollectionUsersVoteRecipes != null) {
@@ -143,7 +143,7 @@ public class RecipesJpaController implements Serializable {
                 }
             }
             for (Vistis vistisCollectionVistis : recipes.getVistisCollection()) {
-                Recipe oldRecipesIdOfVistisCollectionVistis = vistisCollectionVistis.getRecipesId();
+                Recipes oldRecipesIdOfVistisCollectionVistis = vistisCollectionVistis.getRecipesId();
                 vistisCollectionVistis.setRecipesId(recipes);
                 vistisCollectionVistis = em.merge(vistisCollectionVistis);
                 if (oldRecipesIdOfVistisCollectionVistis != null) {
@@ -152,7 +152,7 @@ public class RecipesJpaController implements Serializable {
                 }
             }
             for (FeaturedRecipe featuredRecipeCollectionFeaturedRecipe : recipes.getFeaturedRecipeCollection()) {
-                Recipe oldRecipesOfFeaturedRecipeCollectionFeaturedRecipe = featuredRecipeCollectionFeaturedRecipe.getRecipes();
+                Recipes oldRecipesOfFeaturedRecipeCollectionFeaturedRecipe = featuredRecipeCollectionFeaturedRecipe.getRecipes();
                 featuredRecipeCollectionFeaturedRecipe.setRecipes(recipes);
                 featuredRecipeCollectionFeaturedRecipe = em.merge(featuredRecipeCollectionFeaturedRecipe);
                 if (oldRecipesOfFeaturedRecipeCollectionFeaturedRecipe != null) {
@@ -161,7 +161,7 @@ public class RecipesJpaController implements Serializable {
                 }
             }
             for (RecipesHasIngredients recipesHasIngredientsCollectionRecipesHasIngredients : recipes.getRecipesHasIngredientsCollection()) {
-                Recipe oldRecipesOfRecipesHasIngredientsCollectionRecipesHasIngredients = recipesHasIngredientsCollectionRecipesHasIngredients.getRecipes();
+                Recipes oldRecipesOfRecipesHasIngredientsCollectionRecipesHasIngredients = recipesHasIngredientsCollectionRecipesHasIngredients.getRecipes();
                 recipesHasIngredientsCollectionRecipesHasIngredients.setRecipes(recipes);
                 recipesHasIngredientsCollectionRecipesHasIngredients = em.merge(recipesHasIngredientsCollectionRecipesHasIngredients);
                 if (oldRecipesOfRecipesHasIngredientsCollectionRecipesHasIngredients != null) {
@@ -170,7 +170,7 @@ public class RecipesJpaController implements Serializable {
                 }
             }
             for (UsersSaveRecipes usersSaveRecipesCollectionUsersSaveRecipes : recipes.getUsersSaveRecipesCollection()) {
-                Recipe oldRecipesOfUsersSaveRecipesCollectionUsersSaveRecipes = usersSaveRecipesCollectionUsersSaveRecipes.getRecipes();
+                Recipes oldRecipesOfUsersSaveRecipesCollectionUsersSaveRecipes = usersSaveRecipesCollectionUsersSaveRecipes.getRecipes();
                 usersSaveRecipesCollectionUsersSaveRecipes.setRecipes(recipes);
                 usersSaveRecipesCollectionUsersSaveRecipes = em.merge(usersSaveRecipesCollectionUsersSaveRecipes);
                 if (oldRecipesOfUsersSaveRecipesCollectionUsersSaveRecipes != null) {
@@ -186,12 +186,12 @@ public class RecipesJpaController implements Serializable {
         }
     }
 
-    public void edit(Recipe recipes) throws IllegalOrphanException, NonexistentEntityException, Exception {
+    public void edit(Recipes recipes) throws IllegalOrphanException, NonexistentEntityException, Exception {
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Recipe persistentRecipes = em.find(Recipe.class, recipes.getId());
+            Recipes persistentRecipes = em.find(Recipes.class, recipes.getId());
             Levels levelsIdOld = persistentRecipes.getLevelsId();
             Levels levelsIdNew = recipes.getLevelsId();
             Collection<Categories> categoriesCollectionOld = persistentRecipes.getCategoriesCollection();
@@ -340,7 +340,7 @@ public class RecipesJpaController implements Serializable {
             }
             for (UsersVoteRecipes usersVoteRecipesCollectionNewUsersVoteRecipes : usersVoteRecipesCollectionNew) {
                 if (!usersVoteRecipesCollectionOld.contains(usersVoteRecipesCollectionNewUsersVoteRecipes)) {
-                    Recipe oldRecipesOfUsersVoteRecipesCollectionNewUsersVoteRecipes = usersVoteRecipesCollectionNewUsersVoteRecipes.getRecipes();
+                    Recipes oldRecipesOfUsersVoteRecipesCollectionNewUsersVoteRecipes = usersVoteRecipesCollectionNewUsersVoteRecipes.getRecipes();
                     usersVoteRecipesCollectionNewUsersVoteRecipes.setRecipes(recipes);
                     usersVoteRecipesCollectionNewUsersVoteRecipes = em.merge(usersVoteRecipesCollectionNewUsersVoteRecipes);
                     if (oldRecipesOfUsersVoteRecipesCollectionNewUsersVoteRecipes != null && !oldRecipesOfUsersVoteRecipesCollectionNewUsersVoteRecipes.equals(recipes)) {
@@ -351,7 +351,7 @@ public class RecipesJpaController implements Serializable {
             }
             for (Vistis vistisCollectionNewVistis : vistisCollectionNew) {
                 if (!vistisCollectionOld.contains(vistisCollectionNewVistis)) {
-                    Recipe oldRecipesIdOfVistisCollectionNewVistis = vistisCollectionNewVistis.getRecipesId();
+                    Recipes oldRecipesIdOfVistisCollectionNewVistis = vistisCollectionNewVistis.getRecipesId();
                     vistisCollectionNewVistis.setRecipesId(recipes);
                     vistisCollectionNewVistis = em.merge(vistisCollectionNewVistis);
                     if (oldRecipesIdOfVistisCollectionNewVistis != null && !oldRecipesIdOfVistisCollectionNewVistis.equals(recipes)) {
@@ -362,7 +362,7 @@ public class RecipesJpaController implements Serializable {
             }
             for (FeaturedRecipe featuredRecipeCollectionNewFeaturedRecipe : featuredRecipeCollectionNew) {
                 if (!featuredRecipeCollectionOld.contains(featuredRecipeCollectionNewFeaturedRecipe)) {
-                    Recipe oldRecipesOfFeaturedRecipeCollectionNewFeaturedRecipe = featuredRecipeCollectionNewFeaturedRecipe.getRecipes();
+                    Recipes oldRecipesOfFeaturedRecipeCollectionNewFeaturedRecipe = featuredRecipeCollectionNewFeaturedRecipe.getRecipes();
                     featuredRecipeCollectionNewFeaturedRecipe.setRecipes(recipes);
                     featuredRecipeCollectionNewFeaturedRecipe = em.merge(featuredRecipeCollectionNewFeaturedRecipe);
                     if (oldRecipesOfFeaturedRecipeCollectionNewFeaturedRecipe != null && !oldRecipesOfFeaturedRecipeCollectionNewFeaturedRecipe.equals(recipes)) {
@@ -373,7 +373,7 @@ public class RecipesJpaController implements Serializable {
             }
             for (RecipesHasIngredients recipesHasIngredientsCollectionNewRecipesHasIngredients : recipesHasIngredientsCollectionNew) {
                 if (!recipesHasIngredientsCollectionOld.contains(recipesHasIngredientsCollectionNewRecipesHasIngredients)) {
-                    Recipe oldRecipesOfRecipesHasIngredientsCollectionNewRecipesHasIngredients = recipesHasIngredientsCollectionNewRecipesHasIngredients.getRecipes();
+                    Recipes oldRecipesOfRecipesHasIngredientsCollectionNewRecipesHasIngredients = recipesHasIngredientsCollectionNewRecipesHasIngredients.getRecipes();
                     recipesHasIngredientsCollectionNewRecipesHasIngredients.setRecipes(recipes);
                     recipesHasIngredientsCollectionNewRecipesHasIngredients = em.merge(recipesHasIngredientsCollectionNewRecipesHasIngredients);
                     if (oldRecipesOfRecipesHasIngredientsCollectionNewRecipesHasIngredients != null && !oldRecipesOfRecipesHasIngredientsCollectionNewRecipesHasIngredients.equals(recipes)) {
@@ -384,7 +384,7 @@ public class RecipesJpaController implements Serializable {
             }
             for (UsersSaveRecipes usersSaveRecipesCollectionNewUsersSaveRecipes : usersSaveRecipesCollectionNew) {
                 if (!usersSaveRecipesCollectionOld.contains(usersSaveRecipesCollectionNewUsersSaveRecipes)) {
-                    Recipe oldRecipesOfUsersSaveRecipesCollectionNewUsersSaveRecipes = usersSaveRecipesCollectionNewUsersSaveRecipes.getRecipes();
+                    Recipes oldRecipesOfUsersSaveRecipesCollectionNewUsersSaveRecipes = usersSaveRecipesCollectionNewUsersSaveRecipes.getRecipes();
                     usersSaveRecipesCollectionNewUsersSaveRecipes.setRecipes(recipes);
                     usersSaveRecipesCollectionNewUsersSaveRecipes = em.merge(usersSaveRecipesCollectionNewUsersSaveRecipes);
                     if (oldRecipesOfUsersSaveRecipesCollectionNewUsersSaveRecipes != null && !oldRecipesOfUsersSaveRecipesCollectionNewUsersSaveRecipes.equals(recipes)) {
@@ -415,9 +415,9 @@ public class RecipesJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Recipe recipes;
+            Recipes recipes;
             try {
-                recipes = em.getReference(Recipe.class, id);
+                recipes = em.getReference(Recipes.class, id);
                 recipes.getId();
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The recipes with id " + id + " no longer exists.", enfe);
@@ -485,19 +485,19 @@ public class RecipesJpaController implements Serializable {
         }
     }
 
-    public List<Recipe> findRecipesEntities() {
+    public List<Recipes> findRecipesEntities() {
         return findRecipesEntities(true, -1, -1);
     }
 
-    public List<Recipe> findRecipesEntities(int maxResults, int firstResult) {
+    public List<Recipes> findRecipesEntities(int maxResults, int firstResult) {
         return findRecipesEntities(false, maxResults, firstResult);
     }
 
-    private List<Recipe> findRecipesEntities(boolean all, int maxResults, int firstResult) {
+    private List<Recipes> findRecipesEntities(boolean all, int maxResults, int firstResult) {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            cq.select(cq.from(Recipe.class));
+            cq.select(cq.from(Recipes.class));
             Query q = em.createQuery(cq);
             if (!all) {
                 q.setMaxResults(maxResults);
@@ -509,10 +509,10 @@ public class RecipesJpaController implements Serializable {
         }
     }
 
-    public Recipe findRecipes(Integer id) {
+    public Recipes findRecipes(Integer id) {
         EntityManager em = getEntityManager();
         try {
-            return em.find(Recipe.class, id);
+            return em.find(Recipes.class, id);
         } finally {
             em.close();
         }
@@ -522,7 +522,7 @@ public class RecipesJpaController implements Serializable {
         EntityManager em = getEntityManager();
         try {
             CriteriaQuery cq = em.getCriteriaBuilder().createQuery();
-            Root<Recipe> rt = cq.from(Recipe.class);
+            Root<Recipes> rt = cq.from(Recipes.class);
             cq.select(em.getCriteriaBuilder().count(rt));
             Query q = em.createQuery(cq);
             return ((Long) q.getSingleResult()).intValue();

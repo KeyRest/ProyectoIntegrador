@@ -2,13 +2,12 @@
 *Keiron Garro M
 *C23212
 *UCR
-*/
+ */
 
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package Controladores.DB;
 
 import Controladores.DB.exceptions.IllegalOrphanException;
@@ -19,20 +18,19 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import Entidades.User;
+import Entidades.Users;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-
-
-
+import javax.persistence.Persistence;
 
 public class ProfileJpaController implements Serializable {
 
-    public ProfileJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
+    public ProfileJpaController() {
+        this.emf = Persistence.createEntityManagerFactory("ProyectoIntegrador_jar_1.0");
+
     }
     private EntityManagerFactory emf = null;
 
@@ -42,20 +40,20 @@ public class ProfileJpaController implements Serializable {
 
     public void create(Profile profile) {
         if (profile.getUsersCollection() == null) {
-            profile.setUsersCollection(new ArrayList<User>());
+            profile.setUsersCollection(new ArrayList<Users>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Collection<User> attachedUsersCollection = new ArrayList<User>();
-            for (User usersCollectionUsersToAttach : profile.getUsersCollection()) {
+            Collection<Users> attachedUsersCollection = new ArrayList<Users>();
+            for (Users usersCollectionUsersToAttach : profile.getUsersCollection()) {
                 usersCollectionUsersToAttach = em.getReference(usersCollectionUsersToAttach.getClass(), usersCollectionUsersToAttach.getId());
                 attachedUsersCollection.add(usersCollectionUsersToAttach);
             }
             profile.setUsersCollection(attachedUsersCollection);
             em.persist(profile);
-            for (User usersCollectionUsers : profile.getUsersCollection()) {
+            for (Users usersCollectionUsers : profile.getUsersCollection()) {
                 Profile oldProfileIdOfUsersCollectionUsers = usersCollectionUsers.getProfileId();
                 usersCollectionUsers.setProfileId(profile);
                 usersCollectionUsers = em.merge(usersCollectionUsers);
@@ -78,10 +76,10 @@ public class ProfileJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Profile persistentProfile = em.find(Profile.class, profile.getId());
-            Collection<User> usersCollectionOld = persistentProfile.getUsersCollection();
-            Collection<User> usersCollectionNew = profile.getUsersCollection();
+            Collection<Users> usersCollectionOld = persistentProfile.getUsersCollection();
+            Collection<Users> usersCollectionNew = profile.getUsersCollection();
             List<String> illegalOrphanMessages = null;
-            for (User usersCollectionOldUsers : usersCollectionOld) {
+            for (Users usersCollectionOldUsers : usersCollectionOld) {
                 if (!usersCollectionNew.contains(usersCollectionOldUsers)) {
                     if (illegalOrphanMessages == null) {
                         illegalOrphanMessages = new ArrayList<String>();
@@ -92,15 +90,15 @@ public class ProfileJpaController implements Serializable {
             if (illegalOrphanMessages != null) {
                 throw new IllegalOrphanException(illegalOrphanMessages);
             }
-            Collection<User> attachedUsersCollectionNew = new ArrayList<User>();
-            for (User usersCollectionNewUsersToAttach : usersCollectionNew) {
+            Collection<Users> attachedUsersCollectionNew = new ArrayList<Users>();
+            for (Users usersCollectionNewUsersToAttach : usersCollectionNew) {
                 usersCollectionNewUsersToAttach = em.getReference(usersCollectionNewUsersToAttach.getClass(), usersCollectionNewUsersToAttach.getId());
                 attachedUsersCollectionNew.add(usersCollectionNewUsersToAttach);
             }
             usersCollectionNew = attachedUsersCollectionNew;
             profile.setUsersCollection(usersCollectionNew);
             profile = em.merge(profile);
-            for (User usersCollectionNewUsers : usersCollectionNew) {
+            for (Users usersCollectionNewUsers : usersCollectionNew) {
                 if (!usersCollectionOld.contains(usersCollectionNewUsers)) {
                     Profile oldProfileIdOfUsersCollectionNewUsers = usersCollectionNewUsers.getProfileId();
                     usersCollectionNewUsers.setProfileId(profile);
@@ -141,8 +139,8 @@ public class ProfileJpaController implements Serializable {
                 throw new NonexistentEntityException("The profile with id " + id + " no longer exists.", enfe);
             }
             List<String> illegalOrphanMessages = null;
-            Collection<User> usersCollectionOrphanCheck = profile.getUsersCollection();
-            for (User usersCollectionOrphanCheckUsers : usersCollectionOrphanCheck) {
+            Collection<Users> usersCollectionOrphanCheck = profile.getUsersCollection();
+            for (Users usersCollectionOrphanCheckUsers : usersCollectionOrphanCheck) {
                 if (illegalOrphanMessages == null) {
                     illegalOrphanMessages = new ArrayList<String>();
                 }

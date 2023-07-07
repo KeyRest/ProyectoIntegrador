@@ -18,8 +18,8 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import Entidades.Recipe;
-import Entidades.User;
+import Entidades.Recipes;
+import Entidades.Users;
 import Entidades.UsersSaveRecipes;
 import Entidades.UsersSaveRecipesPK;
 import java.util.List;
@@ -50,12 +50,12 @@ public class UsersSaveRecipesJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Recipe recipes = usersSaveRecipes.getRecipes();
+            Recipes recipes = usersSaveRecipes.getRecipes();
             if (recipes != null) {
                 recipes = em.getReference(recipes.getClass(), recipes.getId());
                 usersSaveRecipes.setRecipes(recipes);
             }
-            User users = usersSaveRecipes.getUsers();
+            Users users = usersSaveRecipes.getUsers();
             if (users != null) {
                 users = em.getReference(users.getClass(), users.getId());
                 usersSaveRecipes.setUsers(users);
@@ -65,10 +65,7 @@ public class UsersSaveRecipesJpaController implements Serializable {
                 recipes.getUsersSaveRecipesCollection().add(usersSaveRecipes);
                 recipes = em.merge(recipes);
             }
-            if (users != null) {
-                users.getUsersSaveRecipesCollection().add(usersSaveRecipes);
-                users = em.merge(users);
-            }
+            
             em.getTransaction().commit();
         } catch (Exception ex) {
             if (findUsersSaveRecipes(usersSaveRecipes.getUsersSaveRecipesPK()) != null) {
@@ -90,10 +87,10 @@ public class UsersSaveRecipesJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             UsersSaveRecipes persistentUsersSaveRecipes = em.find(UsersSaveRecipes.class, usersSaveRecipes.getUsersSaveRecipesPK());
-            Recipe recipesOld = persistentUsersSaveRecipes.getRecipes();
-            Recipe recipesNew = usersSaveRecipes.getRecipes();
-            User usersOld = persistentUsersSaveRecipes.getUsers();
-            User usersNew = usersSaveRecipes.getUsers();
+            Recipes recipesOld = persistentUsersSaveRecipes.getRecipes();
+            Recipes recipesNew = usersSaveRecipes.getRecipes();
+            Users usersOld = persistentUsersSaveRecipes.getUsers();
+            Users usersNew = usersSaveRecipes.getUsers();
             if (recipesNew != null) {
                 recipesNew = em.getReference(recipesNew.getClass(), recipesNew.getId());
                 usersSaveRecipes.setRecipes(recipesNew);
@@ -111,14 +108,7 @@ public class UsersSaveRecipesJpaController implements Serializable {
                 recipesNew.getUsersSaveRecipesCollection().add(usersSaveRecipes);
                 recipesNew = em.merge(recipesNew);
             }
-            if (usersOld != null && !usersOld.equals(usersNew)) {
-                usersOld.getUsersSaveRecipesCollection().remove(usersSaveRecipes);
-                usersOld = em.merge(usersOld);
-            }
-            if (usersNew != null && !usersNew.equals(usersOld)) {
-                usersNew.getUsersSaveRecipesCollection().add(usersSaveRecipes);
-                usersNew = em.merge(usersNew);
-            }
+            
             em.getTransaction().commit();
         } catch (Exception ex) {
             String msg = ex.getLocalizedMessage();
@@ -148,16 +138,13 @@ public class UsersSaveRecipesJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The usersSaveRecipes with id " + id + " no longer exists.", enfe);
             }
-            Recipe recipes = usersSaveRecipes.getRecipes();
+            Recipes recipes = usersSaveRecipes.getRecipes();
             if (recipes != null) {
                 recipes.getUsersSaveRecipesCollection().remove(usersSaveRecipes);
                 recipes = em.merge(recipes);
             }
-            User users = usersSaveRecipes.getUsers();
-            if (users != null) {
-                users.getUsersSaveRecipesCollection().remove(usersSaveRecipes);
-                users = em.merge(users);
-            }
+            Users users = usersSaveRecipes.getUsers();
+            
             em.remove(usersSaveRecipes);
             em.getTransaction().commit();
         } finally {

@@ -49,7 +49,7 @@ public class Levels implements Serializable {
     @Column(name = "level")
     private String level;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "levelsId")
-    private Collection<Recipe> recipesCollection;
+    private Collection<Recipes> recipesCollection;
 
     public Levels() {
     }
@@ -80,11 +80,11 @@ public class Levels implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Recipe> getRecipesCollection() {
+    public Collection<Recipes> getRecipesCollection() {
         return recipesCollection;
     }
 
-    public void setRecipesCollection(Collection<Recipe> recipesCollection) {
+    public void setRecipesCollection(Collection<Recipes> recipesCollection) {
         this.recipesCollection = recipesCollection;
     }
 

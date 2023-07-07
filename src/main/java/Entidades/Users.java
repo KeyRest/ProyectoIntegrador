@@ -10,10 +10,9 @@
  */
 package Entidades;
 
+import Controladores.DB.ProfileJpaController;
 import java.io.Serializable;
-import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -23,10 +22,8 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 @Entity
 @Table(name = "users")
@@ -39,9 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Users.findByCountry", query = "SELECT u FROM Users u WHERE u.country = :country"),
     @NamedQuery(name = "Users.findByEmail", query = "SELECT u FROM Users u WHERE u.email = :email"),
     @NamedQuery(name = "Users.findByPassword", query = "SELECT u FROM Users u WHERE u.password = :password")})
-public class User implements Serializable {
-
-    public static final String[] ETIQUETAS_USUARIO = {"ID", "Nombre", "Pais", "Correo", "Contras\u00f1a"};
+public class Users implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -64,28 +59,27 @@ public class User implements Serializable {
     @Basic(optional = false)
     @Column(name = "password")
     private String password;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
-    private Collection<UsersVoteRecipes> usersVoteRecipesCollection;
     @JoinColumn(name = "profile_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private Profile profileId;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "users")
-    private Collection<UsersSaveRecipes> usersSaveRecipesCollection;
 
-    public User() {
+    public static final String[] ETIQUETAS_USUARIO = {"ID", "Nombre", "Pais", "Correo", "Contras\u00f1a"};
+
+    public Users() {
     }
 
-    public User(Integer id) {
+    public Users(Integer id) {
         this.id = id;
     }
 
-    public User(Integer id, String name, String lastName, String country, String email, String password) {
+    public Users(Integer id, String name, String lastName, String country, String email, String password) {
         this.id = id;
         this.name = name;
         this.lastName = lastName;
         this.country = country;
         this.email = email;
         this.password = password;
+        this.profileId = new Profile(1, "aaa", "aaa");
     }
 
     public String setDatosUsuario(int indice) {
@@ -152,30 +146,12 @@ public class User implements Serializable {
         this.password = password;
     }
 
-    @XmlTransient
-    public Collection<UsersVoteRecipes> getUsersVoteRecipesCollection() {
-        return usersVoteRecipesCollection;
-    }
-
-    public void setUsersVoteRecipesCollection(Collection<UsersVoteRecipes> usersVoteRecipesCollection) {
-        this.usersVoteRecipesCollection = usersVoteRecipesCollection;
-    }
-
     public Profile getProfileId() {
         return profileId;
     }
 
     public void setProfileId(Profile profileId) {
         this.profileId = profileId;
-    }
-
-    @XmlTransient
-    public Collection<UsersSaveRecipes> getUsersSaveRecipesCollection() {
-        return usersSaveRecipesCollection;
-    }
-
-    public void setUsersSaveRecipesCollection(Collection<UsersSaveRecipes> usersSaveRecipesCollection) {
-        this.usersSaveRecipesCollection = usersSaveRecipesCollection;
     }
 
     @Override
@@ -188,10 +164,10 @@ public class User implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof User)) {
+        if (!(object instanceof Users)) {
             return false;
         }
-        User other = (User) object;
+        Users other = (Users) object;
         if ((this.id == null && other.id != null) || (this.id != null && !this.id.equals(other.id))) {
             return false;
         }
@@ -200,7 +176,7 @@ public class User implements Serializable {
 
     @Override
     public String toString() {
-        return "Models.DB.Users[ id=" + id + " ]";
+        return "Entidades.Users[ id=" + id + " ]";
     }
 
 }

@@ -20,7 +20,7 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import Entidades.Recipe;
+import Entidades.Recipes;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -48,7 +48,7 @@ public class FeaturedRecipeJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Recipe recipes = featuredRecipe.getRecipes();
+            Recipes recipes = featuredRecipe.getRecipes();
             if (recipes != null) {
                 recipes = em.getReference(recipes.getClass(), recipes.getId());
                 featuredRecipe.setRecipes(recipes);
@@ -78,8 +78,8 @@ public class FeaturedRecipeJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             FeaturedRecipe persistentFeaturedRecipe = em.find(FeaturedRecipe.class, featuredRecipe.getFeaturedRecipePK());
-            Recipe recipesOld = persistentFeaturedRecipe.getRecipes();
-            Recipe recipesNew = featuredRecipe.getRecipes();
+            Recipes recipesOld = persistentFeaturedRecipe.getRecipes();
+            Recipes recipesNew = featuredRecipe.getRecipes();
             if (recipesNew != null) {
                 recipesNew = em.getReference(recipesNew.getClass(), recipesNew.getId());
                 featuredRecipe.setRecipes(recipesNew);
@@ -122,7 +122,7 @@ public class FeaturedRecipeJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The featuredRecipe with id " + id + " no longer exists.", enfe);
             }
-            Recipe recipes = featuredRecipe.getRecipes();
+            Recipes recipes = featuredRecipe.getRecipes();
             if (recipes != null) {
                 recipes.getFeaturedRecipeCollection().remove(featuredRecipe);
                 recipes = em.merge(recipes);

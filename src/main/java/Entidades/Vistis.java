@@ -55,7 +55,7 @@ public class Vistis implements Serializable {
     private Integer usersId1;
     @JoinColumn(name = "recipes_id", referencedColumnName = "id")
     @ManyToOne(optional = false)
-    private Recipe recipesId;
+    private Recipes recipesId;
 
     public Vistis() {
     }
@@ -93,11 +93,11 @@ public class Vistis implements Serializable {
         this.usersId1 = usersId1;
     }
 
-    public Recipe getRecipesId() {
+    public Recipes getRecipesId() {
         return recipesId;
     }
 
-    public void setRecipesId(Recipe recipesId) {
+    public void setRecipesId(Recipes recipesId) {
         this.recipesId = recipesId;
     }
 

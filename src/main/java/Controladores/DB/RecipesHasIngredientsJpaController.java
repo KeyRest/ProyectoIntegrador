@@ -20,7 +20,7 @@ import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
 import Entidades.Ingredients;
 import Entidades.MeasurementUnits;
-import Entidades.Recipe;
+import Entidades.Recipes;
 import Entidades.RecipesHasIngredients;
 import Entidades.RecipesHasIngredientsPK;
 import java.util.List;
@@ -62,7 +62,7 @@ public class RecipesHasIngredientsJpaController implements Serializable {
                 measurementUnits = em.getReference(measurementUnits.getClass(), measurementUnits.getId());
                 recipesHasIngredients.setMeasurementUnits(measurementUnits);
             }
-            Recipe recipes = recipesHasIngredients.getRecipes();
+            Recipes recipes = recipesHasIngredients.getRecipes();
             if (recipes != null) {
                 recipes = em.getReference(recipes.getClass(), recipes.getId());
                 recipesHasIngredients.setRecipes(recipes);
@@ -106,8 +106,8 @@ public class RecipesHasIngredientsJpaController implements Serializable {
             Ingredients ingredientsNew = recipesHasIngredients.getIngredients();
             MeasurementUnits measurementUnitsOld = persistentRecipesHasIngredients.getMeasurementUnits();
             MeasurementUnits measurementUnitsNew = recipesHasIngredients.getMeasurementUnits();
-            Recipe recipesOld = persistentRecipesHasIngredients.getRecipes();
-            Recipe recipesNew = recipesHasIngredients.getRecipes();
+            Recipes recipesOld = persistentRecipesHasIngredients.getRecipes();
+            Recipes recipesNew = recipesHasIngredients.getRecipes();
             if (ingredientsNew != null) {
                 ingredientsNew = em.getReference(ingredientsNew.getClass(), ingredientsNew.getId());
                 recipesHasIngredients.setIngredients(ingredientsNew);
@@ -184,7 +184,7 @@ public class RecipesHasIngredientsJpaController implements Serializable {
                 measurementUnits.getRecipesHasIngredientsCollection().remove(recipesHasIngredients);
                 measurementUnits = em.merge(measurementUnits);
             }
-            Recipe recipes = recipesHasIngredients.getRecipes();
+            Recipes recipes = recipesHasIngredients.getRecipes();
             if (recipes != null) {
                 recipes.getRecipesHasIngredientsCollection().remove(recipesHasIngredients);
                 recipes = em.merge(recipes);

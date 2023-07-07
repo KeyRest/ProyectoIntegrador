@@ -18,7 +18,7 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import Entidades.Recipe;
+import Entidades.Recipes;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -41,20 +41,20 @@ public class OccasionsJpaController implements Serializable {
 
     public void create(Occasions occasions) {
         if (occasions.getRecipesCollection() == null) {
-            occasions.setRecipesCollection(new ArrayList<Recipe>());
+            occasions.setRecipesCollection(new ArrayList<Recipes>());
         }
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Collection<Recipe> attachedRecipesCollection = new ArrayList<Recipe>();
-            for (Recipe recipesCollectionRecipesToAttach : occasions.getRecipesCollection()) {
+            Collection<Recipes> attachedRecipesCollection = new ArrayList<Recipes>();
+            for (Recipes recipesCollectionRecipesToAttach : occasions.getRecipesCollection()) {
                 recipesCollectionRecipesToAttach = em.getReference(recipesCollectionRecipesToAttach.getClass(), recipesCollectionRecipesToAttach.getId());
                 attachedRecipesCollection.add(recipesCollectionRecipesToAttach);
             }
             occasions.setRecipesCollection(attachedRecipesCollection);
             em.persist(occasions);
-            for (Recipe recipesCollectionRecipes : occasions.getRecipesCollection()) {
+            for (Recipes recipesCollectionRecipes : occasions.getRecipesCollection()) {
                 recipesCollectionRecipes.getOccasionsCollection().add(occasions);
                 recipesCollectionRecipes = em.merge(recipesCollectionRecipes);
             }
@@ -72,23 +72,23 @@ public class OccasionsJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Occasions persistentOccasions = em.find(Occasions.class, occasions.getId());
-            Collection<Recipe> recipesCollectionOld = persistentOccasions.getRecipesCollection();
-            Collection<Recipe> recipesCollectionNew = occasions.getRecipesCollection();
-            Collection<Recipe> attachedRecipesCollectionNew = new ArrayList<Recipe>();
-            for (Recipe recipesCollectionNewRecipesToAttach : recipesCollectionNew) {
+            Collection<Recipes> recipesCollectionOld = persistentOccasions.getRecipesCollection();
+            Collection<Recipes> recipesCollectionNew = occasions.getRecipesCollection();
+            Collection<Recipes> attachedRecipesCollectionNew = new ArrayList<Recipes>();
+            for (Recipes recipesCollectionNewRecipesToAttach : recipesCollectionNew) {
                 recipesCollectionNewRecipesToAttach = em.getReference(recipesCollectionNewRecipesToAttach.getClass(), recipesCollectionNewRecipesToAttach.getId());
                 attachedRecipesCollectionNew.add(recipesCollectionNewRecipesToAttach);
             }
             recipesCollectionNew = attachedRecipesCollectionNew;
             occasions.setRecipesCollection(recipesCollectionNew);
             occasions = em.merge(occasions);
-            for (Recipe recipesCollectionOldRecipes : recipesCollectionOld) {
+            for (Recipes recipesCollectionOldRecipes : recipesCollectionOld) {
                 if (!recipesCollectionNew.contains(recipesCollectionOldRecipes)) {
                     recipesCollectionOldRecipes.getOccasionsCollection().remove(occasions);
                     recipesCollectionOldRecipes = em.merge(recipesCollectionOldRecipes);
                 }
             }
-            for (Recipe recipesCollectionNewRecipes : recipesCollectionNew) {
+            for (Recipes recipesCollectionNewRecipes : recipesCollectionNew) {
                 if (!recipesCollectionOld.contains(recipesCollectionNewRecipes)) {
                     recipesCollectionNewRecipes.getOccasionsCollection().add(occasions);
                     recipesCollectionNewRecipes = em.merge(recipesCollectionNewRecipes);
@@ -123,8 +123,8 @@ public class OccasionsJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The occasions with id " + id + " no longer exists.", enfe);
             }
-            Collection<Recipe> recipesCollection = occasions.getRecipesCollection();
-            for (Recipe recipesCollectionRecipes : recipesCollection) {
+            Collection<Recipes> recipesCollection = occasions.getRecipesCollection();
+            for (Recipes recipesCollectionRecipes : recipesCollection) {
                 recipesCollectionRecipes.getOccasionsCollection().remove(occasions);
                 recipesCollectionRecipes = em.merge(recipesCollectionRecipes);
             }

@@ -46,10 +46,10 @@ public class UsersSaveRecipes implements Serializable {
     private Date date;
     @JoinColumn(name = "recipes_id", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Recipe recipes;
+    private Recipes recipes;
     @JoinColumn(name = "users_id", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private User users;
+    private Users users;
 
     public UsersSaveRecipes() {
     }
@@ -78,19 +78,19 @@ public class UsersSaveRecipes implements Serializable {
         this.date = date;
     }
 
-    public Recipe getRecipes() {
+    public Recipes getRecipes() {
         return recipes;
     }
 
-    public void setRecipes(Recipe recipes) {
+    public void setRecipes(Recipes recipes) {
         this.recipes = recipes;
     }
 
-    public User getUsers() {
+    public Users getUsers() {
         return users;
     }
 
-    public void setUsers(User users) {
+    public void setUsers(Users users) {
         this.users = users;
     }
 

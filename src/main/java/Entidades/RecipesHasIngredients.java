@@ -51,7 +51,7 @@ public class RecipesHasIngredients implements Serializable {
     private MeasurementUnits measurementUnits;
     @JoinColumn(name = "recipes_id", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Recipe recipes;
+    private Recipes recipes;
 
     public RecipesHasIngredients() {
     }
@@ -101,11 +101,11 @@ public class RecipesHasIngredients implements Serializable {
         this.measurementUnits = measurementUnits;
     }
 
-    public Recipe getRecipes() {
+    public Recipes getRecipes() {
         return recipes;
     }
 
-    public void setRecipes(Recipe recipes) {
+    public void setRecipes(Recipes recipes) {
         this.recipes = recipes;
     }
 

@@ -5,7 +5,7 @@
 package Controladores.Vistas;
 
 import Entidades.RegistroUsuarios;
-import Entidades.User;
+import Entidades.Users;
 import Vista.FRMLogin;
 import Vista.FRMRegistro;
 import java.awt.event.ActionEvent;
@@ -20,7 +20,7 @@ public class ControladorGRegistro implements ActionListener {
 
     private FRMLogin fRMGlogin;
     private FRMRegistro gRegistro;
-    private User usuario;
+    private Users usuario;
     private RegistroUsuarios registroUsuarios;
 
     public ControladorGRegistro(FRMRegistro gRegistro) {
@@ -50,7 +50,7 @@ public class ControladorGRegistro implements ActionListener {
                 } else if (this.gRegistro.getJText_Password().equalsIgnoreCase("")) {
                     FRMRegistro.mensaje("Debe ingresar la Contrase\u00f1a");
                 } else {
-                    FRMRegistro.mensaje(this.registroUsuarios.agregar(new User(generateID(), this.gRegistro.getJText_Name(), this.gRegistro.getJText_LastName(), this.gRegistro.getJText_Country(), this.gRegistro.getJText_Email(), this.gRegistro.getJText_Password())));
+                    FRMRegistro.mensaje(this.registroUsuarios.agregar(new Users(5, this.gRegistro.getJText_Name(), this.gRegistro.getJText_LastName(), this.gRegistro.getJText_Country(), this.gRegistro.getJText_Email(), this.gRegistro.getJText_Password())));
                     this.gRegistro.limpiar();
                 }
 
@@ -63,7 +63,7 @@ public class ControladorGRegistro implements ActionListener {
         //Generador de num random que revise en la base de datos si ya existe
         Random random = new Random();
         int randomNumber = random.nextInt(90000) + 10000;
-        
+
         return randomNumber;
     }
 

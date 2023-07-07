@@ -5,7 +5,7 @@
 package Controladores.Vistas;
 
 import Entidades.RegistroUsuarios;
-import Entidades.User;
+import Entidades.Users;
 import Vista.FRMLogin;
 import Vista.FRMMenu;
 import Vista.FRMRecetas;
@@ -25,14 +25,14 @@ public class ControladorFrameUsuario implements ActionListener, MouseListener {
     private FRMUsuario frameUsuario;
     private FRMRecetas fRMRecetas;
     private FRMLogin fRMGlogin;
-    private User usuario;
+    private Users usuario;
     private RegistroUsuarios registroUsuarios;
     private FRMMenu fRMMenu;
 
     public ControladorFrameUsuario(FRMUsuario frameUsuario) {
         this.frameUsuario = frameUsuario;
         this.registroUsuarios = new RegistroUsuarios();
-        this.frameUsuario.setDatosTabla(this.registroUsuarios.getDatosTabla(), User.ETIQUETAS_USUARIO, "Reporte de Usuarios");
+        this.frameUsuario.setDatosTabla(this.registroUsuarios.getDatosTabla(), Users.ETIQUETAS_USUARIO, "Reporte de Usuarios");
     }
 
     @Override
@@ -40,7 +40,7 @@ public class ControladorFrameUsuario implements ActionListener, MouseListener {
         switch (e.getActionCommand()) {
             case "Buscar" -> {
                 System.out.println("Buscando");
-                this.usuario = (User) this.registroUsuarios.buscar(this.frameUsuario.getTxtId());
+                this.usuario = (Users) this.registroUsuarios.buscar(this.frameUsuario.getTxtId());
                 if (this.usuario != null) {
                     this.frameUsuario.setTxtNombre(this.usuario.getName());
                     this.frameUsuario.setTxtApellido(this.usuario.getLastName());
@@ -62,7 +62,7 @@ public class ControladorFrameUsuario implements ActionListener, MouseListener {
                     this.usuario.setPassword(this.frameUsuario.getTxtContraseña());
                     this.registroUsuarios.escribirJSON();
                     this.frameUsuario.limpiar();
-                    this.frameUsuario.setDatosTabla(this.registroUsuarios.getDatosTabla(), User.ETIQUETAS_USUARIO, "Reporte de Usuarios");
+                    this.frameUsuario.setDatosTabla(this.registroUsuarios.getDatosTabla(), Users.ETIQUETAS_USUARIO, "Reporte de Usuarios");
                 }
             }
             case "Agregar" ->
@@ -71,7 +71,7 @@ public class ControladorFrameUsuario implements ActionListener, MouseListener {
                 System.out.println("Eliminando");
                 FRMUsuario.mensaje(this.registroUsuarios.eliminar(this.usuario));
                 this.frameUsuario.limpiar();
-                this.frameUsuario.setDatosTabla(this.registroUsuarios.getDatosTabla(), User.ETIQUETAS_USUARIO, "Reporte de Usuarios");
+                this.frameUsuario.setDatosTabla(this.registroUsuarios.getDatosTabla(), Users.ETIQUETAS_USUARIO, "Reporte de Usuarios");
             }
             case "Administrar Recetas" -> {
                 System.out.println("AdmiRecetas");

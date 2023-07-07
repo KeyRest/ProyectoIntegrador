@@ -17,7 +17,7 @@ import javax.persistence.Query;
 import javax.persistence.EntityNotFoundException;
 import javax.persistence.criteria.CriteriaQuery;
 import javax.persistence.criteria.Root;
-import Entidades.Recipe;
+import Entidades.Recipes;
 import Entidades.Vistis;
 import java.util.List;
 import javax.persistence.EntityManager;
@@ -42,7 +42,7 @@ public class VistisJpaController implements Serializable {
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Recipe recipesId = vistis.getRecipesId();
+            Recipes recipesId = vistis.getRecipesId();
             if (recipesId != null) {
                 recipesId = em.getReference(recipesId.getClass(), recipesId.getId());
                 vistis.setRecipesId(recipesId);
@@ -66,8 +66,8 @@ public class VistisJpaController implements Serializable {
             em = getEntityManager();
             em.getTransaction().begin();
             Vistis persistentVistis = em.find(Vistis.class, vistis.getId());
-            Recipe recipesIdOld = persistentVistis.getRecipesId();
-            Recipe recipesIdNew = vistis.getRecipesId();
+            Recipes recipesIdOld = persistentVistis.getRecipesId();
+            Recipes recipesIdNew = vistis.getRecipesId();
             if (recipesIdNew != null) {
                 recipesIdNew = em.getReference(recipesIdNew.getClass(), recipesIdNew.getId());
                 vistis.setRecipesId(recipesIdNew);
@@ -110,7 +110,7 @@ public class VistisJpaController implements Serializable {
             } catch (EntityNotFoundException enfe) {
                 throw new NonexistentEntityException("The vistis with id " + id + " no longer exists.", enfe);
             }
-            Recipe recipesId = vistis.getRecipesId();
+            Recipes recipesId = vistis.getRecipesId();
             if (recipesId != null) {
                 recipesId.getVistisCollection().remove(vistis);
                 recipesId = em.merge(recipesId);

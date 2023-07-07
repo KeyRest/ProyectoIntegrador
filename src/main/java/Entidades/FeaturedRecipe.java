@@ -53,7 +53,7 @@ public class FeaturedRecipe implements Serializable {
     private Date endDate;
     @JoinColumn(name = "recipes_id", referencedColumnName = "id", insertable = false, updatable = false)
     @ManyToOne(optional = false)
-    private Recipe recipes;
+    private Recipes recipes;
 
     public FeaturedRecipe() {
     }
@@ -96,11 +96,11 @@ public class FeaturedRecipe implements Serializable {
         this.endDate = endDate;
     }
 
-    public Recipe getRecipes() {
+    public Recipes getRecipes() {
         return recipes;
     }
 
-    public void setRecipes(Recipe recipes) {
+    public void setRecipes(Recipes recipes) {
         this.recipes = recipes;
     }
 

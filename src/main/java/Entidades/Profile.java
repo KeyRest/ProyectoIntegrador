@@ -52,8 +52,8 @@ public class Profile implements Serializable {
     @Basic(optional = false)
     @Column(name = "user_type")
     private String userType;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "profileId")
-    private Collection<User> usersCollection;
+    @OneToMany(mappedBy = "profileId")
+    private Collection<Users> usersCollection;
 
     public Profile() {
     }
@@ -93,11 +93,11 @@ public class Profile implements Serializable {
     }
 
     @XmlTransient
-    public Collection<User> getUsersCollection() {
+    public Collection<Users> getUsersCollection() {
         return usersCollection;
     }
 
-    public void setUsersCollection(Collection<User> usersCollection) {
+    public void setUsersCollection(Collection<Users> usersCollection) {
         this.usersCollection = usersCollection;
     }
 

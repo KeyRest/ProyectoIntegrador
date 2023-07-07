@@ -5,7 +5,7 @@
  */
 package Controladores.Vistas;
 
-import Entidades.Recipe;
+import Entidades.Recipes;
 import Entidades.RegistroRecetas;
 import Vista.FRMLogin;
 import Vista.FRMMenu;
@@ -25,7 +25,7 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
     private FRMLogin fRMGlogin;
     private FRMRegistro gRegistro;
     private FRMMenu fRMMenu;
-    private Recipe receta;
+    private Recipes receta;
     private RegistroRecetas registroRecetas;
 
     public ControladorFrameRecetas(FRMRecetas fRMRecetas) {
@@ -37,7 +37,7 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
         switch (e.getActionCommand()) {
             case "Buscar" -> {
                 System.out.println("Buscando");
-                this.receta = (Recipe) this.registroRecetas.buscar(this.fRMRecetas.getTxtId());
+                this.receta = (Recipes) this.registroRecetas.buscar(this.fRMRecetas.getTxtId());
                 if (this.receta != null) {
                     this.fRMRecetas.setTxtnombreReceta(this.receta.getName());
                     this.fRMRecetas.setTxtdescripcion(this.receta.getDescription());
@@ -63,7 +63,7 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
                     this.receta.setPortions(Integer.parseInt(this.fRMRecetas.getTxtporciones()));
                     this.registroRecetas.escribirJSON();
                     this.fRMRecetas.limpiar();
-                    this.fRMRecetas.setDatosTabla(this.registroRecetas.getDatosTabla(), Recipe.ETIQUETAS_RECETA, "Reporte de Recetas");
+                    this.fRMRecetas.setDatosTabla(this.registroRecetas.getDatosTabla(), Recipes.ETIQUETAS_RECETA, "Reporte de Recetas");
                 }
             }
             case "Agregar" -> {
@@ -85,7 +85,7 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
                 } else if (this.fRMRecetas.getTxtporciones().equalsIgnoreCase("")) {
                     FRMRegistro.mensaje("Debe ingresar las porciones");
                 } else {
-                    FRMRegistro.mensaje(this.registroRecetas.agregar(new Recipe(Integer.parseInt(this.fRMRecetas.getTxtId()), this.fRMRecetas.getTxtnombreReceta(), "", this.fRMRecetas.getTxtdescripcion(), Float.parseFloat(this.fRMRecetas.getTxttiempoCoccion()), Float.parseFloat(this.fRMRecetas.getTxttiempoTotal()), Float.parseFloat(this.fRMRecetas.getTxttiempoPreparacion()), this.fRMRecetas.getTxtinstrucciones(), Integer.parseInt(this.fRMRecetas.getTxtporciones()))));
+                    FRMRegistro.mensaje(this.registroRecetas.agregar(new Recipes(Integer.parseInt(this.fRMRecetas.getTxtId()), this.fRMRecetas.getTxtnombreReceta(), "", this.fRMRecetas.getTxtdescripcion(), Float.parseFloat(this.fRMRecetas.getTxttiempoCoccion()), Float.parseFloat(this.fRMRecetas.getTxttiempoTotal()), Float.parseFloat(this.fRMRecetas.getTxttiempoPreparacion()), this.fRMRecetas.getTxtinstrucciones(), Integer.parseInt(this.fRMRecetas.getTxtporciones()))));
                 }
             }
 
@@ -94,7 +94,7 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
 
                 FRMRecetas.mensaje(this.registroRecetas.eliminar(this.receta));
                 this.fRMRecetas.limpiar();
-                this.fRMRecetas.setDatosTabla(this.registroRecetas.getDatosTabla(), Recipe.ETIQUETAS_RECETA, "Reporte de Receta");
+                this.fRMRecetas.setDatosTabla(this.registroRecetas.getDatosTabla(), Recipes.ETIQUETAS_RECETA, "Reporte de Receta");
                 break;
             }
             case "Administrar Usuarios" -> {

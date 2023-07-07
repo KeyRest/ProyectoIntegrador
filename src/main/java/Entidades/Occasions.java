@@ -53,7 +53,7 @@ public class Occasions implements Serializable {
         @JoinColumn(name = "occasions_id", referencedColumnName = "id")}, inverseJoinColumns = {
         @JoinColumn(name = "recipes_id", referencedColumnName = "id")})
     @ManyToMany
-    private Collection<Recipe> recipesCollection;
+    private Collection<Recipes> recipesCollection;
 
     public Occasions() {
     }
@@ -84,11 +84,11 @@ public class Occasions implements Serializable {
     }
 
     @XmlTransient
-    public Collection<Recipe> getRecipesCollection() {
+    public Collection<Recipes> getRecipesCollection() {
         return recipesCollection;
     }
 
-    public void setRecipesCollection(Collection<Recipe> recipesCollection) {
+    public void setRecipesCollection(Collection<Recipes> recipesCollection) {
         this.recipesCollection = recipesCollection;
     }
 

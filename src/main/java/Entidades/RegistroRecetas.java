@@ -24,7 +24,7 @@ import org.json.simple.parser.ParseException;
  */
 public class RegistroRecetas {
 
-    private ArrayList<Recipe> listaReceta;
+    private ArrayList<Recipes> listaReceta;
     private JSONObject baseJSONReceta;
     private File archivo;
 
@@ -37,7 +37,7 @@ public class RegistroRecetas {
     public void escribirJSON() {
         JSONArray arregloRecetas = new JSONArray();
         this.baseJSONReceta = new JSONObject();
-        for (Recipe recipe : listaReceta) {
+        for (Recipes recipe : listaReceta) {
             JSONObject objJSONReceta = new JSONObject();
             objJSONReceta.put("id", recipe.getId());
             objJSONReceta.put("nombre", recipe.getName());
@@ -70,7 +70,7 @@ public class RegistroRecetas {
             JSONArray arregloJSON = (JSONArray) this.baseJSONReceta.get("listaRecetas");
             for (Object object : arregloJSON) {
                 JSONObject objUsuario = (JSONObject) object;
-                Recipe receta = new Recipe();
+                Recipes receta = new Recipes();
                 receta.setId(Integer.parseInt((String) objUsuario.get("id")));
                 receta.setName(objUsuario.get("nombre").toString());
                 receta.setDescription(objUsuario.get("descripcion").toString());
@@ -93,7 +93,7 @@ public class RegistroRecetas {
     }
 
     public String agregar(Object obj) {
-        Recipe receta = (Recipe) obj;
+        Recipes receta = (Recipes) obj;
         if (this.buscar(receta.getId().toString()) == null) {
             if (this.listaReceta.add(receta)) {
                 this.escribirJSON();
@@ -107,7 +107,7 @@ public class RegistroRecetas {
     }
 
     public String eliminar(Object receta) {
-        if (this.listaReceta.remove((Recipe) receta)) {
+        if (this.listaReceta.remove((Recipes) receta)) {
             this.escribirJSON();
             return "La receta ha sido eliminada";
         } else {
@@ -135,7 +135,7 @@ public class RegistroRecetas {
     }
 
     public String[][] getDatosTabla() {
-        String[][] matrizTabla = new String[this.listaReceta.size()][User.ETIQUETAS_USUARIO.length];
+        String[][] matrizTabla = new String[this.listaReceta.size()][Users.ETIQUETAS_USUARIO.length];
         for (int f = 0; f < this.listaReceta.size(); f++) {
             for (int c = 0; c < matrizTabla[0].length; c++) {
                 matrizTabla[f][c] = this.listaReceta.get(f).setDatosReceta(c);

@@ -2,7 +2,7 @@ package Controladores.Vistas;
 
 import Controladores.DB.UsersJpaController;
 import Entidades.RegistroUsuarios;
-import Entidades.User;
+import Entidades.Users;
 import Vista.FRMLogin;
 import Vista.FRMMenu;
 import Vista.FRMRecetas;
@@ -61,7 +61,7 @@ public class ControladorGIngreso implements ActionListener {
     }
 
     public boolean validarLogin(String user) {
-        User u = (User) registroUsuarios.buscarName(user);
+        Users u = (Users) registroUsuarios.buscarName(user);
         if (u != null) {
             return true;
         }

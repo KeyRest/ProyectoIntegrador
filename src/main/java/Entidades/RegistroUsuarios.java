@@ -25,7 +25,7 @@ import org.json.simple.parser.ParseException;
  */
 public class RegistroUsuarios {
 
-    private ArrayList<User> listaUsuario;
+    private ArrayList<Users> listaUsuario;
     private JSONObject baseJSONUsuario;
     private File archivo;
     private UsersJpaController usersJpaController;
@@ -40,7 +40,7 @@ public class RegistroUsuarios {
     public void escribirJSON() {
         JSONArray arregloUsuarios = new JSONArray();
         this.baseJSONUsuario = new JSONObject();
-        for (User usuario : listaUsuario) {
+        for (Users usuario : listaUsuario) {
             JSONObject objJSONUsuario = new JSONObject();
             objJSONUsuario.put("id", usuario.getId());
             objJSONUsuario.put("nombre", usuario.getName());
@@ -69,7 +69,7 @@ public class RegistroUsuarios {
             JSONArray arregloJSON = (JSONArray) this.baseJSONUsuario.get("listaUsuarios");
             for (Object object : arregloJSON) {
                 JSONObject objUsuario = (JSONObject) object;
-                User usuario = new User();
+                Users usuario = new Users();
                 usuario.setId(Integer.parseInt(objUsuario.get("id").toString()));
                 usuario.setName(objUsuario.get("nombre").toString());
                 usuario.setCountry(objUsuario.get("pais").toString());
@@ -88,7 +88,7 @@ public class RegistroUsuarios {
     }
 
     public String agregar(Object obj) {
-        User usuario = (User) obj;
+        Users usuario = (Users) obj;
         if (this.buscar(usuario.getId().toString()) == null) {
             if (this.listaUsuario.add(usuario)) {
                 this.escribirJSON();
@@ -104,7 +104,7 @@ public class RegistroUsuarios {
     }
 
     public String eliminar(Object usuario) {
-        if (this.listaUsuario.remove((User) usuario)) {
+        if (this.listaUsuario.remove((Users) usuario)) {
             this.escribirJSON();
             return "El usuario ha sido eliminada";
         } else {
@@ -142,7 +142,7 @@ public class RegistroUsuarios {
     }
 
     public String[][] getDatosTabla() {
-        String[][] matrizTabla = new String[this.listaUsuario.size()][User.ETIQUETAS_USUARIO.length];
+        String[][] matrizTabla = new String[this.listaUsuario.size()][Users.ETIQUETAS_USUARIO.length];
         for (int f = 0; f < this.listaUsuario.size(); f++) {
             for (int c = 0; c < matrizTabla[0].length; c++) {
                 matrizTabla[f][c] = this.listaUsuario.get(f).setDatosUsuario(c);
