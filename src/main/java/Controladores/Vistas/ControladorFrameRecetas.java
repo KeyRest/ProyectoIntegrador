@@ -20,10 +20,6 @@ import java.awt.event.MouseListener;
 public class ControladorFrameRecetas implements ActionListener, MouseListener {
 
     private FRMRecetas fRMRecetas;
-    private ControladorFrameUsuario controladorFrameUsuario;
-    private FRMUsuario frameUsuario;
-    private FRMLogin fRMGlogin;
-    private FRMRegistro gRegistro;
     private FRMMenu fRMMenu;
     private Recipes receta;
     private RegistroRecetas registroRecetas;
@@ -72,23 +68,23 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
             case "Agregar" -> {
                 System.out.println("Agregar");
                 if (this.fRMRecetas.getTxtId().equalsIgnoreCase("")) {
-                    FRMRegistro.mensaje("Debe ingresar el ID");
+                    FRMRecetas.mensaje("Debe ingresar el ID");
                 } else if (this.fRMRecetas.getTxtnombreReceta().equalsIgnoreCase("")) {
-                    FRMRegistro.mensaje("Debe ingresar el Nombre");
+                    FRMRecetas.mensaje("Debe ingresar el Nombre");
                 } else if (this.fRMRecetas.getTxtdescripcion().equalsIgnoreCase("")) {
-                    FRMRegistro.mensaje("Debe ingresar la descripción");
+                    FRMRecetas.mensaje("Debe ingresar la descripción");
                 } else if (this.fRMRecetas.getTxttiempoCoccion().equalsIgnoreCase("")) {
-                    FRMRegistro.mensaje("Debe ingresar el tiempo de cocción");
+                    FRMRecetas.mensaje("Debe ingresar el tiempo de cocción");
                 } else if (this.fRMRecetas.getTxttiempoTotal().equalsIgnoreCase("")) {
-                    FRMRegistro.mensaje("Debe ingresar el tiempo total");
+                    FRMRecetas.mensaje("Debe ingresar el tiempo total");
                 } else if (this.fRMRecetas.getTxtinstrucciones().equalsIgnoreCase("")) {
-                    FRMRegistro.mensaje("Debe ingresar las instrucciones");
+                    FRMRecetas.mensaje("Debe ingresar las instrucciones");
                 } else if (this.fRMRecetas.getTxttiempoPreparacion().equalsIgnoreCase("")) {
-                    FRMRegistro.mensaje("Debe ingresar el tiempo de preparación");
+                    FRMRecetas.mensaje("Debe ingresar el tiempo de preparación");
                 } else if (this.fRMRecetas.getTxtporciones().equalsIgnoreCase("")) {
-                    FRMRegistro.mensaje("Debe ingresar las porciones");
+                    FRMRecetas.mensaje("Debe ingresar las porciones");
                 } else {
-                    FRMRegistro.mensaje(this.registroRecetas.agregar(new Recipes(Integer.parseInt(this.fRMRecetas.getTxtId()), this.fRMRecetas.getTxtnombreReceta(), "", this.fRMRecetas.getTxtdescripcion(), Float.parseFloat(this.fRMRecetas.getTxttiempoCoccion()), Float.parseFloat(this.fRMRecetas.getTxttiempoTotal()), Float.parseFloat(this.fRMRecetas.getTxttiempoPreparacion()), this.fRMRecetas.getTxtinstrucciones(), Integer.parseInt(this.fRMRecetas.getTxtporciones()))));
+                    FRMRecetas.mensaje(this.registroRecetas.agregar(new Recipes(Integer.parseInt(this.fRMRecetas.getTxtId()), this.fRMRecetas.getTxtnombreReceta(), "", this.fRMRecetas.getTxtdescripcion(), Float.parseFloat(this.fRMRecetas.getTxttiempoCoccion()), Float.parseFloat(this.fRMRecetas.getTxttiempoTotal()), Float.parseFloat(this.fRMRecetas.getTxttiempoPreparacion()), this.fRMRecetas.getTxtinstrucciones(), Integer.parseInt(this.fRMRecetas.getTxtporciones()))));
                 }
             }
 
