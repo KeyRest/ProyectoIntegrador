@@ -132,10 +132,10 @@ public class PanelIngredientes extends javax.swing.JPanel {
                     .addComponent(agregarBTN)
                     .addComponent(EliminarBTN)
                     .addComponent(jLabel4))
-                .addContainerGap(29, Short.MAX_VALUE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 230));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 210));
     }// </editor-fold>//GEN-END:initComponents
 
     private void cantidad1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cantidad1ActionPerformed
