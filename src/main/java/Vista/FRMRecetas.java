@@ -322,7 +322,7 @@ public class FRMRecetas extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JTable Tablaingredientes;
+    public javax.swing.JTable Tablaingredientes;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
