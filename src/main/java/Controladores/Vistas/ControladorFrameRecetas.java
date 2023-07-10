@@ -5,7 +5,7 @@
  */
 package Controladores.Vistas;
 
-import Entidades.LibreriaRecetas;
+
 import Entidades.Recipes;
 import Vista.FRMMenu;
 import Vista.FRMRecetas;
@@ -20,12 +20,10 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
     private FRMMenu fRMMenu;
     private Recipes receta;
 //    private RegistroRecetas registroRecetas;
-    private LibreriaRecetas libreiaRecetas;
 
     public ControladorFrameRecetas(FRMRecetas fRMRecetas) {
         this.fRMRecetas = fRMRecetas;
         this.receta = new Recipes();
-        this.libreiaRecetas =new LibreriaRecetas();
 //        this.registroRecetas = new RegistroRecetas();
         //this.fRMRecetas.setDatosTabla(this.libreiaRecetas.getDatosTabla(), Recipes.ETIQUETAS_RECETA, "Reporte de Recetas");
         //this.fRMRecetas.setDatosTablaIngredientes(this.registroRecetas.getDatosTabla(), Recipes.ETIQUETAS_INGREDIENTES, "Reporte de Recetas");
@@ -86,9 +84,7 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
                     FRMRecetas.mensaje("Debe ingresar las porciones");
                 } else {
                     Recipes recipes = new Recipes(Integer.valueOf(this.fRMRecetas.getTxtId()), this.fRMRecetas.getTxtnombreReceta(), "", this.fRMRecetas.getTxtdescripcion(), Float.parseFloat(this.fRMRecetas.getTxttiempoCoccion()), Float.parseFloat(this.fRMRecetas.getTxttiempoTotal()), Float.parseFloat(this.fRMRecetas.getTxttiempoPreparacion()), this.fRMRecetas.getTxtinstrucciones(), Integer.parseInt(this.fRMRecetas.getTxtporciones()));
-                    libreiaRecetas.agregarReceta(recipes);
                     
-                    this.fRMRecetas.setDatosTablaRecetas(this.libreiaRecetas.getDatosTabla(), Recipes.ETIQUETAS_RECETA, "Reporte de Recetas");
                   //this.fRMRecetas.setDatosTablaIngredientes(this.registroRecetas.getDatosTabla(), Recipes.ETIQUETAS_INGREDIENTES, "Reporte de Recetas");
                     this.fRMRecetas.limpiar();
 
