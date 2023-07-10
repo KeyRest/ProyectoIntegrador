@@ -28,6 +28,7 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
         this.libreiaRecetas =new LibreriaRecetas();
 //        this.registroRecetas = new RegistroRecetas();
         //this.fRMRecetas.setDatosTabla(this.libreiaRecetas.getDatosTabla(), Recipes.ETIQUETAS_RECETA, "Reporte de Recetas");
+        //this.fRMRecetas.setDatosTablaIngredientes(this.registroRecetas.getDatosTabla(), Recipes.ETIQUETAS_INGREDIENTES, "Reporte de Recetas");
     }
 
     @Override
@@ -62,6 +63,7 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
 //                    this.registroRecetas.escribirJSON();
 //                    this.fRMRecetas.limpiar();
 //                    this.fRMRecetas.setDatosTabla(this.registroRecetas.getDatosTabla(), Recipes.ETIQUETAS_RECETA, "Reporte de Recetas");
+//                    this.fRMRecetas.setDatosTablaIngredientes(this.registroRecetas.getDatosTabla(), Recipes.ETIQUETAS_INGREDIENTES, "Reporte de Recetas");
 //                }
             }
             case "Agregar" -> {
@@ -87,6 +89,7 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
                     libreiaRecetas.agregarReceta(recipes);
                     
                     this.fRMRecetas.setDatosTablaRecetas(this.libreiaRecetas.getDatosTabla(), Recipes.ETIQUETAS_RECETA, "Reporte de Recetas");
+                  //this.fRMRecetas.setDatosTablaIngredientes(this.registroRecetas.getDatosTabla(), Recipes.ETIQUETAS_INGREDIENTES, "Reporte de Recetas");
                     this.fRMRecetas.limpiar();
 
                       }
@@ -130,6 +133,15 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
             this.fRMRecetas.setTxtinstrucciones((String) this.fRMRecetas.panelTablaRecetas.TablaReceta.getValueAt(fRMRecetas.panelTablaRecetas.TablaReceta.getSelectedRow(), 5));
             this.fRMRecetas.setTxtdescripcion((String) this.fRMRecetas.panelTablaRecetas.TablaReceta.getValueAt(fRMRecetas.panelTablaRecetas.TablaReceta.getSelectedRow(), 6));
             this.fRMRecetas.setTxtporciones((String) this.fRMRecetas.panelTablaRecetas.TablaReceta.getValueAt(fRMRecetas.panelTablaRecetas.TablaReceta.getSelectedRow(), 7));
+        }
+        //Tabla Ingredientes
+        if (e.getButton() == MouseEvent.BUTTON1 && fRMRecetas.Tablaingredientes.getSelectedRow() != -1) {
+            // Cargar los datos en los campos de texto correspondientes
+            String[] vFila = this.fRMRecetas.getFilaTablaIngredientes();
+//            this.fRMRecetas.setTxtIdIngredientes((String) this.fRMRecetas.Tablaingredientes.getValueAt(fRMRecetas.Tablaingredientes.getSelectedRow(), 0));
+//            this.fRMRecetas.setTxtNombreIngredientes((String) this.fRMRecetas.Tablaingredientes.getValueAt(fRMRecetas.Tablaingredientes.getSelectedRow(), 1));
+//            this.fRMRecetas.setTxtUnidadIngredientes((String) this.fRMRecetas.Tablaingredientes.getValueAt(fRMRecetas.Tablaingredientes.getSelectedRow(), 2));
+//            this.fRMRecetas.setTxtCantidadIngredientes((String) this.fRMRecetas.Tablaingredientes.getValueAt(fRMRecetas.Tablaingredientes.getSelectedRow(), 3));
         }
     }
 

@@ -6,6 +6,7 @@ package Vista;
 
 import Controladores.Vistas.ControladorFrameRecetas;
 import javax.swing.JOptionPane;
+import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -36,6 +37,7 @@ public class FRMRecetas extends javax.swing.JFrame {
         jmiAdministrarUsuario.addActionListener(controladorFrameRecetas);
         this.addMouseListener(controladorFrameRecetas);
         this.panelTablaRecetas.addMouseListener(controladorFrameRecetas);
+        this.Tablaingredientes.addMouseListener(controladorFrameRecetas);
 
     }
 
@@ -50,7 +52,15 @@ public class FRMRecetas extends javax.swing.JFrame {
     public PanelTabla getPanelTablaRecetas() {
         return panelTablaRecetas;
     }
-
+    
+    public PanelIngredientes getpanelIngredientes1(){
+        return panelIngredientes1;
+    }
+    
+    public JTable getTablaingredientes() {
+        return Tablaingredientes;
+    }
+    
     public static void mensaje(String msj) {
         JOptionPane.showMessageDialog(null, msj);
     }
@@ -118,6 +128,38 @@ public class FRMRecetas extends javax.swing.JFrame {
     public void setTxtporciones(String porciones) {
         this.panelIngresoDatos1.porciones.setText(porciones);
     }
+    //TablaIngredientes
+//    public String getTxtIdIngredientes() {
+//        return this.panelIngredientes1.IDIngredientes.getText().trim();
+//    }
+//
+//    public void setTxtIdIngredientes(String IDIngredientes) {
+//        this.panelIngredientes1.IDIngredientes.setText(IDIngredientes);
+//    }
+    
+//    public String getTxtNombreIngredientes() {
+//        return this.panelIngredientes1.nombreIngredientes.getText().trim();
+//    }
+//
+//    public void setTxtNombreIngredientes(String NombreIngredientes) {
+//        this.panelIngredientes1.nombreIngredientes.setText(nombreIngredientes);
+//    }
+    
+//    public String getTxtUnidadIngredientes() {
+//        return this.panelIngredientes1.unidadIngredientes.getText().trim();
+//    }
+//
+//    public void setTxtUnidadIngredientes(String unidadIngredientes) {
+//        this.panelIngredientes1.unidadIngredientes.setText(unidadIngredientes);
+//    }
+        
+//    public String getTxtCantidadIngredientes() {
+//        return this.panelIngredientes1.cantidadIngredientes.getText().trim();
+//    }
+//
+//    public void setTxtCantidadIngredientes(String cantidadIngredientes) {
+//        this.panelIngredientes1.cantidadIngredientes.setText(cantidadIngredientes);
+//    }
 
     public void limpiar() {
         this.panelIngresoDatos1.nombreReceta.setText("");
@@ -154,7 +196,30 @@ public class FRMRecetas extends javax.swing.JFrame {
         }
         return datosFila;
     }
+   //Tabla Ingredientes 
+    public void setDatosTablaIngredientes(String[][] datos, String[] etiquetas, String Titulo) {
+        DefaultTableModel model = (DefaultTableModel) Tablaingredientes.getModel();
 
+        // Limpiar la tabla
+        model.setRowCount(0);
+        model.setColumnCount(0);
+
+        // Establecer los nuevos datos y etiquetas
+        model.setDataVector(datos, etiquetas);
+
+        // Actualizar la vista de la tabla
+        jScrollPane.setViewportView(Tablaingredientes);
+
+    }
+    
+    public String[] getFilaTablaIngredientes() {
+        String[] datosFila = new String[this.Tablaingredientes.getColumnCount()];
+        int numFila = this.Tablaingredientes.getSelectedRow();
+        for (int i = 0; i < datosFila.length; i++) {
+            datosFila[i] = this.Tablaingredientes.getModel().getValueAt(numFila, i).toString();
+        }
+        return datosFila;
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
