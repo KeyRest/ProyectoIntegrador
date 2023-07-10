@@ -2,13 +2,12 @@
 *Keiron Garro M
 *C23212
 *UCR
-*/
+ */
 
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package Controladores.DB;
 
 import Controladores.DB.exceptions.NonexistentEntityException;
@@ -26,14 +25,13 @@ import Entidades.RecipesHasIngredientsPK;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-
-
-
+import javax.persistence.Persistence;
 
 public class RecipesHasIngredientsJpaController implements Serializable {
 
-    public RecipesHasIngredientsJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
+    public RecipesHasIngredientsJpaController() {
+        this.emf = Persistence.createEntityManagerFactory("ProyectoIntegrador_jar_1.0");
+
     }
     private EntityManagerFactory emf = null;
 
@@ -42,44 +40,13 @@ public class RecipesHasIngredientsJpaController implements Serializable {
     }
 
     public void create(RecipesHasIngredients recipesHasIngredients) throws PreexistingEntityException, Exception {
-        if (recipesHasIngredients.getRecipesHasIngredientsPK() == null) {
-            recipesHasIngredients.setRecipesHasIngredientsPK(new RecipesHasIngredientsPK());
-        }
-        recipesHasIngredients.getRecipesHasIngredientsPK().setIngredientsId(recipesHasIngredients.getIngredients().getId());
-        recipesHasIngredients.getRecipesHasIngredientsPK().setRecipesId(recipesHasIngredients.getRecipes().getId());
-        recipesHasIngredients.getRecipesHasIngredientsPK().setMeasurementUnitsId(recipesHasIngredients.getMeasurementUnits().getId());
         EntityManager em = null;
         try {
             em = getEntityManager();
             em.getTransaction().begin();
-            Ingredients ingredients = recipesHasIngredients.getIngredients();
-            if (ingredients != null) {
-                ingredients = em.getReference(ingredients.getClass(), ingredients.getId());
-                recipesHasIngredients.setIngredients(ingredients);
-            }
-            MeasurementUnits measurementUnits = recipesHasIngredients.getMeasurementUnits();
-            if (measurementUnits != null) {
-                measurementUnits = em.getReference(measurementUnits.getClass(), measurementUnits.getId());
-                recipesHasIngredients.setMeasurementUnits(measurementUnits);
-            }
-            Recipes recipes = recipesHasIngredients.getRecipes();
-            if (recipes != null) {
-                recipes = em.getReference(recipes.getClass(), recipes.getId());
-                recipesHasIngredients.setRecipes(recipes);
-            }
-            em.persist(recipesHasIngredients);
-            if (ingredients != null) {
-                ingredients.getRecipesHasIngredientsCollection().add(recipesHasIngredients);
-                ingredients = em.merge(ingredients);
-            }
-            if (measurementUnits != null) {
-                measurementUnits.getRecipesHasIngredientsCollection().add(recipesHasIngredients);
-                measurementUnits = em.merge(measurementUnits);
-            }
-            if (recipes != null) {
-                recipes.getRecipesHasIngredientsCollection().add(recipesHasIngredients);
-                recipes = em.merge(recipes);
-            }
+
+            em.merge(recipesHasIngredients);
+
             em.getTransaction().commit();
         } catch (Exception ex) {
             if (findRecipesHasIngredients(recipesHasIngredients.getRecipesHasIngredientsPK()) != null) {

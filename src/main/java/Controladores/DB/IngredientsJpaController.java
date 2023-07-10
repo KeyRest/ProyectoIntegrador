@@ -25,14 +25,16 @@ import java.util.Collection;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 
 
 
 
 public class IngredientsJpaController implements Serializable {
 
-    public IngredientsJpaController(EntityManagerFactory emf) {
-        this.emf = emf;
+    public IngredientsJpaController() {
+                this.emf = Persistence.createEntityManagerFactory("ProyectoIntegrador_jar_1.0");
+
     }
     private EntityManagerFactory emf = null;
 

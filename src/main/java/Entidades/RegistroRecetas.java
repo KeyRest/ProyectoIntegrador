@@ -4,6 +4,10 @@
  */
 package Entidades;
 
+import Controladores.DB.IngredientsJpaController;
+import Controladores.DB.RecipesJpaController;
+import Controladores.DB.exceptions.IllegalOrphanException;
+import Controladores.DB.exceptions.NonexistentEntityException;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
@@ -25,12 +29,14 @@ public class RegistroRecetas {
     private ArrayList<Recipes> listaReceta;
     private JSONObject baseJSONReceta;
     private File archivo;
+    private RecipesJpaController recipesJpaController;
+    private IngredientsJpaController ingredientsJpaController;
+    
 
     public RegistroRecetas() {
         this.listaReceta = new ArrayList();
         this.archivo = new File("Recetas.json");
-        this.leerJSON();
-        toString();
+        
     }
 
     public void escribirJSON() {
@@ -96,6 +102,8 @@ public class RegistroRecetas {
         if (this.buscar(receta.getId().toString()) == null) {
             if (this.listaReceta.add(receta)) {
                 this.escribirJSON();
+                this.recipesJpaController = new RecipesJpaController();
+                this.recipesJpaController.create(receta);
                 return "La receta se ha agregado con exito";
             } else {
                 return "Error al registrar la receta";
@@ -105,14 +113,26 @@ public class RegistroRecetas {
         return "La receta ya se encuentra registrada";
     }
 
-    public String eliminar(Object receta) {
+    public String eliminar(Object receta) throws IllegalOrphanException, NonexistentEntityException {
         if (this.listaReceta.remove((Recipes) receta)) {
             this.escribirJSON();
+            this.recipesJpaController = new RecipesJpaController();
+            this.recipesJpaController.destroy(((Recipes) receta).getId());
             return "La receta ha sido eliminada";
         } else {
             return "Error al eliminar la receta";
         }
     }
+    
+    public ArrayList<Recipes> getListaRecetas(){
+        this.recipesJpaController = new RecipesJpaController();
+        return (ArrayList<Recipes>) this.recipesJpaController.findRecipesEntities();
+    }
+    public ArrayList<Ingredients> getListaIngredientes(){
+        this.ingredientsJpaController = new IngredientsJpaController();
+        return (ArrayList<Ingredients>) this.ingredientsJpaController.findIngredientsEntities();
+    }
+    
 
     public Object buscar(String id) {
         for (int indice = 0; indice < this.listaReceta.size(); indice++) {
