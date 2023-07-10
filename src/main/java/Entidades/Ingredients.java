@@ -39,7 +39,9 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Ingredients.findByName", query = "SELECT i FROM Ingredients i WHERE i.name = :name"),
     @NamedQuery(name = "Ingredients.findByDescription", query = "SELECT i FROM Ingredients i WHERE i.description = :description")})
 public class Ingredients implements Serializable {
-
+    
+    public static final String[] ETIQUETAS_INGREDIENTES = {"id","nombre", "unidad", "cantidad"};
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -52,6 +54,12 @@ public class Ingredients implements Serializable {
     @Basic(optional = false)
     @Column(name = "description")
     private String description;
+//    @Basic(optional = false)
+//    @Column(unidad = "unidad")
+//    private String unidad;
+//    @Basic(optional = false)
+//    @Column(cantidad = "cantidad")
+//    private String cantidad;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "ingredients")
     private Collection<RecipesHasIngredients> recipesHasIngredientsCollection;
 
@@ -61,7 +69,26 @@ public class Ingredients implements Serializable {
     public Ingredients(Integer id) {
         this.id = id;
     }
-
+    
+//    public Ingredients(Integer id, String name, String unidad , int cantidad) {
+//        this.id = id;
+//        this.name = name;
+//        this.unidad = unidad;
+//        this.cantidad = cantidad;
+//    }
+//    public String setDatosIngredientes(int indice) {
+//        switch (indice) {
+//            case 0:
+//                return String.valueOf(this.getId());
+//            case 1:
+//                return this.getName();
+//            case 2:
+//                return this.getUnidad();
+//            case 3:
+//                return String.valueOf(this.getCantidad());
+//        }
+//        return null;
+//    }
     public Ingredients(Integer id, String name, String description) {
         this.id = id;
         this.name = name;
@@ -91,7 +118,23 @@ public class Ingredients implements Serializable {
     public void setDescription(String description) {
         this.description = description;
     }
-
+    
+//    public String getUnidad() {
+//        return unidad;
+//    }
+//
+//    public void setUnidad(String unidad) {
+//        this.unidad = unidad;
+//    }
+//    
+//    public Integer getCantidad() {
+//        return cantidad;
+//    }
+//
+//    public void setCantidad(Integer cantidad) {
+//        this.cantidad = cantidad;
+//    }
+    
     @XmlTransient
     public Collection<RecipesHasIngredients> getRecipesHasIngredientsCollection() {
         return recipesHasIngredientsCollection;

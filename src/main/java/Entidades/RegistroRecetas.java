@@ -162,5 +162,15 @@ public class RegistroRecetas {
         }
         return matrizTabla;
     }
+    
+    public String[][] getDatosTablaIngredientes() {
+        String[][] matrizTabla = new String[this.listaReceta.size()][Ingredients.ETIQUETAS_INGREDIENTES.length];
+        for (int f = 0; f < this.listaReceta.size(); f++) {
+            for (int c = 0; c < matrizTabla[0].length; c++) {
+                matrizTabla[f][c] = this.listaReceta.get(f).setDatosReceta(c);
+            }
+        }
+        return matrizTabla;
+    }
 
 }

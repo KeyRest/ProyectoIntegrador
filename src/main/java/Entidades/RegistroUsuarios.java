@@ -116,8 +116,8 @@ public class RegistroUsuarios {
         if (this.buscar(usuario.getId().toString()) == null) {
             if (this.listaUsuario.add(usuario)) {
                 this.escribirJSON();
-               // this.usersJpaController = new UsersJpaController();
-               // this.usersJpaController.create(usuario);
+                this.usersJpaController = new UsersJpaController();
+                this.usersJpaController.create(usuario);
                 this.leerJSON();
                 return "El usuario se ha agregado con exito";
 

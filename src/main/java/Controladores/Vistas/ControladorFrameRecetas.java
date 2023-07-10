@@ -6,61 +6,85 @@
 package Controladores.Vistas;
 
 
+import Controladores.DB.exceptions.IllegalOrphanException;
+import Controladores.DB.exceptions.NonexistentEntityException;
+import Entidades.Ingredients;
 import Entidades.Recipes;
+import Entidades.RegistroRecetas;
 import Vista.FRMMenu;
 import Vista.FRMRecetas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 public class ControladorFrameRecetas implements ActionListener, MouseListener {
 
     private FRMRecetas fRMRecetas;
     private FRMMenu fRMMenu;
     private Recipes receta;
-//    private RegistroRecetas registroRecetas;
+    private Ingredients ingrediente;
+    private RegistroRecetas registroRecetas;
 
     public ControladorFrameRecetas(FRMRecetas fRMRecetas) {
         this.fRMRecetas = fRMRecetas;
         this.receta = new Recipes();
-//        this.registroRecetas = new RegistroRecetas();
-        //this.fRMRecetas.setDatosTabla(this.libreiaRecetas.getDatosTabla(), Recipes.ETIQUETAS_RECETA, "Reporte de Recetas");
-        //this.fRMRecetas.setDatosTablaIngredientes(this.registroRecetas.getDatosTabla(), Recipes.ETIQUETAS_INGREDIENTES, "Reporte de Recetas");
+        this.ingrediente= new Ingredients();
+        this.registroRecetas = new RegistroRecetas();
+        this.fRMRecetas.setDatosTablaRecetas(this.registroRecetas.getDatosTabla(), Recipes.ETIQUETAS_RECETA, "Reporte de Recetas");
+        this.fRMRecetas.setDatosTablaIngredientes(this.registroRecetas.getDatosTablaIngredientes(), Ingredients.ETIQUETAS_INGREDIENTES, "Reporte de Recetas");
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         switch (e.getActionCommand()) {
             case "Buscar" -> {
-                  System.out.println("Buscando");
-//                this.receta = (Recipes) this.registroRecetas.buscar(this.fRMRecetas.getTxtId());
-//                if (this.receta != null) {
-//                    this.fRMRecetas.setTxtnombreReceta(this.receta.getName());
-//                    this.fRMRecetas.setTxtdescripcion(this.receta.getDescription());
-//                    this.fRMRecetas.setTxtinstrucciones(this.receta.getPreparationInstructions());
-//                    this.fRMRecetas.setTxttiempoCoccion(String.valueOf(this.receta.getCookingTime()));
-//                    this.fRMRecetas.setTxttiempoTotal(String.valueOf(this.receta.getTotalTime()));
-//                    this.fRMRecetas.setTxtId(String.valueOf(this.receta.getId()));
+                System.out.println("Buscando");
+                this.receta = (Recipes) this.registroRecetas.buscar(this.fRMRecetas.getTxtId());
+                if (this.receta != null) {
+                    this.fRMRecetas.setTxtnombreReceta(this.receta.getName());
+                    this.fRMRecetas.setTxtdescripcion(this.receta.getDescription());
+                    this.fRMRecetas.setTxtinstrucciones(this.receta.getPreparationInstructions());
+                    this.fRMRecetas.setTxttiempoCoccion(String.valueOf(this.receta.getCookingTime()));
+                    this.fRMRecetas.setTxttiempoTotal(String.valueOf(this.receta.getTotalTime()));
+                    this.fRMRecetas.setTxtId(String.valueOf(this.receta.getId()));
+                } else {
+                    FRMRecetas.mensaje("La receta con el ID: " + this.fRMRecetas.getTxtId() + " no se encuentra registrado");
+                    this.fRMRecetas.limpiar();
+                }
+//                this.ingrediente = (Ingredients) this.registroRecetas.buscar(this.fRMRecetas.getTxtIdIngredientes());
+//                if (this.ingrediente != null) {
+//                    this.fRMRecetas.setTxtNombreIngredientes(this.ingrediente.getNombre());
+//                    this.fRMRecetas.setTxtCantidadIngredientes(String.valueOf(this.ingrediente.getCantidad()));
+//                    this.fRMRecetas.setTxtIdIngredientes(String.valueOf(this.ingrediente.getId()));
 //                } else {
-//                    FRMRecetas.mensaje("La receta con el ID: " + this.fRMRecetas.getTxtId() + " no se encuentra registrado");
+//                    FRMRecetas.mensaje("El ingrediente con el ID: " + this.fRMRecetas.getTxtIdIngredientes() + " no se encuentra registrado");
 //                    this.fRMRecetas.limpiar();
 //                }
             }
             case "Modificar" -> {
                 System.out.println("Modificando");
-//                if (this.receta != null) {
-//                    this.receta.setName(this.fRMRecetas.getTxtnombreReceta());
-//                    this.receta.setDescription(this.fRMRecetas.getTxtdescripcion());
-//                    this.receta.setCookingTime(Float.parseFloat(this.fRMRecetas.getTxttiempoCoccion()));
-//                    this.receta.setTotalTime(Float.parseFloat(this.fRMRecetas.getTxttiempoTotal()));
-//                    this.receta.setPreparationInstructions(this.fRMRecetas.getTxtinstrucciones());
-//                    this.receta.setId(Integer.parseInt(this.fRMRecetas.getTxtId()));
-//                    this.receta.setPreparationTime(Float.parseFloat(this.fRMRecetas.getTxttiempoPreparacion()));
-//                    this.receta.setPortions(Integer.parseInt(this.fRMRecetas.getTxtporciones()));
+                if (this.receta != null) {
+                    this.receta.setName(this.fRMRecetas.getTxtnombreReceta());
+                    this.receta.setDescription(this.fRMRecetas.getTxtdescripcion());
+                    this.receta.setCookingTime(Float.parseFloat(this.fRMRecetas.getTxttiempoCoccion()));
+                    this.receta.setTotalTime(Float.parseFloat(this.fRMRecetas.getTxttiempoTotal()));
+                    this.receta.setPreparationInstructions(this.fRMRecetas.getTxtinstrucciones());
+                    this.receta.setId(Integer.parseInt(this.fRMRecetas.getTxtId()));
+                    this.receta.setPreparationTime(Float.parseFloat(this.fRMRecetas.getTxttiempoPreparacion()));
+                    this.receta.setPortions(Integer.parseInt(this.fRMRecetas.getTxtporciones()));
+                    this.registroRecetas.escribirJSON();
+                    this.fRMRecetas.limpiar();
+                    this.fRMRecetas.setDatosTablaRecetas(this.registroRecetas.getDatosTabla(), Recipes.ETIQUETAS_RECETA, "Reporte de Recetas");
+                }
+//                if (this.ingrediente != null) {
+//                    this.ingrediente.setNombre(this.fRMRecetas.getTxtNombreIngredientes());
+//                    this.ingrediente.setId(Integer.parseInt(this.fRMRecetas.getTxtIdIngredientes()));
+//                    this.ingrediente.setCantidad(Integer.parseInt(this.fRMRecetas.getTxtCantidadIngredientes()));
 //                    this.registroRecetas.escribirJSON();
 //                    this.fRMRecetas.limpiar();
-//                    this.fRMRecetas.setDatosTabla(this.registroRecetas.getDatosTabla(), Recipes.ETIQUETAS_RECETA, "Reporte de Recetas");
 //                    this.fRMRecetas.setDatosTablaIngredientes(this.registroRecetas.getDatosTabla(), Recipes.ETIQUETAS_INGREDIENTES, "Reporte de Recetas");
 //                }
             }
@@ -84,19 +108,31 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
                     FRMRecetas.mensaje("Debe ingresar las porciones");
                 } else {
                     Recipes recipes = new Recipes(Integer.valueOf(this.fRMRecetas.getTxtId()), this.fRMRecetas.getTxtnombreReceta(), "", this.fRMRecetas.getTxtdescripcion(), Float.parseFloat(this.fRMRecetas.getTxttiempoCoccion()), Float.parseFloat(this.fRMRecetas.getTxttiempoTotal()), Float.parseFloat(this.fRMRecetas.getTxttiempoPreparacion()), this.fRMRecetas.getTxtinstrucciones(), Integer.parseInt(this.fRMRecetas.getTxtporciones()));
-                    
-                  //this.fRMRecetas.setDatosTablaIngredientes(this.registroRecetas.getDatosTabla(), Recipes.ETIQUETAS_INGREDIENTES, "Reporte de Recetas");
+                    this.fRMRecetas.setDatosTablaRecetas(this.registroRecetas.getDatosTabla(), Ingredients.ETIQUETAS_INGREDIENTES, "Reporte de Ingredientes");
+//                    this.fRMRecetas.setDatosTablaIngredientes(this.registroRecetas.getDatosTablaIngredientes(), Ingredients.ETIQUETAS_INGREDIENTES, "Reporte de Ingredientes");
                     this.fRMRecetas.limpiar();
-
-                      }
+                }
             }
 
             case "Eliminar" -> {
                 System.out.println("ELIMINAR");
-
-                //FRMRecetas.mensaje(this.registroRecetas.eliminar(this.receta));
+                try {
+                    FRMRecetas.mensaje(this.registroRecetas.eliminar(this.receta));
+                } catch (IllegalOrphanException ex) {
+                    Logger.getLogger(ControladorFrameRecetas.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (NonexistentEntityException ex) {
+                    Logger.getLogger(ControladorFrameRecetas.class.getName()).log(Level.SEVERE, null, ex);
+                }
+//                try {
+//                    FRMRecetas.mensaje(this.registroRecetas.eliminar(this.ingrediente));
+//                } catch (IllegalOrphanException ex) {
+//                    Logger.getLogger(ControladorFrameRecetas.class.getName()).log(Level.SEVERE, null, ex);
+//                } catch (NonexistentEntityException ex) {
+//                    Logger.getLogger(ControladorFrameRecetas.class.getName()).log(Level.SEVERE, null, ex);
+//                }
                 this.fRMRecetas.limpiar();
-                //this.fRMRecetas.setDatosTabla(this.registroRecetas.getDatosTabla(), Recipes.ETIQUETAS_RECETA, "Reporte de Receta");
+                this.fRMRecetas.setDatosTablaRecetas(this.registroRecetas.getDatosTabla(), Recipes.ETIQUETAS_RECETA, "Reporte de Receta");
+//                this.fRMRecetas.setDatosTablaIngredientes(this.registroRecetas.getDatosTablaIngredientes(), Ingredients.ETIQUETAS_INGREDIENTES, "Reporte de Ingredientes");
                 break;
             }
             case "Administrar Recetas" -> {
@@ -134,10 +170,10 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
         if (e.getButton() == MouseEvent.BUTTON1 && fRMRecetas.Tablaingredientes.getSelectedRow() != -1) {
             // Cargar los datos en los campos de texto correspondientes
             String[] vFila = this.fRMRecetas.getFilaTablaIngredientes();
-//            this.fRMRecetas.setTxtIdIngredientes((String) this.fRMRecetas.Tablaingredientes.getValueAt(fRMRecetas.Tablaingredientes.getSelectedRow(), 0));
-//            this.fRMRecetas.setTxtNombreIngredientes((String) this.fRMRecetas.Tablaingredientes.getValueAt(fRMRecetas.Tablaingredientes.getSelectedRow(), 1));
+            this.fRMRecetas.setTxtIdIngredientes((String) this.fRMRecetas.Tablaingredientes.getValueAt(fRMRecetas.Tablaingredientes.getSelectedRow(), 0));
+            this.fRMRecetas.setTxtNombreIngredientes((String) this.fRMRecetas.Tablaingredientes.getValueAt(fRMRecetas.Tablaingredientes.getSelectedRow(), 1));
 //            this.fRMRecetas.setTxtUnidadIngredientes((String) this.fRMRecetas.Tablaingredientes.getValueAt(fRMRecetas.Tablaingredientes.getSelectedRow(), 2));
-//            this.fRMRecetas.setTxtCantidadIngredientes((String) this.fRMRecetas.Tablaingredientes.getValueAt(fRMRecetas.Tablaingredientes.getSelectedRow(), 3));
+            this.fRMRecetas.setTxtCantidadIngredientes((String) this.fRMRecetas.Tablaingredientes.getValueAt(fRMRecetas.Tablaingredientes.getSelectedRow(), 3));
         }
     }
 

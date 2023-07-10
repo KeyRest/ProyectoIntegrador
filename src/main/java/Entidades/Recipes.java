@@ -46,7 +46,7 @@ import javax.xml.bind.annotation.XmlTransient;
 public class Recipes implements Serializable {
 
     public static final String[] ETIQUETAS_RECETA = {"id", "nombre", "descripcion", "tiempo_coccion", "tiempo_total", "tiempo_preparacion", "instrucciones", "porciones"};
-
+    
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
