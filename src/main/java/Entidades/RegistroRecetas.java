@@ -11,8 +11,6 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -32,6 +30,7 @@ public class RegistroRecetas {
         this.listaReceta = new ArrayList();
         this.archivo = new File("Recetas.json");
         this.leerJSON();
+        toString();
     }
 
     public void escribirJSON() {
@@ -69,16 +68,16 @@ public class RegistroRecetas {
             this.baseJSONReceta = (JSONObject) obj;
             JSONArray arregloJSON = (JSONArray) this.baseJSONReceta.get("listaRecetas");
             for (Object object : arregloJSON) {
-                JSONObject objUsuario = (JSONObject) object;
+                JSONObject objReceta = (JSONObject) object;
                 Recipes receta = new Recipes();
-                receta.setId(Integer.parseInt((String) objUsuario.get("id")));
-                receta.setName(objUsuario.get("nombre").toString());
-                receta.setDescription(objUsuario.get("descripcion").toString());
-                receta.setCookingTime(Float.parseFloat((String) objUsuario.get("tiempoCoccion")));
-                receta.setPreparationTime(Float.parseFloat((String) objUsuario.get("tiempoPreparacion")));
-                receta.setTotalTime(Float.parseFloat((String) objUsuario.get("tiempoTotal")));
-                receta.setPreparationInstructions(objUsuario.get("instrucciones").toString());
-                receta.setPortions(Integer.parseInt((String) objUsuario.get("porciones")));
+                receta.setId(Integer.parseInt((String) objReceta.get("id")));
+                receta.setName(objReceta.get("nombre").toString());
+                receta.setDescription(objReceta.get("descripcion").toString());
+                receta.setCookingTime(Float.parseFloat((String) objReceta.get("tiempoCoccion")));
+                receta.setPreparationTime(Float.parseFloat((String) objReceta.get("tiempoPreparacion")));
+                receta.setTotalTime(Float.parseFloat((String) objReceta.get("tiempoTotal")));
+                receta.setPreparationInstructions(objReceta.get("instrucciones").toString());
+                receta.setPortions(Integer.parseInt((String) objReceta.get("porciones")));
 
                 this.listaReceta.add(receta);
 
@@ -135,7 +134,7 @@ public class RegistroRecetas {
     }
 
     public String[][] getDatosTabla() {
-        String[][] matrizTabla = new String[this.listaReceta.size()][Users.ETIQUETAS_USUARIO.length];
+        String[][] matrizTabla = new String[this.listaReceta.size()][Recipes.ETIQUETAS_RECETA.length];
         for (int f = 0; f < this.listaReceta.size(); f++) {
             for (int c = 0; c < matrizTabla[0].length; c++) {
                 matrizTabla[f][c] = this.listaReceta.get(f).setDatosReceta(c);
