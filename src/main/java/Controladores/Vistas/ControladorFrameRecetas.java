@@ -5,9 +5,9 @@
  */
 package Controladores.Vistas;
 
+import Entidades.LibreriaRecetas;
 import Entidades.Recipes;
 import Entidades.RegistroRecetas;
-import Entidades.libreriaRecetas;
 import Vista.FRMLogin;
 import Vista.FRMMenu;
 import Vista.FRMRecetas;
@@ -24,12 +24,12 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
     private FRMMenu fRMMenu;
     private Recipes receta;
 //    private RegistroRecetas registroRecetas;
-    private libreriaRecetas libreiaRecetas;
+    private LibreriaRecetas libreiaRecetas;
 
     public ControladorFrameRecetas(FRMRecetas fRMRecetas) {
         this.fRMRecetas = fRMRecetas;
         this.receta = new Recipes();
-        this.libreiaRecetas =new libreriaRecetas();
+        this.libreiaRecetas =new LibreriaRecetas();
 //        this.registroRecetas = new RegistroRecetas();
         //this.fRMRecetas.setDatosTabla(this.libreiaRecetas.getDatosTabla(), Recipes.ETIQUETAS_RECETA, "Reporte de Recetas");
     }

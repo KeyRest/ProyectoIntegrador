@@ -5,9 +5,7 @@
 package Vista;
 
 import Controladores.Vistas.ControladorFrameRecetas;
-import java.awt.event.MouseListener;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -25,7 +23,6 @@ public class FRMRecetas extends javax.swing.JFrame {
         ControladorFrameRecetas controladorFrameRecetas = new ControladorFrameRecetas(this);
         escuchar(controladorFrameRecetas);
         this.panelBotones1.escuchar(controladorFrameRecetas);
-        this.escucharTabla(controladorFrameRecetas);
     }
 
     public void escuchar(ControladorFrameRecetas controladorFrameRecetas) {
@@ -38,6 +35,8 @@ public class FRMRecetas extends javax.swing.JFrame {
         jmiRegresar.addActionListener(controladorFrameRecetas);
         jmiAdministrarUsuario.addActionListener(controladorFrameRecetas);
         this.addMouseListener(controladorFrameRecetas);
+        this.panelTablaRecetas.addMouseListener(controladorFrameRecetas);
+
     }
 
     public PanelBotones panelBotones1() {
@@ -133,7 +132,7 @@ public class FRMRecetas extends javax.swing.JFrame {
     }
 
     public void setDatosTablaRecetas(String[][] datos, String[] etiquetas, String Titulo) {
-         DefaultTableModel model = (DefaultTableModel) panelTablaRecetas.TablaReceta.getModel();
+        DefaultTableModel model = (DefaultTableModel) panelTablaRecetas.TablaReceta.getModel();
 
         // Limpiar la tabla
         model.setRowCount(0);
@@ -144,11 +143,7 @@ public class FRMRecetas extends javax.swing.JFrame {
 
         // Actualizar la vista de la tabla
         panelTablaRecetas.PanelTabla_jScrollPane.setViewportView(panelTablaRecetas.TablaReceta);
-        
-    }
 
-    public void escucharTabla(MouseListener control) {
-        this.panelTablaRecetas.addMouseListener(control);
     }
 
     public String[] getFilaTabla() {
@@ -159,9 +154,7 @@ public class FRMRecetas extends javax.swing.JFrame {
         }
         return datosFila;
     }
-    
-    
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

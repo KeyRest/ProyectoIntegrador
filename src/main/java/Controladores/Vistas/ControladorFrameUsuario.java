@@ -20,7 +20,6 @@ import java.util.Random;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
-import javax.swing.JTable;
 
 /**
  *
@@ -89,13 +88,11 @@ public class ControladorFrameUsuario implements ActionListener, MouseListener {
                         this.usuario.setCountry(this.frameUsuario.getTxtPais());
                         this.usuario.setEmail(this.frameUsuario.getTxtCorreo());
                         this.usuario.setPassword(this.frameUsuario.getTxtContraseña());
-                        this.registroUsuarios.escribirJSON();
+                        this.registroUsuarios.agregar(this.usuario);
                         this.frameUsuario.limpiar();
                         this.frameUsuario.setDatosTabla(this.registroUsuarios.getDatosTabla(), Users.ETIQUETAS_USUARIO, "Reporte de Usuarios");
-                        this.registroUsuarios.agregar(this.usuario);
                         FRMUsuario.mensaje("Usuario creado con exito");
-                        this.frameUsuario.setDatosTabla(this.registroUsuarios.getDatosTabla(), Users.ETIQUETAS_USUARIO, "Reporte de Usuarios");
-
+                       
                     } catch (Exception ex) {
                         Logger.getLogger(ControladorFrameUsuario.class.getName()).log(Level.SEVERE, null, ex);
                     }

@@ -32,14 +32,28 @@ public class RegistroUsuarios {
     private File archivo;
     private UsersJpaController usersJpaController;
     private int lastId;
+    private final String path = "src/main/resources/usuarios.json";
 
     public RegistroUsuarios() {
         this.listaUsuario = new ArrayList();
-        this.archivo = new File("Usuarios.json");
+        this.archivo = new File(path);
         this.leerJSON();
         toString();
+        crearJSON();
     }
 
+    
+    public void crearJSON(){
+        if (!archivo.exists()) {
+            try {
+                archivo.createNewFile();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }    
+    }
+    
+    
     public void escribirJSON() {
         JSONArray arregloUsuarios = new JSONArray();
         this.baseJSONUsuario = new JSONObject();
@@ -69,6 +83,7 @@ public class RegistroUsuarios {
 
     public void leerJSON() {
         JSONParser parser = new JSONParser();
+        this.listaUsuario = new ArrayList<>();
         try {
             FileReader leer = new FileReader(this.archivo);
             Object obj = parser.parse(leer);
@@ -101,8 +116,8 @@ public class RegistroUsuarios {
         if (this.buscar(usuario.getId().toString()) == null) {
             if (this.listaUsuario.add(usuario)) {
                 this.escribirJSON();
-                this.usersJpaController = new UsersJpaController();
-                this.usersJpaController.create(usuario);
+               // this.usersJpaController = new UsersJpaController();
+               // this.usersJpaController.create(usuario);
                 this.leerJSON();
                 return "El usuario se ha agregado con exito";
 
