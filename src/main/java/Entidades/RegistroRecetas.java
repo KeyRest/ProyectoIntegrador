@@ -31,12 +31,11 @@ public class RegistroRecetas {
     private File archivo;
     private RecipesJpaController recipesJpaController;
     private IngredientsJpaController ingredientsJpaController;
-    
 
     public RegistroRecetas() {
         this.listaReceta = new ArrayList();
         this.archivo = new File("Recetas.json");
-        
+
     }
 
     public void escribirJSON() {
@@ -123,16 +122,16 @@ public class RegistroRecetas {
             return "Error al eliminar la receta";
         }
     }
-    
-    public ArrayList<Recipes> getListaRecetas(){
+
+    public ArrayList<Recipes> getListaRecetas() {
         this.recipesJpaController = new RecipesJpaController();
         return (ArrayList<Recipes>) this.recipesJpaController.findRecipesEntities();
     }
-    public ArrayList<Ingredients> getListaIngredientes(){
+
+    public ArrayList<Ingredients> getListaIngredientes() {
         this.ingredientsJpaController = new IngredientsJpaController();
         return (ArrayList<Ingredients>) this.ingredientsJpaController.findIngredientsEntities();
     }
-    
 
     public Object buscar(String id) {
         for (int indice = 0; indice < this.listaReceta.size(); indice++) {
@@ -162,12 +161,13 @@ public class RegistroRecetas {
         }
         return matrizTabla;
     }
-    
+
     public String[][] getDatosTablaIngredientes() {
-        String[][] matrizTabla = new String[this.listaReceta.size()][Ingredients.ETIQUETAS_INGREDIENTES.length];
-        for (int f = 0; f < this.listaReceta.size(); f++) {
+        ArrayList<Ingredients> a = getListaIngredientes();
+        String[][] matrizTabla = new String[a.size()][Ingredients.ETIQUETAS_INGREDIENTES.length];
+        for (int f = 0; f < a.size(); f++) {
             for (int c = 0; c < matrizTabla[0].length; c++) {
-                matrizTabla[f][c] = this.listaReceta.get(f).setDatosReceta(c);
+                matrizTabla[f][c] = a.get(f).setDatosIngrediente(c);
             }
         }
         return matrizTabla;

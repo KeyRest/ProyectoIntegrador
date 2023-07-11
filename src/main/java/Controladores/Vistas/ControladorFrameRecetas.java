@@ -5,7 +5,6 @@
  */
 package Controladores.Vistas;
 
-
 import Controladores.DB.exceptions.IllegalOrphanException;
 import Controladores.DB.exceptions.NonexistentEntityException;
 import Entidades.Ingredients;
@@ -17,6 +16,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -25,13 +25,13 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
     private FRMRecetas fRMRecetas;
     private FRMMenu fRMMenu;
     private Recipes receta;
-    private Ingredients ingrediente;
+    private ArrayList<Ingredients> ingredients;
     private RegistroRecetas registroRecetas;
 
     public ControladorFrameRecetas(FRMRecetas fRMRecetas) {
         this.fRMRecetas = fRMRecetas;
         this.receta = new Recipes();
-        this.ingrediente= new Ingredients();
+        this.ingredients = new ArrayList<>();
         this.registroRecetas = new RegistroRecetas();
         this.fRMRecetas.setDatosTablaRecetas(this.registroRecetas.getDatosTabla(), Recipes.ETIQUETAS_RECETA, "Reporte de Recetas");
         this.fRMRecetas.setDatosTablaIngredientes(this.registroRecetas.getDatosTablaIngredientes(), Ingredients.ETIQUETAS_INGREDIENTES, "Reporte de Recetas");
@@ -54,15 +54,16 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
                     FRMRecetas.mensaje("La receta con el ID: " + this.fRMRecetas.getTxtId() + " no se encuentra registrado");
                     this.fRMRecetas.limpiar();
                 }
-//                this.ingrediente = (Ingredients) this.registroRecetas.buscar(this.fRMRecetas.getTxtIdIngredientes());
-//                if (this.ingrediente != null) {
-//                    this.fRMRecetas.setTxtNombreIngredientes(this.ingrediente.getNombre());
-//                    this.fRMRecetas.setTxtCantidadIngredientes(String.valueOf(this.ingrediente.getCantidad()));
-//                    this.fRMRecetas.setTxtIdIngredientes(String.valueOf(this.ingrediente.getId()));
-//                } else {
-//                    FRMRecetas.mensaje("El ingrediente con el ID: " + this.fRMRecetas.getTxtIdIngredientes() + " no se encuentra registrado");
-//                    this.fRMRecetas.limpiar();
-//                }
+                this.ingredients = this.registroRecetas.getListaIngredientes();
+                if (this.ingredients != null) {
+                    this.fRMRecetas.setDatosTablaIngredientes(this.registroRecetas.getDatosTablaIngredientes(), etiquetas, Titulo);
+                    //this.fRMRecetas.setTxtNombreIngredientes(this.ingrediente.getNombre());
+                    //this.fRMRecetas.setTxtCantidadIngredientes(String.valueOf(this.ingrediente.getCantidad()));
+                    //this.fRMRecetas.setTxtIdIngredientes(String.valueOf(this.ingrediente.getId()));
+                } else {
+                    FRMRecetas.mensaje("El ingrediente con el ID: " + this.fRMRecetas.getTxtIdIngredientes() + " no se encuentra registrado");
+                    this.fRMRecetas.limpiar();
+                }
             }
             case "Modificar" -> {
                 System.out.println("Modificando");
@@ -170,7 +171,6 @@ public class ControladorFrameRecetas implements ActionListener, MouseListener {
         if (e.getButton() == MouseEvent.BUTTON1 && fRMRecetas.Tablaingredientes.getSelectedRow() != -1) {
             // Cargar los datos en los campos de texto correspondientes
             String[] vFila = this.fRMRecetas.getFilaTablaIngredientes();
-            this.fRMRecetas.setTxtIdIngredientes((String) this.fRMRecetas.Tablaingredientes.getValueAt(fRMRecetas.Tablaingredientes.getSelectedRow(), 0));
             this.fRMRecetas.setTxtNombreIngredientes((String) this.fRMRecetas.Tablaingredientes.getValueAt(fRMRecetas.Tablaingredientes.getSelectedRow(), 1));
 //            this.fRMRecetas.setTxtUnidadIngredientes((String) this.fRMRecetas.Tablaingredientes.getValueAt(fRMRecetas.Tablaingredientes.getSelectedRow(), 2));
             this.fRMRecetas.setTxtCantidadIngredientes((String) this.fRMRecetas.Tablaingredientes.getValueAt(fRMRecetas.Tablaingredientes.getSelectedRow(), 3));
