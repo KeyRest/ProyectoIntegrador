@@ -40,12 +40,10 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="1" max="-2" attributes="0">
                       <Component id="BuscarBTN" pref="250" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="1" max="-2" attributes="0">
-                          <Component id="ModificarBTN" alignment="0" pref="250" max="32767" attributes="0"/>
-                          <Component id="AgregarBTN" alignment="0" max="32767" attributes="0"/>
-                          <Component id="BTN_Regresar" alignment="0" max="32767" attributes="0"/>
-                          <Component id="EliminarBTN" alignment="0" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="ModificarBTN" alignment="0" pref="250" max="32767" attributes="0"/>
+                      <Component id="AgregarBTN" alignment="0" max="32767" attributes="0"/>
+                      <Component id="BTN_Regresar" alignment="0" max="32767" attributes="0"/>
+                      <Component id="EliminarBTN" alignment="0" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace max="32767" attributes="0"/>
               </Group>
@@ -73,7 +71,7 @@
         <Component class="javax.swing.JButton" name="ModificarBTN">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
+              <Color blue="cc" green="66" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
@@ -90,7 +88,7 @@
         <Component class="javax.swing.JButton" name="BuscarBTN">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
+              <Color blue="cc" green="66" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
@@ -107,7 +105,7 @@
         <Component class="javax.swing.JButton" name="AgregarBTN">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
+              <Color blue="cc" green="66" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
@@ -124,7 +122,7 @@
         <Component class="javax.swing.JButton" name="EliminarBTN">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
+              <Color blue="cc" green="66" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>
@@ -141,7 +139,7 @@
         <Component class="javax.swing.JButton" name="BTN_Regresar">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
-              <Color blue="0" green="0" red="0" type="rgb"/>
+              <Color blue="cc" green="66" red="0" type="rgb"/>
             </Property>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Segoe UI" size="18" style="1"/>

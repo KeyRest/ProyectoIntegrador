@@ -151,13 +151,13 @@ public class PanelIngresoDatos extends javax.swing.JPanel {
         jLabel16.setText("Catergoría:");
 
         jLabel17.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
-        jLabel17.setText("ocasión :");
+        jLabel17.setText("Ocasión :");
 
         jComboBoxCategory.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Entrada", "Plato fuerte", "Postre", "Aperitivo", "Bebida" }));
 
         jComboBoxOcacion.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Desayuno", "Almuerzo", "Cena", "Merienda" }));
 
-        jComboBoxLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Básico", "Intermedio", "Difícil", " " }));
+        jComboBoxLevel.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Básico", "Intermedio", "Difícil" }));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(this);
         this.setLayout(layout);
@@ -306,9 +306,9 @@ public class PanelIngresoDatos extends javax.swing.JPanel {
     public javax.swing.JTextField IDReceta;
     public javax.swing.JTextField descripcion;
     public javax.swing.JTextField instrucciones;
-    private javax.swing.JComboBox<String> jComboBoxCategory;
-    private javax.swing.JComboBox<String> jComboBoxLevel;
-    private javax.swing.JComboBox<String> jComboBoxOcacion;
+    public javax.swing.JComboBox<String> jComboBoxCategory;
+    public javax.swing.JComboBox<String> jComboBoxLevel;
+    public javax.swing.JComboBox<String> jComboBoxOcacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;

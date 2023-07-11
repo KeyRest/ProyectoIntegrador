@@ -37,35 +37,37 @@ public class PanelIngredientes extends javax.swing.JPanel {
         jLabel9 = new javax.swing.JLabel();
         agregarBTN = new javax.swing.JButton();
         EliminarBTN = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
-        jComboBoxMedidas = new javax.swing.JComboBox<>();
+        jComboBoxIngredientes = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        txtNombreIngredientes = new javax.swing.JTextField();
+        jComboBoxMedidas = new javax.swing.JComboBox<>();
 
         setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         txtCantidadIngredientes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel9.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         jLabel9.setText("Ingredientes:");
 
+        agregarBTN.setBackground(new java.awt.Color(0, 102, 204));
         agregarBTN.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        agregarBTN.setForeground(new java.awt.Color(255, 255, 255));
         agregarBTN.setText("AGREGAR");
+        agregarBTN.setActionCommand("AGREGARING");
 
+        EliminarBTN.setBackground(new java.awt.Color(0, 102, 204));
         EliminarBTN.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        EliminarBTN.setForeground(new java.awt.Color(255, 255, 255));
         EliminarBTN.setText("ELIMINAR");
-
-        jLabel4.setFont(new java.awt.Font("Segoe UI", 3, 12)); // NOI18N
-        jLabel4.setText("Ingrediente Agregado...");
-        jLabel4.setFocusable(false);
+        EliminarBTN.setActionCommand("ELIMINARING");
 
         jLabel10.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel10.setText("Unidad de medida:");
 
-        jComboBoxMedidas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
-        jComboBoxMedidas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kilogramo(s)", "Litro(s)", "Taza(s)" }));
+        jComboBoxIngredientes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
 
         jLabel11.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel11.setText("Nombre:");
@@ -73,7 +75,8 @@ public class PanelIngredientes extends javax.swing.JPanel {
         jLabel12.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel12.setText("Cantidad:");
 
-        txtNombreIngredientes.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jComboBoxMedidas.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jComboBoxMedidas.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Kilogramo(s)", "Litro(s)", "Taza(s)" }));
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -83,30 +86,25 @@ public class PanelIngredientes extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel11)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtNombreIngredientes, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel10)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 25, Short.MAX_VALUE)
-                                .addComponent(jComboBoxMedidas, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel12)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(txtCantidadIngredientes, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(0, 0, Short.MAX_VALUE)))
-                        .addContainerGap())
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(agregarBTN)
-                        .addGap(18, 18, 18)
-                        .addComponent(EliminarBTN)
+                        .addComponent(jLabel12)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 142, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(21, 21, 21))))
+                        .addComponent(txtCantidadIngredientes, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel11)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jComboBoxIngredientes, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 21, Short.MAX_VALUE)
+                        .addComponent(jComboBoxMedidas, javax.swing.GroupLayout.PREFERRED_SIZE, 249, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel9)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(agregarBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 112, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(EliminarBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 115, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -115,8 +113,8 @@ public class PanelIngredientes extends javax.swing.JPanel {
                 .addComponent(jLabel9)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtNombreIngredientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel11))
+                    .addComponent(jLabel11)
+                    .addComponent(jComboBoxIngredientes, javax.swing.GroupLayout.PREFERRED_SIZE, 27, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
@@ -125,29 +123,27 @@ public class PanelIngredientes extends javax.swing.JPanel {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
                     .addComponent(txtCantidadIngredientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(agregarBTN)
-                    .addComponent(EliminarBTN)
-                    .addComponent(jLabel4))
-                .addContainerGap(61, Short.MAX_VALUE))
+                    .addComponent(EliminarBTN, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(agregarBTN, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(10, Short.MAX_VALUE))
         );
 
-        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 270));
+        add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 410, 220));
     }// </editor-fold>//GEN-END:initComponents
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton EliminarBTN;
-    private javax.swing.JButton agregarBTN;
-    private javax.swing.JComboBox<String> jComboBoxMedidas;
+    public javax.swing.JButton EliminarBTN;
+    public javax.swing.JButton agregarBTN;
+    public javax.swing.JComboBox<String> jComboBoxIngredientes;
+    public javax.swing.JComboBox<String> jComboBoxMedidas;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
-    javax.swing.JTextField txtCantidadIngredientes;
-    javax.swing.JTextField txtNombreIngredientes;
+    public javax.swing.JTextField txtCantidadIngredientes;
     // End of variables declaration//GEN-END:variables
 }

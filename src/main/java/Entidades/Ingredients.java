@@ -36,7 +36,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Ingredients.findByDescription", query = "SELECT i FROM Ingredients i WHERE i.description = :description")})
 public class Ingredients implements Serializable {
 
-    public static final String[] ETIQUETAS_INGREDIENTES = {"id", "nombre", "unidad", "cantidad"};
+    public static final String[] ETIQUETAS_INGREDIENTES = {"id", "nombre", "cantidad"};
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -64,20 +64,6 @@ public class Ingredients implements Serializable {
     public Ingredients(Integer id, String name, String unidad, int cantidad) {
         this.id = id;
         this.name = name;
-    }
-
-    public String setDatosIngredientes(int indice) {
-        switch (indice) {
-            case 0:
-                return String.valueOf(this.getId());
-            case 1:
-                return this.getName();
-            case 2:
-                return this.getUnidad();
-            case 3:
-                return String.valueOf(this.getCantidad());
-        }
-        return null;
     }
 
     public Ingredients(Integer id, String name, String description) {
@@ -157,6 +143,10 @@ public class Ingredients implements Serializable {
     @Override
     public String toString() {
         return "Models.DB.Ingredients[ id=" + id + " ]";
+    }
+
+    public String info() {
+        return "Ingredients{" + "id=" + id + ", name=" + name + ", description=" + description + ", recipesHasIngredientsCollection=" + recipesHasIngredientsCollection + '}';
     }
 
 }

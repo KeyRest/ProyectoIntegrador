@@ -45,27 +45,27 @@ public class PanelBotones extends javax.swing.JPanel {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        ModificarBTN.setBackground(new java.awt.Color(0, 0, 0));
+        ModificarBTN.setBackground(new java.awt.Color(0, 102, 204));
         ModificarBTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         ModificarBTN.setForeground(new java.awt.Color(255, 255, 255));
         ModificarBTN.setText("Modificar");
 
-        BuscarBTN.setBackground(new java.awt.Color(0, 0, 0));
+        BuscarBTN.setBackground(new java.awt.Color(0, 102, 204));
         BuscarBTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         BuscarBTN.setForeground(new java.awt.Color(255, 255, 255));
         BuscarBTN.setText("Buscar");
 
-        AgregarBTN.setBackground(new java.awt.Color(0, 0, 0));
+        AgregarBTN.setBackground(new java.awt.Color(0, 102, 204));
         AgregarBTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         AgregarBTN.setForeground(new java.awt.Color(255, 255, 255));
         AgregarBTN.setText("Agregar");
 
-        EliminarBTN.setBackground(new java.awt.Color(0, 0, 0));
+        EliminarBTN.setBackground(new java.awt.Color(0, 102, 204));
         EliminarBTN.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         EliminarBTN.setForeground(new java.awt.Color(255, 255, 255));
         EliminarBTN.setText("Eliminar");
 
-        BTN_Regresar.setBackground(new java.awt.Color(0, 0, 0));
+        BTN_Regresar.setBackground(new java.awt.Color(0, 102, 204));
         BTN_Regresar.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
         BTN_Regresar.setForeground(new java.awt.Color(255, 255, 255));
         BTN_Regresar.setText("Regresar");
@@ -78,11 +78,10 @@ public class PanelBotones extends javax.swing.JPanel {
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(BuscarBTN, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(ModificarBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
-                        .addComponent(AgregarBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(BTN_Regresar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(EliminarBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addComponent(ModificarBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, 250, Short.MAX_VALUE)
+                    .addComponent(AgregarBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(BTN_Regresar, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(EliminarBTN, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(

@@ -25,6 +25,8 @@ public class FRMRecetas extends javax.swing.JFrame {
         escuchar(controladorFrameRecetas);
         this.panelBotones1.escuchar(controladorFrameRecetas);
         this.panelIngredientes2.escuchar(controladorFrameRecetas);
+                this.setLocationRelativeTo(null);
+
     }
 
     public void escuchar(ControladorFrameRecetas controladorFrameRecetas) {
@@ -53,15 +55,15 @@ public class FRMRecetas extends javax.swing.JFrame {
     public PanelTabla getPanelTablaRecetas() {
         return panelTablaRecetas;
     }
-    
-    public PanelIngredientes getpanelIngredientes1(){
+
+    public PanelIngredientes getpanelIngredientes1() {
         return panelIngredientes2;
     }
-    
+
     public JTable getTablaingredientes() {
         return Tablaingredientes;
     }
-    
+
     public static void mensaje(String msj) {
         JOptionPane.showMessageDialog(null, msj);
     }
@@ -130,25 +132,20 @@ public class FRMRecetas extends javax.swing.JFrame {
         this.panelIngresoDatos1.porciones.setText(porciones);
     }
     //TablaIngredientes
-   
+
+    public int getNombreIngredientesID() {
+        return this.panelIngredientes2.jComboBoxIngredientes.getSelectedIndex()+1;
+    }
     
-    public String getTxtNombreIngredientes() {
-        return this.panelIngredientes2.txtNombreIngredientes.getText().trim();
+    public String getNombreIngredientes() {
+        return this.panelIngredientes2.jComboBoxIngredientes.getSelectedItem().toString();
     }
 
-    public void setTxtNombreIngredientes(String nombreIngredientes) {
-        this.panelIngredientes2.txtNombreIngredientes.setText(nombreIngredientes);
+    public int getUnidadIngredientes() {
+        return this.panelIngredientes2.jComboBoxMedidas.getSelectedIndex()+1;
     }
-    
-//    public String getTxtUnidadIngredientes() {
-//        return this.panelIngredientes2.txtUnidadIngredientes.getText().trim();
-//    }
-//
-//    public void setTxtUnidadIngredientes(String unidadIngredientes) {
-//        this.panelIngredientes2.unidadIngredientes.setText(unidadIngredientes);
-//    }
-        
-    public String getTxtCantidadIngredientes() {
+
+    public String getTxtCantidadIngredientes() { 
         return this.panelIngredientes2.txtCantidadIngredientes.getText().trim();
     }
 
@@ -156,6 +153,9 @@ public class FRMRecetas extends javax.swing.JFrame {
         this.panelIngredientes2.txtCantidadIngredientes.setText(cantidadIngredientes);
     }
 
+    public int getLevel(){
+        return this.panelIngresoDatos1.jComboBoxLevel.getSelectedIndex()+1;
+    }
     public void limpiar() {
         this.panelIngresoDatos1.nombreReceta.setText("");
         this.panelIngresoDatos1.tiempoCoccion.setText("");
@@ -165,7 +165,6 @@ public class FRMRecetas extends javax.swing.JFrame {
         this.panelIngresoDatos1.IDReceta.setText("");
         this.panelIngresoDatos1.tiempoPreparacion.setText("");
         this.panelIngresoDatos1.porciones.setText("");
-        this.panelIngredientes2.txtNombreIngredientes.setText("");
         this.panelIngredientes2.txtCantidadIngredientes.setText("");
 
     }
@@ -193,7 +192,8 @@ public class FRMRecetas extends javax.swing.JFrame {
         }
         return datosFila;
     }
-   //Tabla Ingredientes 
+    //Tabla Ingredientes 
+
     public void setDatosTablaIngredientes(String[][] datos, String[] etiquetas, String Titulo) {
         DefaultTableModel model = (DefaultTableModel) Tablaingredientes.getModel();
 
@@ -208,7 +208,7 @@ public class FRMRecetas extends javax.swing.JFrame {
         jScrollPane.setViewportView(Tablaingredientes);
 
     }
-    
+
     public String[] getFilaTablaIngredientes() {
         String[] datosFila = new String[this.Tablaingredientes.getColumnCount()];
         int numFila = this.Tablaingredientes.getSelectedRow();
@@ -217,6 +217,7 @@ public class FRMRecetas extends javax.swing.JFrame {
         }
         return datosFila;
     }
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -226,6 +227,7 @@ public class FRMRecetas extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPanel1 = new javax.swing.JPanel();
         jScrollPane = new javax.swing.JScrollPane();
         Tablaingredientes = new javax.swing.JTable();
         panelIngresoDatos1 = new Vista.PanelIngresoDatos();
@@ -242,12 +244,14 @@ public class FRMRecetas extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
 
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
         Tablaingredientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "ID", "Ingrediente", "Medida"
+                "ID", "Ingrediente", "Cantidad"
             }
         ) {
             boolean[] canEdit = new boolean [] {
@@ -259,6 +263,53 @@ public class FRMRecetas extends javax.swing.JFrame {
             }
         });
         jScrollPane.setViewportView(Tablaingredientes);
+
+        panelBotones1.setBackground(new java.awt.Color(255, 255, 255));
+
+        panelTablaRecetas.setBackground(new java.awt.Color(255, 255, 255));
+
+        panelIngredientes2.setBackground(new java.awt.Color(255, 255, 255));
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(34, 34, 34)
+                .addComponent(panelTablaRecetas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(53, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(panelBotones1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 657, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addComponent(panelIngresoDatos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                    .addComponent(panelIngredientes2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(283, Short.MAX_VALUE)))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(panelBotones1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(panelTablaRecetas, javax.swing.GroupLayout.PREFERRED_SIZE, 348, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel1Layout.createSequentialGroup()
+                    .addContainerGap()
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addComponent(panelIngresoDatos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(panelIngredientes2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addContainerGap(389, Short.MAX_VALUE)))
+        );
 
         jMenu1.setText("Archivo");
 
@@ -283,33 +334,11 @@ public class FRMRecetas extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(panelIngresoDatos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(panelIngredientes2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 410, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(panelBotones1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(12, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(panelTablaRecetas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(37, 37, 37))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(panelIngredientes2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jScrollPane, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(panelIngresoDatos1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(panelBotones1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, Short.MAX_VALUE)
-                .addComponent(panelTablaRecetas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(108, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -319,12 +348,13 @@ public class FRMRecetas extends javax.swing.JFrame {
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane;
     private javax.swing.JMenuItem jmiAdministrarUsuario;
     private javax.swing.JMenuItem jmiRegresar;
     private javax.swing.JMenuItem jmiSalir;
     private Vista.PanelBotones panelBotones1;
-    private Vista.PanelIngredientes panelIngredientes2;
+    public Vista.PanelIngredientes panelIngredientes2;
     private Vista.PanelIngresoDatos panelIngresoDatos1;
     public Vista.PanelTabla panelTablaRecetas;
     // End of variables declaration//GEN-END:variables

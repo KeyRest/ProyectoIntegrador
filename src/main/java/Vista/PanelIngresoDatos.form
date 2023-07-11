@@ -363,7 +363,7 @@
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Segoe UI" size="14" style="1"/>
         </Property>
-        <Property name="text" type="java.lang.String" value="ocasi&#xf3;n :"/>
+        <Property name="text" type="java.lang.String" value="Ocasi&#xf3;n :"/>
       </Properties>
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBoxCategory">
@@ -380,6 +380,7 @@
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBoxOcacion">
@@ -395,21 +396,22 @@
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
     <Component class="javax.swing.JComboBox" name="jComboBoxLevel">
       <Properties>
         <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
-          <StringArray count="4">
+          <StringArray count="3">
             <StringItem index="0" value="B&#xe1;sico"/>
             <StringItem index="1" value="Intermedio"/>
             <StringItem index="2" value="Dif&#xed;cil"/>
-            <StringItem index="3" value=" "/>
           </StringArray>
         </Property>
       </Properties>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+        <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
       </AuxValues>
     </Component>
   </SubComponents>

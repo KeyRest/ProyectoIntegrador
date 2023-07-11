@@ -10,6 +10,7 @@
  */
 package Entidades;
 
+import Controladores.DB.LevelsJpaController;
 import java.io.Serializable;
 import java.util.Collection;
 import javax.persistence.Basic;
@@ -97,7 +98,7 @@ public class Recipes implements Serializable {
         this.id = id;
     }
 
-    public Recipes(Integer id, String name, String image, String description, float cookingTime, float totalTime, float preparationTime, String preparationInstructions, int portions) {
+    public Recipes(Integer id, String name, String image, String description, float cookingTime, float totalTime, float preparationTime, String preparationInstructions, int portions, int level) {
         this.id = id;
         this.name = name;
         this.image = image;
@@ -107,7 +108,10 @@ public class Recipes implements Serializable {
         this.preparationInstructions = preparationInstructions;
         this.portions = portions;
         this.totalTime = totalTime;
+        this.levelsId = new Levels(level);
     }
+    
+    
 
     public String setDatosReceta(int indice) {
         switch (indice) {

@@ -2,13 +2,12 @@
 *Keiron Garro M
 *C23212
 *UCR
-*/
+ */
 
-/*
+ /*
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package Entidades;
 
 import java.io.Serializable;
@@ -22,9 +21,6 @@ import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-
-
-
 
 @Entity
 @Table(name = "recipes_has_ingredients")
@@ -54,6 +50,13 @@ public class RecipesHasIngredients implements Serializable {
     private Recipes recipes;
 
     public RecipesHasIngredients() {
+    }
+
+    public RecipesHasIngredients(float amount, int recipesId, int ingredientsId, int measurementUnitsId) {
+        this.amount = amount;
+        this.ingredients = new Ingredients(ingredientsId);
+        this.measurementUnits = new MeasurementUnits(measurementUnitsId);
+        this.recipes = new Recipes(recipesId);
     }
 
     public RecipesHasIngredients(RecipesHasIngredientsPK recipesHasIngredientsPK) {

@@ -5,6 +5,7 @@
 package Entidades;
 
 import Controladores.DB.IngredientsJpaController;
+import Controladores.DB.RecipesHasIngredientsJpaController;
 import Controladores.DB.RecipesJpaController;
 import Controladores.DB.exceptions.IllegalOrphanException;
 import Controladores.DB.exceptions.NonexistentEntityException;
@@ -15,6 +16,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Iterator;
+import javax.persistence.Query;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -96,13 +98,20 @@ public class RegistroRecetas {
         }
     }
 
-    public String agregar(Object obj) {
+    public String agregar(Object obj, ArrayList<Ingredients> ingredients) throws Exception {
         Recipes receta = (Recipes) obj;
         if (this.buscar(receta.getId().toString()) == null) {
             if (this.listaReceta.add(receta)) {
                 this.escribirJSON();
                 this.recipesJpaController = new RecipesJpaController();
                 this.recipesJpaController.create(receta);
+                RecipesHasIngredientsJpaController rhi = new RecipesHasIngredientsJpaController();
+
+                for (Ingredients ingredient : ingredients) {
+                    RecipesHasIngredients recipesHasIngredients = new RecipesHasIngredients(receta.getId(), ingredient.getId(), 1);
+                    rhi.create(recipesHasIngredients);
+                }
+
                 return "La receta se ha agregado con exito";
             } else {
                 return "Error al registrar la receta";
@@ -110,6 +119,11 @@ public class RegistroRecetas {
 
         }
         return "La receta ya se encuentra registrada";
+    }
+
+    public void modificar(Object obj) throws NonexistentEntityException, Exception {
+        this.recipesJpaController = new RecipesJpaController();
+        this.recipesJpaController.edit((Recipes) obj);
     }
 
     public String eliminar(Object receta) throws IllegalOrphanException, NonexistentEntityException {
@@ -128,9 +142,17 @@ public class RegistroRecetas {
         return (ArrayList<Recipes>) this.recipesJpaController.findRecipesEntities();
     }
 
-    public ArrayList<Ingredients> getListaIngredientes() {
+    public ArrayList<Object> getListaIngredientes() {
         this.ingredientsJpaController = new IngredientsJpaController();
-        return (ArrayList<Ingredients>) this.ingredientsJpaController.findIngredientsEntities();
+        ArrayList<Ingredients> a = (ArrayList<Ingredients>) this.ingredientsJpaController.findIngredientsEntities();
+        RecipesHasIngredientsJpaController controllerRHI = new RecipesHasIngredientsJpaController();
+        ArrayList<RecipesHasIngredients> b = (ArrayList<RecipesHasIngredients>) controllerRHI.findRecipesHasIngredientsEntities();
+
+        ArrayList<Object> c = new ArrayList<>();
+        c.addAll(a);
+        c.addAll(b);
+
+        return c;
     }
 
     public Object buscar(String id) {
@@ -153,21 +175,11 @@ public class RegistroRecetas {
     }
 
     public String[][] getDatosTabla() {
+        this.listaReceta = getListaRecetas();
         String[][] matrizTabla = new String[this.listaReceta.size()][Recipes.ETIQUETAS_RECETA.length];
         for (int f = 0; f < this.listaReceta.size(); f++) {
             for (int c = 0; c < matrizTabla[0].length; c++) {
                 matrizTabla[f][c] = this.listaReceta.get(f).setDatosReceta(c);
-            }
-        }
-        return matrizTabla;
-    }
-
-    public String[][] getDatosTablaIngredientes() {
-        ArrayList<Ingredients> a = getListaIngredientes();
-        String[][] matrizTabla = new String[a.size()][Ingredients.ETIQUETAS_INGREDIENTES.length];
-        for (int f = 0; f < a.size(); f++) {
-            for (int c = 0; c < matrizTabla[0].length; c++) {
-                matrizTabla[f][c] = a.get(f).setDatosIngrediente(c);
             }
         }
         return matrizTabla;
